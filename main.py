@@ -15,6 +15,7 @@ game = True
 
 # ===== Loop principal =====
 while game:
+    #Cria jogadores
     # ----- Trata eventos
     for event in pygame.event.get():
         # ----- Verifica consequências
