@@ -1,10 +1,10 @@
 import random
 import pygame
 
-P1_WIDTH=10
-P1_HEIGHT=10
-WIDTH=1080
-HEIGHT=1920
+P1_WIDTH=150
+P1_HEIGHT=150
+WIDTH=1920
+HEIGHT=1080
 
 class p1(pygame.sprite.Sprite):
     def __init__(self, img):
@@ -13,8 +13,8 @@ class p1(pygame.sprite.Sprite):
 
         self.image = img
         self.rect = self.image.get_rect()
-        self.rect.centerx = WIDTH / 2
-        self.rect.bottom = HEIGHT - 10
+        self.rect.centerx = 960
+        self.rect.bottom = 970
         self.speedx = 0
 
     def update(self):
