@@ -7,12 +7,11 @@ WIDTH=1080
 HEIGHT=1920
 
 class p1(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, img):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = pygame.image.load('Imagem/Quadrado_Teste.png').convert_alpha()
-        self.image = pygame.transform.scale(self.image, (P1_WIDTH, P1_HEIGHT))
+        self.image = img
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH / 2
         self.rect.bottom = HEIGHT - 10
