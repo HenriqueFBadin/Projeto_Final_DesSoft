@@ -3,6 +3,7 @@ print("Criadores do projeto: Eduardo Selber Castanho, Henrique Fazzio Badin, Hen
 # ----- Importa e inicia pacotes
 import pygame
 
+
 pygame.init()
 
 # ----- Gera tela principal
