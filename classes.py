@@ -7,7 +7,7 @@ WIDTH=1080
 HEIGHT=1920
 
 class p1(pygame.sprite.Sprite):
-    def __init__(self, img):
+    def __init__(self):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
 
