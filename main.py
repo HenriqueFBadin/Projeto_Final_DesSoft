@@ -12,7 +12,9 @@ pygame.display.set_caption('Mortal Insper!')
 # ----- Inicia estruturas de dados
 game = True
 p1_img=pygame.image.load('Imagem/Quadrado_Teste.png').convert_alpha()
+p2_img=pygame.image.load('Imagem/Quadrado_Teste.png').convert_alpha()
 p1_img=pygame.transform.scale(p1_img, (P1_WIDTH, P1_HEIGHT))
+p2_img=pygame.transform.scale(p2_img, (P1_WIDTH, P1_HEIGHT))
 
 # ----- Controle de FPS e Tick Rate
 clock = pygame.time.Clock()
@@ -23,7 +25,9 @@ all_sprites = pygame.sprite.Group()
 
 # ----- Definindo o Player 1
 player1 = p1(p1_img)
+player2 = p2(p2_img)
 all_sprites.add(player1)
+all_sprites.add(player2)
 
 # ===== Loop principal =====
 while game:
@@ -42,6 +46,10 @@ while game:
                 player1.speedx -= 8
             if event.key == pygame.K_RIGHT:
                 player1.speedx += 8
+            if event.key == pygame.K_a:
+                player2.speedx -= 8
+            if event.key == pygame.K_d:
+                player2.speedx += 8
         # Verifica se soltou alguma tecla.
         if event.type == pygame.KEYUP:
             # Dependendo da tecla, altera a velocidade.
@@ -49,6 +57,10 @@ while game:
                 player1.speedx += 8
             if event.key == pygame.K_RIGHT:
                 player1.speedx -= 8
+            if event.key == pygame.K_a:
+                player2.speedx += 8
+            if event.key == pygame.K_d:
+                player2.speedx -= 8
     # ----- Atualiza estado do jogo
     # Atualizando a situação dos players
     all_sprites.update()
