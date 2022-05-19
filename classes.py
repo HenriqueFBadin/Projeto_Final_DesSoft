@@ -13,7 +13,7 @@ class p1(pygame.sprite.Sprite):
 
         self.image = img
         self.rect = self.image.get_rect()
-        self.rect.centerx = 960
+        self.rect.centerx = 200
         self.rect.bottom = 970
         self.speedx = 0
 
