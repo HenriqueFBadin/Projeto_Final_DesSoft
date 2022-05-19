@@ -6,7 +6,9 @@ from classes import *
 
 pygame.init()
 # ----- Gera tela principal
-window = pygame.display.set_mode((1920, 1080))
+WIDTH=1920
+HEIGHT=1080
+window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Mortal Insper!')
 
 # ----- Inicia estruturas de dados
