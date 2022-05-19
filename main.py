@@ -11,7 +11,7 @@ pygame.display.set_caption('Mortal Insper!')
 
 # ----- Inicia estruturas de dados
 game = True
-p1_img=pygame.image.load('Projeto Final DesSoft/Projeto_Final_DesSoft/Imagem/Quadrado_Teste.png').convert_alpha()
+p1_img=pygame.image.load('Imagem/Quadrado_Teste.png').convert_alpha()
 p1_img=pygame.transform.scale(p1_img, (P1_WIDTH, P1_HEIGHT))
 
 # ----- Controle de FPS e Tick Rate
