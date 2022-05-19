@@ -23,7 +23,7 @@ tick_rate = 64
 # ----- Agrupando as sprites
 all_sprites = pygame.sprite.Group()
 
-# ----- Definindo o Player 1
+# ----- Definindo os Players
 player1 = p1(p1_img)
 player2 = p2(p2_img)
 all_sprites.add(player1)
@@ -70,6 +70,7 @@ while game:
             if event.key == pygame.K_UP:
                 player1.speedy += 8
     # ----- Atualiza estado do jogo
+    #hits = pygame.sprite.spritecollideany(player1, player2, True)
     # Atualizando a situação dos players
     all_sprites.update()
 
