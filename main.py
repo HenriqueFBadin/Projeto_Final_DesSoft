@@ -16,7 +16,7 @@ p1_img=pygame.transform.scale(p1_img, (P1_WIDTH, P1_HEIGHT))
 
 # ----- Controle de FPS e Tick Rate
 clock = pygame.time.Clock()
-FPS = 30
+tick_rate = 64
 
 # ----- Agrupando as sprites
 all_sprites = pygame.sprite.Group()
@@ -28,7 +28,7 @@ all_sprites.add(player1)
 # ===== Loop principal =====
 while game:
     #Define tick rate
-    clock.tick(FPS)
+    clock.tick(tick_rate)
     #Cria jogadores
     # ----- Trata eventos
     for event in pygame.event.get():
@@ -39,16 +39,16 @@ while game:
         if event.type == pygame.KEYDOWN:
             # Dependendo da tecla, altera a velocidade.
             if event.key == pygame.K_LEFT:
-                p1.speedx -= 8
+                player1.speedx -= 8
             if event.key == pygame.K_RIGHT:
-                p1.speedx += 8
+                player1.speedx += 8
         # Verifica se soltou alguma tecla.
         if event.type == pygame.KEYUP:
             # Dependendo da tecla, altera a velocidade.
             if event.key == pygame.K_LEFT:
-                p1.speedx += 8
+                player1.speedx += 8
             if event.key == pygame.K_RIGHT:
-                p1.speedx -= 8
+                player1.speedx -= 8
     # ----- Atualiza estado do jogo
     # Atualizando a situação dos players
     all_sprites.update()
