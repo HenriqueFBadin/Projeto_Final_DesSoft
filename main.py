@@ -50,6 +50,10 @@ while game:
                 player2.speedx -= 8
             if event.key == pygame.K_d:
                 player2.speedx += 8
+            if event.key == pygame.K_w:
+                player2.speedy -= 8
+            if event.key == pygame.K_UP:
+                player1.speedy -= 8
         # Verifica se soltou alguma tecla.
         if event.type == pygame.KEYUP:
             # Dependendo da tecla, altera a velocidade.
@@ -61,6 +65,10 @@ while game:
                 player2.speedx += 8
             if event.key == pygame.K_d:
                 player2.speedx -= 8
+            if event.key == pygame.K_w:
+                player2.speedy += 8
+            if event.key == pygame.K_UP:
+                player1.speedy += 8
     # ----- Atualiza estado do jogo
     # Atualizando a situação dos players
     all_sprites.update()
