@@ -4,6 +4,7 @@ print("Criadores do projeto: Eduardo Selber Castanho, Henrique Fazzio Badin, Hen
 import pygame
 from classes import *
 
+
 pygame.init()
 # ----- Gera tela principal
 WIDTH=1920
@@ -21,7 +22,13 @@ p2_img=pygame.transform.scale(p2_img, (P1_WIDTH, P1_HEIGHT))
 # ----- Controle de FPS e Tick Rate
 clock = pygame.time.Clock()
 tick_rate = 64
-
+#parametro pro jump:
+isjump=False
+jumpcount=10
+Y_gravity=1
+i=0
+jump_height=200
+Y_velocity=jump_height
 # ----- Agrupando as sprites
 all_sprites = pygame.sprite.Group()
 
@@ -52,8 +59,25 @@ while game:
                 player2.speedx -= 8
             if event.key == pygame.K_d:
                 player2.speedx += 8
-            if event.key == pygame.K_w:
-                player2.speedy -= 8
+            if not(isjump):
+                if event.key==pygame.K_w:
+                    isjump=True
+            if isjump:
+               if jumpcount>=-10:
+                    if jumpcount>=0 and player2.speedy<jump_height:
+
+                        player2.speedy-=2
+                        jumpcount-=5
+                    if jumpcount<0:
+                        player2.speedy+=2
+                        jumpcount-=5
+
+            else:
+                isjump=False
+                jumpcount=10
+                                       
+
+
             if event.key == pygame.K_UP:
                 player1.speedy -= 8
         # Verifica se soltou alguma tecla.
@@ -67,7 +91,7 @@ while game:
                 player2.speedx += 8
             if event.key == pygame.K_d:
                 player2.speedx -= 8
-            if event.key == pygame.K_w:
+            if event.key == pygame.K_w and player2.speedy>HEIGHT-P1_HEIGHT:
                 player2.speedy += 8
             if event.key == pygame.K_UP:
                 player1.speedy += 8
