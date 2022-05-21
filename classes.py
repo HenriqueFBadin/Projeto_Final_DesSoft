@@ -3,7 +3,7 @@ import pygame
 
 P1_WIDTH=150
 P1_HEIGHT=150
-WIDTH=1920
+WIDTH=1520
 HEIGHT=1080
 
 class p1(pygame.sprite.Sprite):
@@ -13,8 +13,8 @@ class p1(pygame.sprite.Sprite):
 
         self.image = img
         self.rect = self.image.get_rect()
-        self.rect.centerx = 400
-        self.rect.bottom = 970
+        self.rect.centerx = WIDTH/2
+        self.rect.bottom = HEIGHT-10
         self.speedx = 0
         self.speedy = 0
 
