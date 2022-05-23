@@ -3,10 +3,10 @@ import pygame
 
 P1_WIDTH=150
 P1_HEIGHT=150
-WIDTH=1520
-HEIGHT=1080
+WIDTH=800
+HEIGHT=600
 
-class p1(pygame.sprite.Sprite):
+class Player(pygame.sprite.Sprite):
     def __init__(self, img):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
@@ -14,14 +14,19 @@ class p1(pygame.sprite.Sprite):
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH/2
-        self.rect.bottom = HEIGHT-10
+        self.rect.y = 400
         self.speedx = 0
         self.speedy = 0
+        self.energy = 0
+        self.is_jumping = False
 
     def update(self):
         # Atualização da posição do p1
+        if self.is_jumping:
+            print(self.is_jumping, self.energy, self.rect.y)
+            self.energy += 1
         self.rect.x += self.speedx
-        self.rect.y += self.speedy
+        self.rect.y += self.energy
 
         # Mantem dentro da tela
         if self.rect.right > WIDTH:
@@ -30,28 +35,14 @@ class p1(pygame.sprite.Sprite):
             self.rect.left = 0
         if self.rect.bottom < 0:
             self.rect.bottom = 0
+        if self.rect.y > 400:
+            print(2)
+            self.rect.y = 400
+            self.is_jumping = False
+            self.energy = 0
+    
+    def jump(self):
+        if not self.is_jumping:
+            self.energy = -30
+            self.is_jumping = True
 
-class p2(pygame.sprite.Sprite):
-    def __init__(self, img):
-        # Construtor da classe mãe (Sprite).
-        pygame.sprite.Sprite.__init__(self)
-
-        self.image = img
-        self.rect = self.image.get_rect()
-        self.rect.centerx = 800
-        self.rect.bottom = 970
-        self.speedx = 0
-        self.speedy = 0
-
-    def update(self):
-        # Atualização da posição do p2
-        self.rect.x += self.speedx
-        self.rect.y += self.speedy
-
-        # Mantem dentro da tela
-        if self.rect.right > WIDTH:
-            self.rect.right = WIDTH
-        if self.rect.left < 0:
-            self.rect.left = 0
-        if self.rect.bottom < 0:
-            self.rect.bottom = 0

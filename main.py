@@ -5,8 +5,8 @@ import pygame
 from classes import *
 P1_WIDTH=150
 P1_HEIGHT=150
-WIDTH=1520
-HEIGHT=1080
+WIDTH=800
+HEIGHT=600
 
 pygame.init()
 # ----- Gera tela principal
@@ -30,57 +30,11 @@ jumpcount=1
 
 # ----- Agrupando as sprites
 all_sprites = pygame.sprite.Group()
-class p1(pygame.sprite.Sprite):
-    def __init__(self, img):
-        # Construtor da classe mãe (Sprite).
-        pygame.sprite.Sprite.__init__(self)
-
-        self.image = img
-        self.rect = self.image.get_rect()
-        self.rect.centerx = WIDTH/2
-        self.rect.bottom = HEIGHT-10
-        self.speedx = 0
-        self.speedy = 0
-
-    def update(self):
-        # Atualização da posição do p1
-        self.rect.x += self.speedx
-        self.rect.y += self.speedy
-
-        # Mantem dentro da tela
-        if self.rect.right > WIDTH:
-            self.rect.right = WIDTH
-        if self.rect.left < 0:
-            self.rect.left = 0
 
 
-class p2(pygame.sprite.Sprite):
-    def __init__(self, img):
-        # Construtor da classe mãe (Sprite).
-        pygame.sprite.Sprite.__init__(self)
-
-        self.image = img
-        self.rect = self.image.get_rect()
-        self.rect.centerx = 800
-        self.rect.bottom = 970
-        self.speedx = 0
-        self.speedy = 0
-
-    def update(self):
-        # Atualização da posição do p2
-        self.rect.x += self.speedx
-        self.rect.y += self.speedy
-
-        # Mantem dentro da tela
-        if self.rect.right > WIDTH:
-            self.rect.right = WIDTH
-        if self.rect.left < 0:
-            self.rect.left = 0
-        if self.rect.bottom < 0:
-            self.rect.bottom = 0
 # ----- Definindo os Players
-player1 = p1(p1_img)
-player2 = p2(p2_img)
+player1 = Player(p1_img)
+player2 = Player(p2_img)
 all_sprites.add(player1)
 all_sprites.add(player2)
 
@@ -106,20 +60,8 @@ while game:
                 player2.speedx -= 8
             if event.key == pygame.K_d:
                 player2.speedx += 8
-            if not isjump:
-                if event.key==pygame.K_w:
-                    isjump=True
-            if isjump:
-                if jumpcount>-1:
-                    neg=1
-                    player2.speedy+=8*neg
-                    jumpcount-=1
-                elif jumpcount<0 and jumpcount>-3:
-                    player2.speedy-=8*neg
-                    jumpcount-=1
-                else:
-                    isjump=False
-                    jumpcount=1
+            if event.key==pygame.K_w:
+                player2.jump()
 
             if event.key == pygame.K_UP:
                 player1.speedy -= 8
@@ -134,10 +76,8 @@ while game:
                 player2.speedx += 8
             if event.key == pygame.K_d:
                 player2.speedx -= 8
-            if event.key == pygame.K_w:
-                isjump=1
             if event.key == pygame.K_UP:
-                player1.speedy += 8
+                player1.jump()
     # ----- Atualiza estado do jogo
     #hits = pygame.sprite.spritecollideany(player1, player2, True)
     # Atualizando a situação dos players
