@@ -19,11 +19,11 @@ class Player(pygame.sprite.Sprite):
         self.speedy = 0
         self.energy = 0
         self.is_jumping = False
+        self.life=100
 
     def update(self):
         # Atualização da posição do p1
         if self.is_jumping:
-            print(self.is_jumping, self.energy, self.rect.y)
             self.energy += 1
         self.rect.x += self.speedx
         self.rect.y += self.energy
@@ -36,13 +36,12 @@ class Player(pygame.sprite.Sprite):
         if self.rect.bottom < 0:
             self.rect.bottom = 0
         if self.rect.y > 400:
-            print(2)
             self.rect.y = 400
             self.is_jumping = False
             self.energy = 0
     
     def jump(self):
         if not self.is_jumping:
-            self.energy = -30
+            self.energy = -25
             self.is_jumping = True
 
