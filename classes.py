@@ -2,12 +2,13 @@ import random
 from turtle import width
 
 import pygame
-
+neg=-1
 P1_WIDTH=150
 P1_HEIGHT=150
 WIDTH=800
 HEIGHT=600
-
+p1_shoot=False
+p2_shoot=False
 class Power(pygame.sprite.Sprite):
     # Construtor da classe.
         def __init__(self, img, bottom, centerx):
@@ -24,7 +25,8 @@ class Power(pygame.sprite.Sprite):
 
         def update(self):
             # A bala só se move no eixo y
-            self.rect.centerx += self.speedx
+            self.rect.centerx-=self.speedx
+              
 
             # Se o tiro passar do inicio da tela, morre.
             if self.rect.centerx >  WIDTH or self.rect.centerx<0:
@@ -74,7 +76,7 @@ class Player(pygame.sprite.Sprite):
 
     def shoot(self):
         # A nova bala vai ser criada logo acima e no centro horizontal da nave
-        new_power =Power(self.power_img, self.rect.top, self.rect.centerx)
+        new_power =Power(self.power_img, self.rect.bottom-70, self.rect.centerx)
         self.all_sprites.add(new_power)
         self.all_powers.add(new_power)
 
