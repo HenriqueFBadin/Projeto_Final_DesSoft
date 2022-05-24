@@ -1,6 +1,6 @@
 import random
 import pygame
-from sympy import true
+#from sympy import true
 
 import pygame
 neg=-1
@@ -32,8 +32,30 @@ class Power(pygame.sprite.Sprite):
             # Se o tiro passar do inicio da tela, morre.
             if self.rect.centerx >  WIDTH or self.rect.centerx<0:
                 self.kill()
+class Power2(pygame.sprite.Sprite):
+    # Construtor da classe.
+        def __init__(self, img, bottom, centerx):
+            # Construtor da classe mãe (Sprite).
+            pygame.sprite.Sprite.__init__(self)
+
+            self.image = img
+            self.rect = self.image.get_rect()
+
+            # Coloca no lugar inicial definido em x, y do constutor
+            self.rect.centerx = centerx
+            self.rect.bottom = bottom
+            self.speedx = -10  # Velocidade fixa para cima
+
+        def update(self):
+            # A bala só se move no eixo y
+            self.rect.centerx+=self.speedx
+              
+
+            # Se o tiro passar do inicio da tela, morre.
+            if self.rect.centerx >  WIDTH or self.rect.centerx<0:
+                self.kill()
 class Player(pygame.sprite.Sprite):
-    def __init__(self, img, all_sprites,all_powers, power_img):
+    def __init__(self, img, all_sprites,all_powers, power_img,power2_img):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
 
@@ -50,6 +72,7 @@ class Player(pygame.sprite.Sprite):
         self.all_sprites=all_sprites
         self.all_powers=all_powers
         self.power_img=power_img
+        self.power2_img=power2_img
     def update(self):
         # Atualização da posição do player
         if self.is_jumping:
@@ -82,3 +105,8 @@ class Player(pygame.sprite.Sprite):
         new_power =Power(self.power_img, self.rect.bottom-70, self.rect.centerx)
         self.all_sprites.add(new_power)
         self.all_powers.add(new_power)
+    def shoot2(self):
+        # A nova bala vai ser criada logo acima e no centro horizontal da nave
+        new_power2 =Power2(self.power2_img, self.rect.bottom-70, self.rect.centerx)
+        self.all_sprites.add(new_power2)
+        self.all_powers.add(new_power2)
