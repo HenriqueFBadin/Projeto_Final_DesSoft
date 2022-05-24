@@ -146,11 +146,11 @@ while game:
 
     hit_power1=pygame.sprite.spritecollide(player2,all_powers,deathpower1)
     if hit_power1:
-        player2.life-=25
+        player2.life-=10
         deathpower1=True
     hit_power2=pygame.sprite.spritecollide(player1,all_powers,deathpower2)
     if hit_power2:
-        player1.life-=25
+        player1.life-=10
     
 
     hit1=pygame.sprite.spritecollide(player2, sprite_p1, death1)
@@ -175,12 +175,6 @@ while game:
         hit2=[]
         if player1.life<=0:            
             death1=True
-    
-
-
-
-
-            
 
 # ===== Finalização =====
 pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
