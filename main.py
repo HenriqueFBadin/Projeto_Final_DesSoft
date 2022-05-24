@@ -24,11 +24,11 @@ pygame.display.set_caption('Mortal Insper!')
 # ----- Inicia estruturas de dados
 game = True
 p1_img=pygame.image.load('Imagem/Quadrado_Teste.png').convert_alpha()
-p2_img=pygame.image.load('Imagem/Quadrado_Teste_2.png').convert_alpha()
+p2_img=pygame.image.load('Imagem/HUmberto-ryu0.png').convert_alpha()
 p1socando_img = pygame.image.load('Imagem/Quadrado_Teste_socando.png').convert_alpha()
 p2socando_img = pygame.image.load('Imagem/Quadrado_Teste_2_socando.png').convert_alpha()
 p1_img=pygame.transform.scale(p1_img, (P1_WIDTH, P1_HEIGHT))
-p2_img=pygame.transform.scale(p2_img, (P1_WIDTH, P1_HEIGHT))
+p2_img=pygame.transform.scale(p2_img, (P1_WIDTH, P1_HEIGHT+30))
 p1socando_img=pygame.transform.scale(p1socando_img, (200, P1_HEIGHT))
 p2socando_img=pygame.transform.scale(p2socando_img, (200, P1_HEIGHT))
 power_img=pygame.image.load('Imagem/haduken.png').convert_alpha()
