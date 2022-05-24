@@ -11,6 +11,8 @@ WIDTH=800
 HEIGHT=600
 death1=False
 death2=False
+deathpower1=False
+deathpower2=False
 contador_soco_1 = 1
 contador_soco_2 = 1
 
@@ -30,7 +32,9 @@ p2_img=pygame.transform.scale(p2_img, (P1_WIDTH, P1_HEIGHT))
 p1socando_img=pygame.transform.scale(p1socando_img, (200, P1_HEIGHT))
 p2socando_img=pygame.transform.scale(p2socando_img, (200, P1_HEIGHT))
 power_img=pygame.image.load('Imagem/haduken.png').convert_alpha()
-power_img=pygame.transform.scale(power_img,(50,50))
+power_img=pygame.transform.scale(power_img,(80,80))
+power2_img=pygame.image.load('Imagem/hadukenfogo.png').convert_alpha()
+power2_img=pygame.transform.scale(power2_img,(80,80))
 background_img = pygame.image.load('Imagem/cenário.jpg').convert_alpha()
 background_img=pygame.transform.scale(background_img, (WIDTH, HEIGHT))
 
@@ -50,8 +54,8 @@ sprite_power1=pygame.sprite.Group()
 sprite_power2=pygame.sprite.Group()
 
 # ----- Definindo os Players
-player1 = Player(p1_img,all_sprites,all_powers,power_img)
-player2 = Player(p2_img,all_sprites,all_powers,power_img)
+player1 = Player(p1_img,all_sprites,all_powers,power_img,power2_img)
+player2 = Player(p2_img,all_sprites,all_powers,power_img,power2_img)
 all_sprites.add(player1)
 all_sprites.add(player2)
 sprite_p1.add(player1)
@@ -93,7 +97,7 @@ while game:
                 player1.shoot()
 
             if event.key==pygame.K_l:
-                player2.shoot()
+                player2.shoot2()
 
             if event.key == pygame.K_e:
                 player1.image = p1socando_img
@@ -139,8 +143,16 @@ while game:
     pygame.display.update()  # Mostra o novo frame para o jogador
     
     # ----- Base para colisões dos Players
-    hit_power1=pygame.sprite.spritecollide(player1,sprite_power1,True)
-    hit_power2=pygame.sprite.spritecollide(player2,sprite_power2,True)
+
+    hit_power1=pygame.sprite.spritecollide(player2,all_powers,deathpower1)
+    if hit_power1:
+        player2.life-=25
+        deathpower1=True
+    hit_power2=pygame.sprite.spritecollide(player1,all_powers,deathpower2)
+    if hit_power2:
+        player1.life-=25
+    
+
     hit1=pygame.sprite.spritecollide(player2, sprite_p1, death1)
     hit2=pygame.sprite.spritecollide(player1, sprite_p2, death2)
 
@@ -163,15 +175,11 @@ while game:
         hit2=[]
         if player1.life<=0:            
             death1=True
-    if hit_power1:
-        player2.life-=5
-        if player2.life<=0:
-            death1=True
-    if hit_power2:
-        player1.life-=5
-        if player1.life<=0:
-            death2=True
     
+
+
+
+
             
 
 # ===== Finalização =====
