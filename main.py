@@ -53,9 +53,9 @@ sprite_p2= pygame.sprite.Group()
 sprite_power1=pygame.sprite.Group()
 sprite_power2=pygame.sprite.Group()
 
-# ----- Definindo os Players
-player1 = Player(p1_img,all_sprites,all_powers,power_img,power2_img)
-player2 = Player(p2_img,all_sprites,all_powers,power_img,power2_img)
+# ----- Definindo os Players 
+player1 = Player(p1_img, all_sprites, all_powers, sprite_power1, sprite_power2, power_img, power2_img)
+player2 = Player(p2_img, all_sprites, all_powers, sprite_power1, sprite_power2, power_img, power2_img)
 all_sprites.add(player1)
 all_sprites.add(player2)
 sprite_p1.add(player1)
@@ -76,28 +76,32 @@ while game:
             game = False
         # Verifica se apertou alguma tecla.
         if event.type == pygame.KEYDOWN:
-            # Dependendo da tecla, altera a velocidade.
+
+# ----------Movimentação do player 2 (Setinhas):
             if event.key == pygame.K_LEFT:
                 player2.speedx -= 8
             if event.key == pygame.K_RIGHT:
                 player2.speedx += 8
+            if event.key == pygame.K_UP:
+                player2.jump()
+                player2.speedy -= 8
+
+# ----------Movimentação do player 1 (W,A,D):
             if event.key == pygame.K_a:
                 player1.speedx -= 8
             if event.key == pygame.K_d:
                 player1.speedx += 8
             if event.key==pygame.K_w:
                 player1.jump()
-            if event.key == pygame.K_UP:
-                player2.jump()
-            if event.key == pygame.K_UP:
-                player2.speedy -= 8
-            if event.key == pygame.K_w:
                 player1.speedy -= 8
+
+# ----------Tiros (Q, L):            
             if event.key==pygame.K_q:
                 player1.shoot()
             if event.key==pygame.K_l:
                 player2.shoot2()
 
+# ----------Sprite do soco (E, <):
             if event.key == pygame.K_e:
                 player1.image = p1socando_img
             if event.key == pygame.K_COMMA:
@@ -143,13 +147,19 @@ while game:
     
     # ----- Base para colisões dos Players
 
-    hit_power1=pygame.sprite.spritecollide(player2,all_powers,deathpower1)
+    hit_power1=pygame.sprite.groupcollide(sprite_power1, sprite_p2, deathpower1, death2)
     if hit_power1:
         player2.life-=10
         deathpower1=True
-    hit_power2=pygame.sprite.spritecollide(player1,all_powers,deathpower2)
+        if player2.life<=0:
+            death2=True
+            
+    hit_power2=pygame.sprite.groupcollide(sprite_power2, sprite_p1, deathpower2, death1)
     if hit_power2:
         player1.life-=10
+        deathpower2=True
+        if player1.life<=0:
+            death1=True
     
 
     hit1=pygame.sprite.spritecollide(player2, sprite_p1, death1)

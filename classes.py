@@ -1,8 +1,5 @@
 import random
 import pygame
-#from sympy import true
-
-import pygame
 neg=-1
 P1_WIDTH=150
 P1_HEIGHT=150
@@ -10,28 +7,32 @@ WIDTH=800
 HEIGHT=600
 p1_shoot=False
 p2_shoot=False
+
 class Power(pygame.sprite.Sprite):
-    # Construtor da classe.
+
+    # Construtor da classe:
         def __init__(self, img, bottom, centerx):
-            # Construtor da classe mãe (Sprite).
+
+            # Construtor da classe mãe (Sprite):
             pygame.sprite.Sprite.__init__(self)
 
             self.image = img
             self.rect = self.image.get_rect()
 
-            # Coloca no lugar inicial definido em x, y do constutor
+            # Coloca no lugar inicial definido em x, y do constutor:
             self.rect.centerx = centerx
             self.rect.bottom = bottom
-            self.speedx = -10  # Velocidade fixa para cima
+            self.speedx = -10  # Velocidade fixa para a horizontal
 
         def update(self):
-            # A bala só se move no eixo y
+            # O poder só se move no eixo x:
             self.rect.centerx-=self.speedx
               
 
-            # Se o tiro passar do inicio da tela, morre.
+            # Se o poder passar do inicio da tela, morre:
             if self.rect.centerx >  WIDTH or self.rect.centerx<0:
                 self.kill()
+
 class Power2(pygame.sprite.Sprite):
     # Construtor da classe.
         def __init__(self, img, bottom, centerx):
@@ -54,8 +55,9 @@ class Power2(pygame.sprite.Sprite):
             # Se o tiro passar do inicio da tela, morre.
             if self.rect.centerx >  WIDTH or self.rect.centerx<0:
                 self.kill()
+
 class Player(pygame.sprite.Sprite):
-    def __init__(self, img, all_sprites,all_powers, power_img,power2_img):
+    def __init__(self, img, all_sprites,all_powers, sprite_power1, sprite_power2, power_img,power2_img):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
 
@@ -71,6 +73,8 @@ class Player(pygame.sprite.Sprite):
         self.life=100
         self.all_sprites=all_sprites
         self.all_powers=all_powers
+        self.sprite_power1=sprite_power1
+        self.sprite_power2=sprite_power2
         self.power_img=power_img
         self.power2_img=power2_img
     def update(self):
@@ -102,11 +106,14 @@ class Player(pygame.sprite.Sprite):
 
     def shoot(self):
         # A nova bala vai ser criada logo acima e no centro horizontal da nave
-        new_power =Power(self.power_img, self.rect.bottom-70, self.rect.centerx)
+        new_power=Power(self.power_img, self.rect.bottom-70, self.rect.centerx)
         self.all_sprites.add(new_power)
         self.all_powers.add(new_power)
+        self.sprite_power1.add(new_power)
+    
     def shoot2(self):
         # A nova bala vai ser criada logo acima e no centro horizontal da nave
-        new_power2 =Power2(self.power2_img, self.rect.bottom-70, self.rect.centerx)
+        new_power2=Power2(self.power2_img, self.rect.bottom-70, self.rect.centerx)
         self.all_sprites.add(new_power2)
         self.all_powers.add(new_power2)
+        self.sprite_power2.add(new_power2)
