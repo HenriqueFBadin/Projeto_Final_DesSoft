@@ -173,8 +173,9 @@ while game:
     hit1=pygame.sprite.spritecollide(player2, sprite_p1, death1)
     hit2=pygame.sprite.spritecollide(player1, sprite_p2, death2)
 
-    if hit1 and player1.image == p1socando_img:
-        player2.life-=10
+    if hit1:
+        if player1.image == p1socando_img:
+            player2.life-=10
         if player2.rect.centerx >= player1.rect.centerx:
             player2.rect.x += 30
         if player2.rect.centerx < player1.rect.centerx:
@@ -183,8 +184,9 @@ while game:
         if player2.life<=0:            
             death2=True
 
-    if hit2 and player2.image == p2socando_img:
-        player1.life-=10
+    if hit2:
+        if player2.image == p2socando_img:
+            player1.life-=10
         if player1.rect.centerx >= player2.rect.centerx:
             player1.rect.x += 30
         if player1.rect.centerx < player2.rect.centerx:
