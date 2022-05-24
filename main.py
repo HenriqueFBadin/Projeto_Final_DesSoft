@@ -27,8 +27,10 @@ p1_img=pygame.image.load('Imagem/Quadrado_Teste.png').convert_alpha()
 p2_img=pygame.image.load('Imagem/HUmberto-ryu0.png').convert_alpha()
 p1socando_img = pygame.image.load('Imagem/Quadrado_Teste_socando.png').convert_alpha()
 p2socando_img = pygame.image.load('Imagem/Quadrado_Teste_2_socando.png').convert_alpha()
+werewolf_img = pygame.image.load('Imagem/werewolf.png').convert_alpha()
 p1_img=pygame.transform.scale(p1_img, (P1_WIDTH, P1_HEIGHT))
 p2_img=pygame.transform.scale(p2_img, (P1_WIDTH, P1_HEIGHT+30))
+werewolf_img=pygame.transform.scale(werewolf_img, (P1_WIDTH, P1_HEIGHT+30))
 p1socando_img=pygame.transform.scale(p1socando_img, (200, P1_HEIGHT))
 p2socando_img=pygame.transform.scale(p2socando_img, (200, P1_HEIGHT))
 power_img=pygame.image.load('Imagem/haduken.png').convert_alpha()
@@ -70,6 +72,8 @@ while game:
     clock.tick(tick_rate)
     #Cria jogadores
     # ----- Trata evento
+    if player1.life <= 50:
+        player1.image = werewolf_img
     for event in pygame.event.get():
         # ----- Verifica consequências
         if event.type == pygame.QUIT:
