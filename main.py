@@ -23,8 +23,11 @@ p1_img=pygame.image.load('Imagem/Quadrado_Teste.png').convert_alpha()
 p2_img=pygame.image.load('Imagem/Quadrado_Teste_2.png').convert_alpha()
 p1_img=pygame.transform.scale(p1_img, (P1_WIDTH, P1_HEIGHT))
 p2_img=pygame.transform.scale(p2_img, (P1_WIDTH, P1_HEIGHT))
+power_img=pygame.image.load('Imagem/haduken.png').convert_alpha()
+power_img=pygame.transform.scale(power_img,(50,50))
 background_img = pygame.image.load('Imagem/cenário.jpg').convert_alpha()
 background_img=pygame.transform.scale(background_img, (WIDTH, HEIGHT))
+
 # ----- Controle de FPS e Tick Rate
 clock = pygame.time.Clock()
 tick_rate = 64
@@ -34,12 +37,15 @@ jumpcount=1
 
 # ----- Agrupando as sprites
 all_sprites = pygame.sprite.Group()
+all_powers=pygame.sprite.Group()
 sprite_p1= pygame.sprite.Group()
 sprite_p2= pygame.sprite.Group()
+sprite_power1=pygame.sprite.Group()
+sprite_power2=pygame.sprite.Group()
 
 # ----- Definindo os Players
-player1 = Player(p1_img)
-player2 = Player(p2_img)
+player1 = Player(p1_img,all_sprites,all_powers,power_img)
+player2 = Player(p2_img,all_sprites,all_powers,power_img)
 all_sprites.add(player1)
 all_sprites.add(player2)
 sprite_p1.add(player1)
@@ -62,31 +68,38 @@ while game:
         if event.type == pygame.KEYDOWN:
             # Dependendo da tecla, altera a velocidade.
             if event.key == pygame.K_LEFT:
-                player1.speedx -= 8
-            if event.key == pygame.K_RIGHT:
-                player1.speedx += 8
-            if event.key == pygame.K_a:
                 player2.speedx -= 8
-            if event.key == pygame.K_d:
+            if event.key == pygame.K_RIGHT:
                 player2.speedx += 8
+            if event.key == pygame.K_a:
+                player1.speedx -= 8
+            if event.key == pygame.K_d:
+                player1.speedx += 8
             if event.key==pygame.K_w:
-                player2.jump()
+                player1.jump()
+            if event.key==pygame.K_q:
+            
+                player1.shoot()
+            if event.key==pygame.K_l:
+              
+                player2.shoot()
 
             if event.key == pygame.K_UP:
                 player1.speedy -= 8
+        
         # Verifica se soltou alguma tecla.
         if event.type == pygame.KEYUP:
             # Dependendo da tecla, altera a velocidade.
             if event.key == pygame.K_LEFT:
-                player1.speedx += 8
-            if event.key == pygame.K_RIGHT:
-                player1.speedx -= 8
-            if event.key == pygame.K_a:
                 player2.speedx += 8
-            if event.key == pygame.K_d:
+            if event.key == pygame.K_RIGHT:
                 player2.speedx -= 8
+            if event.key == pygame.K_a:
+                player1.speedx += 8
+            if event.key == pygame.K_d:
+                player1.speedx -= 8
             if event.key == pygame.K_UP:
-                player1.jump()
+                player2.jump()
 
     # ----- Atualiza estado do jogo
     #hits = pygame.sprite.spritecollideany(player1, player2, True)
@@ -105,7 +118,8 @@ while game:
     # ----- Base para colisões dos Players
     hit1=pygame.sprite.spritecollide(player2, sprite_p1, death1)
     hit2=pygame.sprite.spritecollide(player1, sprite_p2, death2)
-
+    hit_power1=pygame.sprite.spritecollide(player1,sprite_power1,True)
+    hit_power2=pygame.sprite.spritecollide(player2,sprite_power2,True)
     if hit1:
         player2.life-=1
         if player2.rect.centerx >= player1.rect.centerx:
@@ -125,7 +139,14 @@ while game:
         hit2=[]
         if player1.life<=0:            
             death2=True
-    
+    if hit_power1:
+        player2.life-=5
+        if player2.life<=0:
+            death1=True
+    if hit_power2:
+        player1.life-=5
+        if player1.life<=0:
+            death2=True
     
             
 
