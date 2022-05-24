@@ -29,7 +29,8 @@ quadrado1_img=pygame.image.load('Imagem/Quadrado_Teste.png').convert_alpha()
 quadrado2_img=pygame.image.load('Imagem/Quadrado_Teste_2.png').convert_alpha()
 humberto_img=pygame.image.load('Imagem/HUmberto-ryu0.png').convert_alpha()
 p1socando_img = pygame.image.load('Imagem/Quadrado_Teste_socando.png').convert_alpha()
-p2socando_img = pygame.image.load('Imagem/Quadrado_Teste_2_socando.png').convert_alpha()
+p2socando_img = pygame.image.load('Imagem/hu soco.png').convert_alpha()
+p2haduken_img = pygame.image.load('Imagem/humberto haduken.png').convert_alpha()
 werewolf_img = pygame.image.load('Imagem/werewolf.png').convert_alpha()
 werewolf_golden_img = pygame.image.load('Imagem/werewolf_golden.png').convert_alpha()
 power_img=pygame.image.load('Imagem/haduken.png').convert_alpha()
@@ -41,7 +42,8 @@ quadrado2_img=pygame.transform.scale(quadrado2_img, (P1_WIDTH, P1_HEIGHT))
 werewolf_img=pygame.transform.scale(werewolf_img, (P1_WIDTH, P1_HEIGHT+30))
 werewolf_golden_img=pygame.transform.scale(werewolf_golden_img, (P1_WIDTH, P1_HEIGHT+30))
 p1socando_img=pygame.transform.scale(p1socando_img, (200, P1_HEIGHT))
-p2socando_img=pygame.transform.scale(p2socando_img, (200, P1_HEIGHT))
+p2socando_img=pygame.transform.scale(p2socando_img, (200, P1_HEIGHT+30))
+p2haduken_img=pygame.transform.scale(p2haduken_img, (200, P1_HEIGHT))
 power_img=pygame.transform.scale(power_img,(80,80))
 power2_img=pygame.transform.scale(power2_img,(80,80))
 background_img=pygame.transform.scale(background_img, (WIDTH, HEIGHT))
@@ -118,6 +120,8 @@ while game:
                 player1.shoot()
             if event.key==pygame.K_l:
                 player2.shoot2()
+                player2.image=p2haduken_img
+           
 
 # ----------Sprite do soco (E, <):
             if event.key == pygame.K_e:
