@@ -62,6 +62,7 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         self.image = img
+        self.damage = 10
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH/2
         self.rect.y = 400

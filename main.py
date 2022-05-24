@@ -15,6 +15,8 @@ deathpower1=False
 deathpower2=False
 contador_soco_1 = 10
 contador_soco_2 = 10
+buffydevida1 = False
+buffydevida2 = False
 
 pygame.init()
 # ----- Gera tela principal
@@ -76,8 +78,14 @@ while game:
     # ----- Trata evento
     if player1.life <= 50:
         player1.image = werewolf_img
+        if buffydevida1 == False:
+            player1.damage += 5
+            buffydevida1 = True
     if player2.life <= 50:
         player2.image = humberto_img
+        if buffydevida2 == False:
+            player2.damage += 5
+            buffydevida2 = True
     for event in pygame.event.get():
         # ----- Verifica consequências
         if event.type == pygame.QUIT:
@@ -157,14 +165,14 @@ while game:
 
     hit_power1=pygame.sprite.groupcollide(sprite_power1, sprite_p2, deathpower1, death2)
     if hit_power1:
-        player2.life-=10
+        player2.life-=(player1.damage-5)
         deathpower1=True
         if player2.life<=0:
             death2=True
             
     hit_power2=pygame.sprite.groupcollide(sprite_power2, sprite_p1, deathpower2, death1)
     if hit_power2:
-        player1.life-=10
+        player1.life-=(player2.damage-5)
         deathpower2=True
         if player1.life<=0:
             death1=True
@@ -175,7 +183,7 @@ while game:
 
     if hit1:
         if player1.image == p1socando_img:
-            player2.life-=10
+            player2.life -= player1.damage
         if player2.rect.centerx >= player1.rect.centerx:
             player2.rect.x += 30
         if player2.rect.centerx < player1.rect.centerx:
@@ -186,7 +194,7 @@ while game:
 
     if hit2:
         if player2.image == p2socando_img:
-            player1.life-=10
+            player1.life -= player2.damage
         if player1.rect.centerx >= player2.rect.centerx:
             player1.rect.x += 30
         if player1.rect.centerx < player2.rect.centerx:
