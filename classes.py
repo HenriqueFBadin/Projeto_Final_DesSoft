@@ -1,5 +1,6 @@
 import random
 import pygame
+from sympy import true
 
 P1_WIDTH=150
 P1_HEIGHT=150
@@ -19,12 +20,15 @@ class Player(pygame.sprite.Sprite):
         self.speedy = 0
         self.energy = 0
         self.is_jumping = False
+        self.is_punching = False
         self.life=100
 
     def update(self):
-        # Atualização da posição do p1
+        # Atualização da posição do player
         if self.is_jumping:
             self.energy += 1
+        if self.is_punching:
+            self.duracao -= 1
         self.rect.x += self.speedx
         self.rect.y += self.energy
 
@@ -44,4 +48,3 @@ class Player(pygame.sprite.Sprite):
         if not self.is_jumping:
             self.energy = -25
             self.is_jumping = True
-
