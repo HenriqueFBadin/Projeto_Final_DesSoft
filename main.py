@@ -11,6 +11,8 @@ WIDTH=800
 HEIGHT=600
 death1=False
 death2=False
+contador_soco_1 = 1
+contador_soco_2 = 1
 
 pygame.init()
 # ----- Gera tela principal
@@ -21,8 +23,12 @@ pygame.display.set_caption('Mortal Insper!')
 game = True
 p1_img=pygame.image.load('Imagem/Quadrado_Teste.png').convert_alpha()
 p2_img=pygame.image.load('Imagem/Quadrado_Teste_2.png').convert_alpha()
+p1socando_img = pygame.image.load('Imagem/Quadrado_Teste_socando.png').convert_alpha()
+p2socando_img = pygame.image.load('Imagem/Quadrado_Teste_2_socando.png').convert_alpha()
 p1_img=pygame.transform.scale(p1_img, (P1_WIDTH, P1_HEIGHT))
 p2_img=pygame.transform.scale(p2_img, (P1_WIDTH, P1_HEIGHT))
+p1socando_img=pygame.transform.scale(p1socando_img, (200, P1_HEIGHT))
+p2socando_img=pygame.transform.scale(p2socando_img, (200, P1_HEIGHT))
 power_img=pygame.image.load('Imagem/haduken.png').convert_alpha()
 power_img=pygame.transform.scale(power_img,(50,50))
 background_img = pygame.image.load('Imagem/cenário.jpg').convert_alpha()
@@ -77,15 +83,32 @@ while game:
                 player1.speedx += 8
             if event.key==pygame.K_w:
                 player1.jump()
+            if event.key == pygame.K_UP:
+                player2.jump()
+            if event.key == pygame.K_UP:
+                player2.speedy -= 8
+            if event.key == pygame.K_w:
+                player1.speedy -= 8
             if event.key==pygame.K_q:
-            
                 player1.shoot()
+
             if event.key==pygame.K_l:
-              
                 player2.shoot()
 
-            if event.key == pygame.K_UP:
-                player1.speedy -= 8
+            if event.key == pygame.K_e:
+                player1.image = p1socando_img
+            if contador_soco_1 > 0 and player1.image == p1socando_img:
+                contador_soco_1 -= 1
+            elif contador_soco_1 <= 0:
+                player1.image = p1_img
+                contador_soco_1 = 2
+            if event.key == pygame.K_COMMA:
+                player2.image = p2socando_img
+            if contador_soco_2 > 0 and player2.image == p2socando_img:
+                contador_soco_2 -= 1
+            elif contador_soco_2 <= 0:
+                player2.image = p2_img
+                contador_soco_2 = 2
         
         # Verifica se soltou alguma tecla.
         if event.type == pygame.KEYUP:
@@ -116,29 +139,30 @@ while game:
     pygame.display.update()  # Mostra o novo frame para o jogador
     
     # ----- Base para colisões dos Players
-    hit1=pygame.sprite.spritecollide(player2, sprite_p1, death1)
-    hit2=pygame.sprite.spritecollide(player1, sprite_p2, death2)
     hit_power1=pygame.sprite.spritecollide(player1,sprite_power1,True)
     hit_power2=pygame.sprite.spritecollide(player2,sprite_power2,True)
-    if hit1:
-        player2.life-=1
+    hit1=pygame.sprite.spritecollide(player2, sprite_p1, death1)
+    hit2=pygame.sprite.spritecollide(player1, sprite_p2, death2)
+
+    if hit1 and player1.image == p1socando_img:
+        player2.life-=10
         if player2.rect.centerx >= player1.rect.centerx:
             player2.rect.x += 30
         if player2.rect.centerx < player1.rect.centerx:
             player2.rect.x -= 30
         hit1=[]
         if player2.life<=0:            
-            death1=True
+            death2=True
 
-    if hit2:
-        player1.life-=1
+    if hit2 and player2.image == p2socando_img:
+        player1.life-=10
         if player1.rect.centerx >= player2.rect.centerx:
             player1.rect.x += 30
         if player1.rect.centerx < player2.rect.centerx:
             player1.rect.x -= 30
         hit2=[]
         if player1.life<=0:            
-            death2=True
+            death1=True
     if hit_power1:
         player2.life-=5
         if player2.life<=0:
@@ -152,4 +176,3 @@ while game:
 
 # ===== Finalização =====
 pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
-

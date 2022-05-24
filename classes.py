@@ -1,10 +1,6 @@
 import random
-<<<<<<< HEAD
 import pygame
 from sympy import true
-=======
-from turtle import width
->>>>>>> 8edd5d1975443de612afb0c2c9810c8d5f66c56a
 
 import pygame
 neg=-1
@@ -79,16 +75,10 @@ class Player(pygame.sprite.Sprite):
     def jump(self):
         if not self.is_jumping:
             self.energy = -25
-<<<<<<< HEAD
             self.is_jumping = True
-=======
-            self.is_jumping = True
-
 
     def shoot(self):
         # A nova bala vai ser criada logo acima e no centro horizontal da nave
         new_power =Power(self.power_img, self.rect.bottom-70, self.rect.centerx)
         self.all_sprites.add(new_power)
         self.all_powers.add(new_power)
-
->>>>>>> 8edd5d1975443de612afb0c2c9810c8d5f66c56a
