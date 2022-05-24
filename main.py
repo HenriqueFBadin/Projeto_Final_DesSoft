@@ -13,8 +13,8 @@ death1=False
 death2=False
 deathpower1=False
 deathpower2=False
-contador_soco_1 = 1
-contador_soco_2 = 1
+contador_soco_1 = 10
+contador_soco_2 = 10
 
 pygame.init()
 # ----- Gera tela principal
@@ -95,24 +95,13 @@ while game:
                 player1.speedy -= 8
             if event.key==pygame.K_q:
                 player1.shoot()
-
             if event.key==pygame.K_l:
                 player2.shoot2()
 
             if event.key == pygame.K_e:
                 player1.image = p1socando_img
-            if contador_soco_1 > 0 and player1.image == p1socando_img:
-                contador_soco_1 -= 1
-            elif contador_soco_1 <= 0:
-                player1.image = p1_img
-                contador_soco_1 = 2
             if event.key == pygame.K_COMMA:
                 player2.image = p2socando_img
-            if contador_soco_2 > 0 and player2.image == p2socando_img:
-                contador_soco_2 -= 1
-            elif contador_soco_2 <= 0:
-                player2.image = p2_img
-                contador_soco_2 = 2
         
         # Verifica se soltou alguma tecla.
         if event.type == pygame.KEYUP:
@@ -129,6 +118,16 @@ while game:
                 player2.jump()
 
     # ----- Atualiza estado do jogo
+    if contador_soco_1 > 0 and player1.image == p1socando_img:
+        contador_soco_1 -= 1
+    elif contador_soco_1 <= 0:
+        player1.image = p1_img
+        contador_soco_1 = 10
+    if contador_soco_2 > 0 and player2.image == p2socando_img:
+        contador_soco_2 -= 1
+    elif contador_soco_2 <= 0:
+        player2.image = p2_img
+        contador_soco_2 = 10
     #hits = pygame.sprite.spritecollideany(player1, player2, True)
     # Atualizando a situação dos players
     all_sprites.update()
