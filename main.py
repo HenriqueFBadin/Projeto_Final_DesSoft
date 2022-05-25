@@ -68,8 +68,9 @@ sprite_power1=pygame.sprite.Group()
 sprite_power2=pygame.sprite.Group()
 
 # ----- Definindo os Players 
-player1 = Player(werewolf_img, all_sprites, all_powers, sprite_power1, sprite_power2, power_img, power2_img)
-player2 = Player(humberto_img, all_sprites, all_powers, sprite_power1, sprite_power2, power_img, power2_img)
+
+player1 = Playerx(0, [werewolf_img, werewolf_img], [werewolf_golden_img, werewolf_golden_img], all_sprites, all_powers, sprite_power1, power_img)
+player2 = Playerx(1, [humberto_img, humberto_img], [humbertogold_img, humbertogold_img], all_sprites, all_powers, sprite_power2, power2_img)
 all_sprites.add(player1)
 all_sprites.add(player2)
 sprite_p1.add(player1)
@@ -84,16 +85,6 @@ while game:
     clock.tick(tick_rate)
     #Cria jogadores
     # ----- Trata evento
-    if player1.life <= 50:
-        player1.image = werewolf_golden_img
-        if buffydevida1 == False:
-            player1.damage += 5
-            buffydevida1 = True
-    if player2.life <= 50:
-        player2.image = humbertogold_img
-        if buffydevida2 == False:
-            player2.damage += 5
-            buffydevida2 = True
     for event in pygame.event.get():
         # ----- Verifica consequências
         if event.type == pygame.QUIT:
@@ -103,8 +94,10 @@ while game:
 
 # ----------Movimentação do player 2 (Setinhas):
             if event.key == pygame.K_LEFT:
+                player2.orientacao = 0
                 player2.speedx -= 8
             if event.key == pygame.K_RIGHT:
+                player2.orientacao = 1
                 player2.speedx += 8
             if event.key == pygame.K_UP:
                 player2.jump()
@@ -112,8 +105,10 @@ while game:
 
 # ----------Movimentação do player 1 (W,A,D):
             if event.key == pygame.K_a:
+                player2.orientacao = 0
                 player1.speedx -= 8
             if event.key == pygame.K_d:
+                player2.orientacao = 1
                 player1.speedx += 8
             if event.key==pygame.K_w:
                 player1.jump()
@@ -123,7 +118,7 @@ while game:
             if event.key==pygame.K_q:
                 player1.shoot()
             if event.key==pygame.K_l:
-                player2.shoot2()
+                player2.shoot()
                 player2.image=p2haduken_img
            
 
