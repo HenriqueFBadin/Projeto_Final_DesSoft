@@ -14,6 +14,8 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         self.orientacao = orientacao
+        self.imgs = imgs
+        self.img_weaks = img_weaks
         self.image = imgs[orientacao]
         self.image_weak = img_weaks[orientacao]
         self.damage = 10
@@ -54,6 +56,10 @@ class Player(pygame.sprite.Sprite):
             self.rect.y = 400
             self.is_jumping = False
             self.energy = 0
+
+        if self.life>=50:
+            self.image = self.imgs[self.orientacao]
+            self.image_weak = self.img_weaks[self.orientacao]
     
     def jump(self):
         if not self.is_jumping:
