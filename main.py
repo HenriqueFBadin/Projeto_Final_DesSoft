@@ -131,7 +131,6 @@ while game:
             if event.key == pygame.K_e:
                 player1.image = p1socando_img
             if event.key == pygame.K_COMMA:
-                player2.rect.centerx -= 50
                 if player2.image==humbertogold_img:
                     player2.image=humbertogoldsoco_img
                 else:
@@ -151,8 +150,6 @@ while game:
                 player1.speedx -= 8
             if event.key == pygame.K_UP:
                 player2.jump()
-            if event.key == pygame.K_COMMA:
-                player2.rect.centerx += 50
 
     # ----- Atualiza estado do jogo
     if contador_soco_1 > 0 and player1.image == p1socando_img:
