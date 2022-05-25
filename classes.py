@@ -18,7 +18,7 @@ class Player(pygame.sprite.Sprite):
         self.image_weak = img_weaks[orientacao]
         self.damage = 10
         self.rect = self.image.get_rect()
-        self.rect.centerx = 50 if orientacao == 0 else WIDTH - 50
+        self.rect.centerx = 50 if orientacao == 1 else WIDTH - 50
         self.rect.y = 400
         self.speedx = 0
         self.speedy = 0
@@ -88,9 +88,11 @@ class Power(pygame.sprite.Sprite):
 
         def update(self):
             # O poder só se move no eixo x:
-            self.rect.centerx-=self.speedx
+            if self.orientacao==0:
+                self.rect.centerx+=self.speedx
+            if self.orientacao==1:
+                self.rect.centerx-=self.speedx
               
-
             # Se o poder passar do inicio da tela, morre:
             if self.rect.centerx >  WIDTH or self.rect.centerx<0:
                 self.kill()

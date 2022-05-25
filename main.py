@@ -69,8 +69,8 @@ sprite_power2=pygame.sprite.Group()
 
 # ----- Definindo os Players 
 
-player1 = Player(0, [werewolf_img, werewolf_img], [werewolf_golden_img, werewolf_golden_img], all_sprites, all_powers, sprite_power1, power_img)
-player2 = Player(1, [humberto_img, humberto_img], [humbertogold_img, humbertogold_img], all_sprites, all_powers, sprite_power2, power2_img)
+player1 = Player(1, [werewolf_img, werewolf_img], [werewolf_golden_img, werewolf_golden_img], all_sprites, all_powers, sprite_power1, power_img)
+player2 = Player(0, [humberto_img, humberto_img], [humbertogold_img, humbertogold_img], all_sprites, all_powers, sprite_power2, power2_img)
 all_sprites.add(player1)
 all_sprites.add(player2)
 sprite_p1.add(player1)
@@ -105,19 +105,19 @@ while game:
 
 # ----------Movimentação do player 1 (W,A,D):
             if event.key == pygame.K_a:
-                player2.orientacao = 0
+                player1.orientacao = 0
                 player1.speedx -= 8
             if event.key == pygame.K_d:
-                player2.orientacao = 1
+                player1.orientacao = 1
                 player1.speedx += 8
             if event.key==pygame.K_w:
                 player1.jump()
                 player1.speedy -= 8
 
 # ----------Tiros (Q, L):            
-            if event.key==pygame.K_q:
+            if event.key==pygame.K_q and player1.life > 0:
                 player1.shoot()
-            if event.key==pygame.K_l:
+            if event.key==pygame.K_l and player2.life > 0:
                 player2.shoot()
                 player2.image=p2haduken_img
            
