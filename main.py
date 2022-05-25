@@ -69,8 +69,8 @@ sprite_power2=pygame.sprite.Group()
 
 # ----- Definindo os Players 
 
-player1 = Playerx(0, [werewolf_img, werewolf_img], [werewolf_golden_img, werewolf_golden_img], all_sprites, all_powers, sprite_power1, power_img)
-player2 = Playerx(1, [humberto_img, humberto_img], [humbertogold_img, humbertogold_img], all_sprites, all_powers, sprite_power2, power2_img)
+player1 = Player(0, [werewolf_img, werewolf_img.mirror], [werewolf_golden_img, werewolf_golden_img.mirror], all_sprites, all_powers, sprite_power1, power_img)
+player2 = Player(1, [humberto_img, humberto_img.mirror], [humbertogold_img, humbertogold_img.mirror], all_sprites, all_powers, sprite_power2, power2_img)
 all_sprites.add(player1)
 all_sprites.add(player2)
 sprite_p1.add(player1)
