@@ -62,7 +62,7 @@ class Player(pygame.sprite.Sprite):
 
     def shoot(self):
         # A nova bala vai ser criada logo acima e no centro horizontal da nave
-        new_power=Power(self.orientacao, self.power_img, self.rect.bottom-85, self.rect.centerx)
+        new_power=Power(self.orientacao, [self.power_img, self.power_img], self.rect.bottom-85, self.rect.centerx)
         self.all_sprites.add(new_power)
         self.all_powers.add(new_power)
         self.sprite_power.add(new_power)
@@ -76,7 +76,8 @@ class Power(pygame.sprite.Sprite):
             # Construtor da classe mãe (Sprite):
             pygame.sprite.Sprite.__init__(self)
 
-            self.image = img
+            self.orientacao = orientacao
+            self.image = img[orientacao]
             self.rect = self.image.get_rect()
 
             # Coloca no lugar inicial definido em x, y do constutor:
