@@ -38,6 +38,14 @@ werewolf_golden_img = pygame.image.load('Imagem/werewolf_golden.png').convert_al
 power_img=pygame.image.load('Imagem/haduken.png').convert_alpha()
 power2_img=pygame.image.load('Imagem/hadukenfogo.png').convert_alpha()
 background_img = pygame.image.load('Imagem/cenário.jpg').convert_alpha()
+werewolf_soco_d_final = pygame.image.load('Imagem/werewolf soco direita final.png').convert_alpha()
+werewolf_soco_d_meio = pygame.image.load('Imagem/werewolf soco direita meio.png').convert_alpha()
+werewolf_soco_e_final = pygame.image.load('Imagem/werewolf soco esquerda final.png').convert_alpha()
+werewolf_soco_e_meio = pygame.image.load('Imagem/werewolf soco esquerda meio.png').convert_alpha()
+werewolf_soco_d_final=pygame.transform.scale(werewolf_soco_d_final, (P1_WIDTH, P1_HEIGHT+30))
+werewolf_soco_d_meio=pygame.transform.scale(werewolf_soco_d_meio, (P1_WIDTH, P1_HEIGHT+30))
+werewolf_soco_e_final=pygame.transform.scale(werewolf_soco_e_final, (P1_WIDTH, P1_HEIGHT+30))
+werewolf_soco_e_meio=pygame.transform.scale(werewolf_soco_e_meio, (P1_WIDTH, P1_HEIGHT+30))
 quadrado1_img=pygame.transform.scale(quadrado1_img, (P1_WIDTH, P1_HEIGHT))
 humberto_img=pygame.transform.scale(humberto_img, (P1_WIDTH, P1_HEIGHT+30))
 quadrado2_img=pygame.transform.scale(quadrado2_img, (P1_WIDTH, P1_HEIGHT))
@@ -69,8 +77,8 @@ sprite_power2=pygame.sprite.Group()
 
 # ----- Definindo os Players 
 
-player1 = Player(0, [werewolf_img, werewolf_img.mirror], [werewolf_golden_img, werewolf_golden_img.mirror], all_sprites, all_powers, sprite_power1, power_img)
-player2 = Player(1, [humberto_img, humberto_img.mirror], [humbertogold_img, humbertogold_img.mirror], all_sprites, all_powers, sprite_power2, power2_img)
+player1 = Player(0, [werewolf_img, werewolf_img], [werewolf_golden_img, werewolf_golden_img], all_sprites, all_powers, sprite_power1, power_img)
+player2 = Player(1, [humberto_img, humberto_img], [humbertogold_img, humbertogold_img], all_sprites, all_powers, sprite_power2, power2_img)
 all_sprites.add(player1)
 all_sprites.add(player2)
 sprite_p1.add(player1)
@@ -124,7 +132,7 @@ while game:
 
 # ----------Sprite do soco (E, <):
             if event.key == pygame.K_e:
-                player1.image = p1socando_img
+                player1.image = p2socando_img
             if event.key == pygame.K_COMMA:
                 if player2.image==humbertogold_img:
                     player2.image=humbertogoldsoco_img
@@ -147,7 +155,7 @@ while game:
                 player2.jump()
 
     # ----- Atualiza estado do jogo
-    if contador_soco_1 > 0 and player1.image == p1socando_img:
+    if contador_soco_1 > 0 and player1.image == p2socando_img:
         contador_soco_1 -= 1
     elif contador_soco_1 <= 0:
         player1.image = werewolf_img
@@ -172,14 +180,14 @@ while game:
     
     # ----- Base para colisões dos Players
 
-    hit_power1=pygame.sprite.groupcollide(sprite_power1, sprite_p2, deathpower1, death2)
+    hit_power1=pygame.sprite.groupcollide(sprite_power1, sprite_p2, deathpower1, death2, pygame.sprite.collide_mask)
     if hit_power1:
         player2.life-=(player1.damage-5)
         deathpower1=True
         if player2.life<=0:
             death2=True
             
-    hit_power2=pygame.sprite.groupcollide(sprite_power2, sprite_p1, deathpower2, death1)
+    hit_power2=pygame.sprite.groupcollide(sprite_power2, sprite_p1, deathpower2, death1, pygame.sprite.collide_mask)
     if hit_power2:
         player1.life-=(player2.damage-5)
         deathpower2=True
@@ -187,8 +195,8 @@ while game:
             death1=True
     
 
-    hit1=pygame.sprite.spritecollide(player2, sprite_p1, death1)
-    hit2=pygame.sprite.spritecollide(player1, sprite_p2, death2)
+    hit1=pygame.sprite.spritecollide(player2, sprite_p1, death1, pygame.sprite.collide_mask)
+    hit2=pygame.sprite.spritecollide(player1, sprite_p2, death2, pygame.sprite.collide_mask)
 
     if hit1:
         if player1.image == p1socando_img:

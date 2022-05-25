@@ -31,6 +31,8 @@ class Player(pygame.sprite.Sprite):
         self.sprite_power=sprite_power
         self.power_img=power_img
         self.damage = 10
+        self.mask = pygame.mask.from_surface(self.image)
+        self.mask_weak = pygame.mask.from_surface(self.image_weak)
     def update(self):
         # Atualização da posição do player
         if self.is_jumping:
@@ -78,6 +80,7 @@ class Power(pygame.sprite.Sprite):
 
             self.image = img
             self.rect = self.image.get_rect()
+            self.mask = pygame.mask.from_surface(self.image)
 
             # Coloca no lugar inicial definido em x, y do constutor:
             self.rect.centerx = centerx
