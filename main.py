@@ -31,6 +31,8 @@ humberto_img=pygame.image.load('Imagem/HUmberto-ryu0.png').convert_alpha()
 p1socando_img = pygame.image.load('Imagem/Quadrado_Teste_socando.png').convert_alpha()
 p2socando_img = pygame.image.load('Imagem/hu soco.png').convert_alpha()
 p2haduken_img = pygame.image.load('Imagem/humberto haduken.png').convert_alpha()
+humbertogold_img=pygame.image.load('Imagem/hugold.png').convert_alpha()
+humbertogoldsoco_img=pygame.image.load('Imagem/hugold soco.png').convert_alpha()
 werewolf_img = pygame.image.load('Imagem/werewolf.png').convert_alpha()
 werewolf_golden_img = pygame.image.load('Imagem/werewolf_golden.png').convert_alpha()
 power_img=pygame.image.load('Imagem/haduken.png').convert_alpha()
@@ -44,6 +46,8 @@ werewolf_golden_img=pygame.transform.scale(werewolf_golden_img, (P1_WIDTH, P1_HE
 p1socando_img=pygame.transform.scale(p1socando_img, (200, P1_HEIGHT))
 p2socando_img=pygame.transform.scale(p2socando_img, (200, P1_HEIGHT+30))
 p2haduken_img=pygame.transform.scale(p2haduken_img, (200, P1_HEIGHT))
+humbertogold_img=pygame.transform.scale(humbertogold_img, (180, P1_HEIGHT+30))
+humbertogoldsoco_img=pygame.transform.scale(humbertogoldsoco_img, (180, P1_HEIGHT+30))
 power_img=pygame.transform.scale(power_img,(80,80))
 power2_img=pygame.transform.scale(power2_img,(80,80))
 background_img=pygame.transform.scale(background_img, (WIDTH, HEIGHT))
@@ -86,7 +90,7 @@ while game:
             player1.damage += 5
             buffydevida1 = True
     if player2.life <= 50:
-        #player2.image = humberto_img
+        player2.image = humbertogold_img
         if buffydevida2 == False:
             player2.damage += 5
             buffydevida2 = True
@@ -128,7 +132,11 @@ while game:
                 player1.image = p1socando_img
             if event.key == pygame.K_COMMA:
                 player2.rect.centerx -= 50
-                player2.image = p2socando_img
+                if player2.image==humbertogold_img:
+                    player2.image=humbertogoldsoco_img
+                else:
+                    player2.image = p2socando_img
+                
         
         # Verifica se soltou alguma tecla.
         if event.type == pygame.KEYUP:
