@@ -25,8 +25,8 @@ sprite_punch=pygame.sprite.Group()
 
 # ----- Definindo os Players 
 
-player1 = Player(1, [pl_dio_img, pr_dio_img], [pr_wolf2_img, pr_wolf2_img], all_sprites, all_powers, sprite_power1, power_img, sprite_punch, [sr_Teste_img, sr_Teste_img], [sl_humb2_img, sl_humb2_img], [al_humb_img, al_humb_img], [al_humb_img, al_humb_img])
-player2 = Player(0, [pl_humb_img, pl_humb_img], [pl_humb2_img, pl_humb2_img], all_sprites, all_powers, sprite_power2, power2_img, sprite_punch, [sl_humb_img, sl_humb_img], [sl_humb2_img, sl_humb2_img], [al_humb_img, al_humb_img], [al_humb_img, al_humb_img])
+player1 = Player(1, [pl_wolf_img, pr_wolf_img], [pl_wolf2_img, pr_wolf2_img], all_sprites, all_powers, sprite_power1, power_img, sprite_punch, [sl_wolf_img, sr_wolf_img], [sl_humb2_img, sl_humb2_img], [al_humb_img, al_humb_img], [al_humb_img, al_humb_img])
+player2 = Player(0, [pl_humb_img, pr_humb_img], [pl_humb2_img, pl_humb2_img], all_sprites, all_powers, sprite_power2, power2_img, sprite_punch, [sl_humb_img, sl_humb_img], [sl_humb2_img, sl_humb2_img], [al_humb_img, al_humb_img], [al_humb_img, al_humb_img])
 all_sprites.add(player1)
 all_sprites.add(player2)
 sprite_p1.add(player1)
@@ -123,7 +123,7 @@ while game:
             death1=True
     
 
-    hit1=pygame.sprite.spritecollide(player2, sprite_p1, death1, pygame.sprite.collide_mask)
+    hit1=pygame.sprite.spritecollide(player2, sprite_p1, death1)
     hit2=pygame.sprite.spritecollide(player1, sprite_p2, death2, pygame.sprite.collide_mask)
 
 ########################TOMAR CUIDADO! AS IMAGENS N SÃO VARIAVEIS, MUDAR NA HORA QUE TIVER + DE 2 PERSONAGENS PARA N DAR CONFLITO#####################  
