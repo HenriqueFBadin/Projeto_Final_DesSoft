@@ -128,7 +128,7 @@ while game:
 
 ########################TOMAR CUIDADO! AS IMAGENS N SÃO VARIAVEIS, MUDAR NA HORA QUE TIVER + DE 2 PERSONAGENS PARA N DAR CONFLITO#####################  
     if hit1:
-        if player1.image == sr_Teste_img or player1.image==sl_humb2_img:
+        if player1.image == sr_wolf_img or player1.image==sl_wolf_img:
             player2.life -= player1.damage
         if player2.rect.centerx >= player1.rect.centerx:
             player2.rect.x += 30
