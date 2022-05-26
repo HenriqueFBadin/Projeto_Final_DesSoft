@@ -123,7 +123,7 @@ while game:
             death1=True
     
 
-    hit1=pygame.sprite.spritecollide(player2, sprite_p1, death1)
+    hit1=pygame.sprite.spritecollide(player2, sprite_p1, death1, pygame.sprite.collide_mask)
     hit2=pygame.sprite.spritecollide(player1, sprite_p2, death2, pygame.sprite.collide_mask)
 
 ########################TOMAR CUIDADO! AS IMAGENS N SÃO VARIAVEIS, MUDAR NA HORA QUE TIVER + DE 2 PERSONAGENS PARA N DAR CONFLITO#####################  
