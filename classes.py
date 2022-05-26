@@ -53,7 +53,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += self.energy
         if self.life <= 50:
             self.damage = 15
-            self.image = self.image_weak
+            self.image = self.img_weaks[self.orientacao]
 
         # Mantem dentro da tela
         if self.rect.right > WIDTH:
