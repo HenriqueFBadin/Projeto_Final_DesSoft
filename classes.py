@@ -1,5 +1,6 @@
-import random
 import pygame
+from assets import *
+
 neg=-1
 P1_WIDTH=150
 P1_HEIGHT=150
@@ -41,6 +42,8 @@ class Player(pygame.sprite.Sprite):
         self.shoot_img=shoot_img
         self.goldshot_img=goldshot_img
         self.damage = 10
+        self.mask = pygame.mask.from_surface(self.image)
+        self.mask_weak = pygame.mask.from_surface(self.image_weak)
 
     def update(self):
         # Atualização da posição do player
@@ -121,6 +124,7 @@ class Power(pygame.sprite.Sprite):
             self.orientacao = orientacao
             self.image = img[orientacao]
             self.rect = self.image.get_rect()
+            self.mask = pygame.mask.from_surface(self.image)
 
             # Coloca no lugar inicial definido em x, y do constutor:
             self.rect.centerx = centerx
