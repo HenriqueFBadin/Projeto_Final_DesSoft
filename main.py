@@ -25,8 +25,8 @@ sprite_punch=pygame.sprite.Group()
 
 # ----- Definindo os Players 
 
-player1 = Player(1, [pl_wolf_img, pr_wolf_img], [pl_wolf2_img, pr_wolf2_img], all_sprites, all_powers, sprite_power1, power_img, sprite_punch, [sl_wolf_img, sr_wolf_img], [sl_humb2_img, sl_humb2_img], [al_humb_img, al_humb_img], [al_humb_img, al_humb_img])
-player2 = Player(0, [pl_humb_img, pr_humb_img], [pl_humb2_img, pl_humb2_img], all_sprites, all_powers, sprite_power2, power2_img, sprite_punch, [sl_humb_img, sl_humb_img], [sl_humb2_img, sl_humb2_img], [al_humb_img, al_humb_img], [al_humb_img, al_humb_img])
+player1 = Player(1, [pl_wolf_img, pr_wolf_img], [pl_wolf2_img, pr_wolf2_img], all_sprites, all_powers, sprite_power1, power_img, sprite_punch, [sl_wolf_img, sr_wolf_img], [sl_wolf_img, sr_wolf_img], [pl_wolf_img, pr_wolf_img], [pl_wolf_img, pr_wolf_img])
+player2 = Player(0, [pl_humb_img, pr_humb_img], [pl_humb2_img, pl_humb2_img], all_sprites, all_powers, sprite_power2, power2_img, sprite_punch, [sl_humb_img, sr_humb_img], [sl_humb2_img, sl_humb2_img], [al_humb_img, al_humb_img], [al_humb_img, al_humb_img])
 all_sprites.add(player1)
 all_sprites.add(player2)
 sprite_p1.add(player1)
@@ -76,6 +76,7 @@ while game:
             if event.key == pygame.K_e:
                 player1.punch()
             if event.key == pygame.K_COMMA:
+                player2.rect.x -= 30
                 player2.punch()
                 
         
@@ -92,6 +93,8 @@ while game:
                 player1.speedx -= 8
             if event.key == pygame.K_UP:
                 player2.jump()
+            if event.key == pygame.K_COMMA:
+                player2.rect.x += 30
 
     # ----- Atualiza estado do jogo
     # Atualizando a situação dos players
