@@ -13,7 +13,8 @@ pygame.display.set_caption('Mortal Insper!')
 
 # ----- Inicia estruturas de dados
 game = True
-tempo = 99
+tempo = 150
+segundos = 64
 font = pygame.font.SysFont(None, 48)
 
 # ----- Agrupando as sprites
@@ -95,19 +96,6 @@ while game:
                 player1.speedx -= 8
             if event.key == pygame.K_UP:
                 player2.jump()
-
-    # ----- Atualiza estado do jogo
-    # Atualizando a situação dos players
-    all_sprites.update()
-
-    # ----- Gera saídas
-    window.fill((255, 255, 255))  # Preenche com a cor branca
-    window.blit(background4_img,(0,0))
-    # Desenhando os players
-    all_sprites.draw(window)
-
-    # ----- Atualiza estado do jogo
-    pygame.display.update()  # Mostra o novo frame para o jogador
     
     # ----- Base para colisões dos Players
 
@@ -147,13 +135,30 @@ while game:
             player2.rect.x -= 30
         hit=[]
         if player2.life<=0:
-            player2.kill()     
-    
-    text_surface = font.render("{:08d}".format(tempo), True, (255, 255, 0))
+            player2.kill()  
+
+    segundos -= 1
+    if segundos <= 0:
+        tempo -= 1
+        segundos = 64
+    if tempo <= 0:
+        pygame.quit()
+        # ----- Atualiza estado do jogo
+    # Atualizando a situação dos players
+    all_sprites.update()
+
+    # ----- Gera saídas
+    window.fill((255, 255, 255))  # Preenche com a cor branca
+    window.blit(background4_img,(0,0))
+    text_surface = font.render("{:0d}".format(tempo), True, (0, 0, 0))
     text_rect = text_surface.get_rect()
     text_rect.midtop = (WIDTH / 2,  10)
-    window.blit(text_surface, text_rect)
-    tempo -= 1
+    window.blit(text_surface, (WIDTH/2,10))
+    # Desenhando os players
+    all_sprites.draw(window)
+
+    # ----- Atualiza estado do jogo
+    pygame.display.update()  # Mostra o novo frame para o jogador
 
 # ===== Finalização =====
 pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
