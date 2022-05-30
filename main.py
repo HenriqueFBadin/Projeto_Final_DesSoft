@@ -14,6 +14,7 @@ pygame.display.set_caption('Mortal Insper!')
 # ----- Inicia estruturas de dados
 game = True
 
+
 # ----- Agrupando as sprites
 all_sprites = pygame.sprite.Group()
 all_powers=pygame.sprite.Group()
@@ -145,7 +146,12 @@ while game:
             player2.rect.x -= 30
         hit=[]
         if player2.life<=0:
-            player2.kill()        
+            player2.kill()     
+
+    text_surface = assets['score_font'].render("{:08d}".format(score), True, (255, 255, 0))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (WIDTH / 2,  10)
+    window.blit(text_surface, text_rect)   
 
 # ===== Finalização =====
 pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
