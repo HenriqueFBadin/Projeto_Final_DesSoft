@@ -10,7 +10,7 @@ p1_shoot=False
 p2_shoot=False
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, orientacao, imgs, img_weaks, all_sprites, all_powers, sprite_power, power_img, sprite_punch, punch_img, goldpunch_img, shoot_img, goldshot_img):
+    def __init__(self, orientacao, imgs, img_weaks, all_sprites, all_powers, sprite_power, power_img, sprite_punch, punch_img, goldpunch_img, shoot_img, goldshot_img, jump_img, goldjump_img):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
 
@@ -41,16 +41,17 @@ class Player(pygame.sprite.Sprite):
         self.goldpunch_img=goldpunch_img
         self.shoot_img=shoot_img
         self.goldshot_img=goldshot_img
+        self.jump_img=jump_img
+        self.goldjump_img=goldjump_img
         self.damage = 10
         self.mask = pygame.mask.from_surface(self.image)
         self.mask_weak = pygame.mask.from_surface(self.image_weak)
 
     def update(self):
         # Atualização da posição do player
-        if self.is_jumping:
-            self.energy += 1
         self.rect.x += self.speedx
         self.rect.y += self.energy
+
         if self.life <= 50:
             self.damage = 15
             self.image = self.img_weaks[self.orientacao]
@@ -88,11 +89,23 @@ class Player(pygame.sprite.Sprite):
             self.image = self.shoot_img[self.orientacao]
             if self.shooting_energy<=0:
                 self.is_shooting=False
+
         if self.is_shooting and self.life<50:
             self.shooting_energy-=1
             self.image = self.goldshot_img[self.orientacao]
             if self.shooting_energy<=0:
                 self.is_shooting=False
+
+        if self.is_jumping and self.life>=50:
+            self.energy+=1
+            self.image = self.jump_img[self.orientacao]
+
+        if self.is_jumping and self.life<50:
+            self.energy+=1
+            self.image = self.goldjump_img[self.orientacao]
+        
+        self.mask = pygame.mask.from_surface(self.image)
+        self.mask_weak = pygame.mask.from_surface(self.image_weak)
 
     def jump(self):
         if not self.is_jumping:
