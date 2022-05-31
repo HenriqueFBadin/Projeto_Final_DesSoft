@@ -147,11 +147,11 @@ imagens={
     3: [[fogo_esquerda_img, fogo_direita_img],[pl_humb_img, pr_humb_img], [pl_humb2_img, pr_humb2_img], [sl_humb_img, sr_humb_img], [sl_humb2_img, sr_humb2_img], [al_humb_img, ar_humb_img], [al_humb2_img, ar_humb2_img], [jl_humb_img, jr_humb_img], [jl_humb_img, jr_humb_img]]
 }
 
-def timer(font, tempo):
-    text_surface = font.render("{:0d}".format(tempo), True, (0, 0, 0))
+def texto(font, variavel, pos):
+    text_surface = font.render("{:0d}".format(variavel), True, (0, 0, 0))
     text_rect = text_surface.get_rect()
-    text_rect.midtop = (WIDTH / 2,  10)
-    window.blit(text_surface, (WIDTH/2,10))
+    text_rect.midtop = (pos[0],  pos[1])
+    window.blit(text_surface, (pos[0],  pos[1]))
     return 0
 
 def tecla_pressionada(player1, player2, segundos):

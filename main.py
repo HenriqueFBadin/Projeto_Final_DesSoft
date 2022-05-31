@@ -74,7 +74,7 @@ while game:
     # ----- Gera saídas
     window.fill((255, 255, 255))  # Preenche com a cor branca
     window.blit(background4_img,(0,0))
-    timer(font, tempo)
+    texto(font, tempo, [WIDTH/2,10])
     # Desenhando os players
     all_sprites.draw(window)
 
