@@ -65,6 +65,8 @@ while game:
     if segundos <= 0:
         tempo -= 1
         segundos = 64
+        player1.umsoco = 1
+        player2.umsoco = 1
     if tempo <= 0:
         pygame.quit()
 

@@ -48,6 +48,7 @@ class Player(pygame.sprite.Sprite):
         self.mask_weak = pygame.mask.from_surface(self.image_weak)
         self.segundostiro = 0
         self.segundossoco = 0
+        self.umsoco = 1
 
     def update(self):
         # Atualização da posição do player
@@ -112,6 +113,7 @@ class Player(pygame.sprite.Sprite):
         
         self.mask = pygame.mask.from_surface(self.image)
         self.mask_weak = pygame.mask.from_surface(self.image_weak)
+
 
     def jump(self):
         if not self.is_jumping:

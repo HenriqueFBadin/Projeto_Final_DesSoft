@@ -232,7 +232,9 @@ def tecla_pressionada(player1, player2, segundos):
 
 def encostou(player1, player2):
     if player2.image in player2.punch_img or player2.image in player2.goldpunch_img:
-        player1.life -= player2.damage
+        if player2.umsoco == 1:
+            player1.life -= player2.damage
+            player2.umsoco = 0
     if player1.rect.centerx >= player2.rect.centerx:
         player1.rect.x += 30
     if player1.rect.centerx < player2.rect.centerx:
@@ -240,7 +242,9 @@ def encostou(player1, player2):
     if player1.life<=0:            
         player1.kill()
     if player1.image in player1.punch_img or player1.image in player1.goldpunch_img:
-        player2.life -= player1.damage
+        if player1.umsoco == 1:
+            player2.life -= player1.damage
+            player1.umsoco = 0
     if player2.rect.centerx >= player1.rect.centerx:
         player2.rect.x += 30
     if player2.rect.centerx < player1.rect.centerx:
