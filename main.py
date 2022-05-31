@@ -37,7 +37,8 @@ while game:
     clock.tick(tick_rate)
 
     # Tecla é pressionada
-    tecla_pressionada(player1, player2, segundos)
+    if podecomecar == True:
+        tecla_pressionada(player1, player2, segundos)
     
     # Verifica os disparos e causa o dano
     hit_power1=pygame.sprite.groupcollide(sprite_power1, sprite_p2, deathpower1, death2, pygame.sprite.collide_mask)
@@ -62,7 +63,7 @@ while game:
 
     #Timer
     segundos -= 1
-    if segundos <= 0:
+    if segundos <= 0 and podecomecar == True:
         tempo -= 1
         segundos = 64
         player1.umsoco = 1
@@ -85,6 +86,22 @@ while game:
 
     texto(font, Player1life , [15, 10])
     texto(font, Player2life , [510, 10])
+
+    valores = [3,2,1,0,'Go!',' ']
+    segundos2 -= 1
+    if timer == 0:
+        text_surface2 = font2.render("{}".format(valores[timer]), True, (255, 0, 0))
+    if segundos2 <= 0:
+        if timer < 6:
+            text_surface2 = font2.render("{}".format(valores[timer]), True, (255, 0, 0))
+            text_rect = text_surface2.get_rect()
+            text_rect.midtop = (400,  400)
+            timer += 1
+        segundos2 = 64
+    if timer == 5:
+        podecomecar = True
+    window.blit(text_surface2, (WIDTH/2,  HEIGHT/2))
+
     # Desenhando os players
     all_sprites.draw(window)
 

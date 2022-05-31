@@ -13,11 +13,15 @@ HEIGHT=600
 game = True
 tempo = 150
 segundos = 64
+segundos2 = 64
 death1=False
 death2=False
 deathpower1=False
 deathpower2=False
+podecomecar = False
+timer = 0
 font = pygame.font.SysFont(None, 48)
+font2 = pygame.font.SysFont(None, 100)
 
 #CONTROLE DE FPS
 clock = pygame.time.Clock()
@@ -256,6 +260,18 @@ def encostou(player1, player2):
 def verificamorreu(player1, player2):
     if player1.life<=0:            
         player1.kill()
+        player1.life = 0
     if player2.life<=0:
         player2.kill()
+        player2.life = 0
+    return 0
+
+def contadorinicial(font,pos,all_sprites):
+    valores = [3,2,1,0,'go',' ']
+    for valor in valores:
+        text_surface = font.render("{}".format(valor), True, (0, 0, 0))
+        text_rect = text_surface.get_rect()
+        text_rect.midtop = (pos[0],  pos[1])
+        window.blit(text_surface, (pos[0],  pos[1]))
+        all_sprites.draw(window)
     return 0
