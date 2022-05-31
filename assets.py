@@ -47,8 +47,11 @@ pr_wolf_img = pygame.image.load('Imagem/Werewolf_Parado_Direita.png').convert_al
 pl_wolf_img = pygame.image.load('Imagem/Werewolf_Parado_Esquerda.png').convert_alpha()
 sr_wolf_img = pygame.image.load('Imagem/Werewolf_Socando_Direita.png').convert_alpha()
 sl_wolf_img = pygame.image.load('Imagem/Werewolf_Socando_Esquerda.png').convert_alpha()
+
 pr_wolf2_img = pygame.image.load('Imagem/Werewolf_Gold_Parado_Direita.png').convert_alpha() 
 pl_wolf2_img = pygame.image.load('Imagem/Werewolf_Gold_Parado_Esquerda.png').convert_alpha()
+sr_wolf2_img = pygame.image.load('Imagem/Werewolf_Socando_Direita.png').convert_alpha()
+sl_wolf2_img = pygame.image.load('Imagem/Werewolf_Socando_Esquerda.png').convert_alpha()
 
 gelo_esquerda_img=pygame.image.load('Imagem/Poder_Gelo_Esquerda.png').convert_alpha()
 gelo_direita_img=pygame.image.load('Imagem/Poder_Gelo_Direita.png').convert_alpha()
@@ -83,10 +86,13 @@ jr_dio2_img=pygame.image.load('Imagem/DIO_Gold_pulando_direita.png').convert_alp
 
 pr_wolf_img=pygame.transform.scale(pr_wolf_img, (P1_WIDTH, P1_HEIGHT+30))
 pl_wolf_img=pygame.transform.scale(pl_wolf_img, (P1_WIDTH, P1_HEIGHT+30))
-pr_wolf2_img=pygame.transform.scale(pr_wolf2_img, (P1_WIDTH, P1_HEIGHT+30))
-pl_wolf2_img=pygame.transform.scale(pl_wolf2_img, (P1_WIDTH, P1_HEIGHT+30))
 sr_wolf_img=pygame.transform.scale(sr_wolf_img, (P1_WIDTH+30, P1_HEIGHT+30))
 sl_wolf_img=pygame.transform.scale(sl_wolf_img, (P1_WIDTH+30, P1_HEIGHT+30))
+
+pr_wolf2_img=pygame.transform.scale(pr_wolf2_img, (P1_WIDTH, P1_HEIGHT+30))
+pl_wolf2_img=pygame.transform.scale(pl_wolf2_img, (P1_WIDTH, P1_HEIGHT+30))
+sr_wolf2_img=pygame.transform.scale(sr_wolf2_img, (P1_WIDTH+30, P1_HEIGHT+30))
+sl_wolf2_img=pygame.transform.scale(sl_wolf2_img, (P1_WIDTH+30, P1_HEIGHT+30))
 
 pl_humb_img=pygame.transform.scale(pl_humb_img, (P1_WIDTH, P1_HEIGHT+30))
 pr_humb_img=pygame.transform.scale(pr_humb_img, (P1_WIDTH, P1_HEIGHT+30))
@@ -116,12 +122,12 @@ al_dio_img=pygame.transform.scale(al_dio_img, (200, P1_HEIGHT+30))
 jl_dio_img=pygame.transform.scale(jl_dio_img, (200, P1_HEIGHT+30))
 jr_dio_img=pygame.transform.scale(jr_dio_img, (200, P1_HEIGHT+30))
 
-pr_dio2_img=pygame.transform.scale(pr_dio2_img, (180, P1_HEIGHT+30))
-pl_dio2_img=pygame.transform.scale(pl_dio2_img, (180, P1_HEIGHT+30))
-sr_dio2_img=pygame.transform.scale(sr_dio2_img, (180, P1_HEIGHT+30))
-sl_dio2_img=pygame.transform.scale(sl_dio2_img, (180, P1_HEIGHT+30))
-ar_dio2_img=pygame.transform.scale(ar_dio2_img, (180, P1_HEIGHT+30))
-al_dio2_img=pygame.transform.scale(al_dio2_img, (180, P1_HEIGHT+30))
+pr_dio2_img=pygame.transform.scale(pr_dio2_img, (200, P1_HEIGHT+30))
+pl_dio2_img=pygame.transform.scale(pl_dio2_img, (200, P1_HEIGHT+30))
+sr_dio2_img=pygame.transform.scale(sr_dio2_img, (200, P1_HEIGHT+30))
+sl_dio2_img=pygame.transform.scale(sl_dio2_img, (200, P1_HEIGHT+30))
+ar_dio2_img=pygame.transform.scale(ar_dio2_img, (200, P1_HEIGHT+30))
+al_dio2_img=pygame.transform.scale(al_dio2_img, (200, P1_HEIGHT+30))
 jl_dio2_img=pygame.transform.scale(jl_dio2_img, (200, P1_HEIGHT+30))
 jr_dio2_img=pygame.transform.scale(jr_dio2_img, (200, P1_HEIGHT+30))
 
@@ -144,7 +150,7 @@ imagens={
     1: [[faca_esquerda_img, faca_direita_img], [pl_dio_img, pr_dio_img], [pl_dio2_img, pr_dio2_img], [sl_dio_img, sr_dio_img], [sl_dio2_img, sr_dio2_img], [al_dio_img, ar_dio_img], [al_dio2_img, ar_dio2_img], [jl_dio_img, jr_dio_img], [jl_dio2_img, jr_dio2_img]],
     
     #Werewolf
-    2: {},
+    2: [[gelo_esquerda_img, gelo_direita_img], [pl_wolf_img, pr_wolf_img], [pl_wolf2_img, pr_wolf2_img], [sl_wolf_img, sr_wolf_img], [sl_wolf2_img, sr_wolf2_img], [al_dio_img, ar_dio_img], [al_dio2_img, ar_dio2_img], [jl_dio_img, jr_dio_img], [jl_dio2_img, jr_dio2_img]],
     
     #Humberto
     3: [[fogo_esquerda_img, fogo_direita_img],[pl_humb_img, pr_humb_img], [pl_humb2_img, pr_humb2_img], [sl_humb_img, sr_humb_img], [sl_humb2_img, sr_humb2_img], [al_humb_img, ar_humb_img], [al_humb2_img, ar_humb2_img], [jl_humb_img, jr_humb_img], [jl_humb_img, jr_humb_img]]
