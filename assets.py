@@ -13,6 +13,10 @@ HEIGHT=600
 game = True
 tempo = 150
 segundos = 64
+death1=False
+death2=False
+deathpower1=False
+deathpower2=False
 font = pygame.font.SysFont(None, 48)
 
 #CONTROLE DE FPS
@@ -57,6 +61,7 @@ background_img = pygame.image.load('Imagem/cenário.jpg').convert_alpha()
 background2_img = pygame.image.load('Imagem/Background2.png').convert_alpha()
 background3_img = pygame.image.load('Imagem/Background3.png').convert_alpha()
 background4_img = pygame.image.load('Imagem/Background4.png').convert_alpha()
+barradefundo_img = pygame.image.load('Imagem/Fundo branco.png').convert_alpha()
 
 pr_dio_img=pygame.image.load('Imagem/DIO_Parado_Direita.png').convert_alpha() 
 pl_dio_img=pygame.image.load('Imagem/DIO_Parado_Esquerda.png').convert_alpha() 
@@ -130,7 +135,9 @@ faca_direita_img=pygame.transform.scale(faca_direita_img,(80,30))
 background_img=pygame.transform.scale(background_img, (WIDTH, HEIGHT))
 background2_img=pygame.transform.scale(background2_img, (WIDTH, HEIGHT))
 background3_img=pygame.transform.scale(background3_img, (WIDTH, HEIGHT))
-background4_img=pygame.transform.scale(background4_img, (WIDTH+30, HEIGHT))
+background4_img=pygame.transform.scale(background4_img, (WIDTH+30, HEIGHT)) 
+barradefundo_img = pygame.transform.scale(barradefundo_img, (300, 40))
+barradefundotempo_img = pygame.transform.scale(barradefundo_img, (100, 30))
 
 imagens={
     #DIO
@@ -143,11 +150,11 @@ imagens={
     3: [[fogo_esquerda_img, fogo_direita_img],[pl_humb_img, pr_humb_img], [pl_humb2_img, pr_humb2_img], [sl_humb_img, sr_humb_img], [sl_humb2_img, sr_humb2_img], [al_humb_img, ar_humb_img], [al_humb2_img, ar_humb2_img], [jl_humb_img, jr_humb_img], [jl_humb_img, jr_humb_img]]
 }
 
-def timer(font, tempo):
-    text_surface = font.render("{:0d}".format(tempo), True, (0, 0, 0))
+def texto(font, variavel, pos):
+    text_surface = font.render("{}".format(variavel), True, (0, 0, 0))
     text_rect = text_surface.get_rect()
-    text_rect.midtop = (WIDTH / 2,  10)
-    window.blit(text_surface, (WIDTH/2,10))
+    text_rect.midtop = (pos[0],  pos[1])
+    window.blit(text_surface, (pos[0],  pos[1]))
     return 0
 
 def tecla_pressionada(player1, player2, segundos):
@@ -219,19 +226,26 @@ def tecla_pressionada(player1, player2, segundos):
 
 def encostou(player1, player2):
     if player2.image in player2.punch_img or player2.image in player2.goldpunch_img:
-            player1.life -= player2.damage
+        player1.life -= player2.damage
     if player1.rect.centerx >= player2.rect.centerx:
         player1.rect.x += 30
     if player1.rect.centerx < player2.rect.centerx:
         player1.rect.x -= 30
     if player1.life<=0:            
-        death1=True
+        player1.kill()
     if player1.image in player1.punch_img or player1.image in player1.goldpunch_img:
         player2.life -= player1.damage
     if player2.rect.centerx >= player1.rect.centerx:
         player2.rect.x += 30
     if player2.rect.centerx < player1.rect.centerx:
         player2.rect.x -= 30
+    if player2.life<=0:
+        player2.kill()
+    return 0
+
+def verificamorreu(player1, player2):
+    if player1.life<=0:            
+        player1.kill()
     if player2.life<=0:
         player2.kill()
     return 0

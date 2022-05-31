@@ -8,12 +8,6 @@ from assets import *
 
 pygame.init()
 
-# Variáveis
-death1=False
-death2=False
-deathpower1=False
-deathpower2=False
-
 # ----- Gera tela principal
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Mortal Insper!')
@@ -45,8 +39,7 @@ while game:
     # Tecla é pressionada
     tecla_pressionada(player1, player2, segundos)
     
-    # Colisões dos Players
-
+    # Verifica os disparos e causa o dano
     hit_power1=pygame.sprite.groupcollide(sprite_power1, sprite_p2, deathpower1, death2, pygame.sprite.collide_mask)
     hit_power2=pygame.sprite.groupcollide(sprite_power2, sprite_p1, deathpower2, death1, pygame.sprite.collide_mask)
     if hit_power1:
@@ -60,10 +53,12 @@ while game:
         if player1.life<=0:
             death1=True
 
+    # Verifica os socos e causa os danos
     hit = pygame.sprite.spritecollide(player2, sprite_p1, death1, pygame.sprite.collide_mask)
     if hit:
         encostou(player1, player2)
         hit = []
+    verificamorreu(player1, player2)
 
     #Timer
     segundos -= 1
@@ -79,7 +74,15 @@ while game:
     # ----- Gera saídas
     window.fill((255, 255, 255))  # Preenche com a cor branca
     window.blit(background4_img,(0,0))
-    timer(font, tempo)
+    window.blit(barradefundo_img, (10, 5))
+    window.blit(barradefundotempo_img, (WIDTH/2 - 20, 10))
+    window.blit(barradefundo_img, (500, 5))
+    texto(font, tempo, [WIDTH/2,10])
+    Player1life = 'Player1 Life: {}'.format(player1.life)
+    Player2life = 'Player2 Life: {}'.format(player2.life)
+
+    texto(font, Player1life , [15, 10])
+    texto(font, Player2life , [510, 10])
     # Desenhando os players
     all_sprites.draw(window)
 
