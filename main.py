@@ -8,12 +8,6 @@ from assets import *
 
 pygame.init()
 
-# Variáveis
-death1=False
-death2=False
-deathpower1=False
-deathpower2=False
-
 # ----- Gera tela principal
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Mortal Insper!')
@@ -45,8 +39,7 @@ while game:
     # Tecla é pressionada
     tecla_pressionada(player1, player2, segundos)
     
-    # Colisões dos Players
-
+    # Verifica os disparos e causa o dano
     hit_power1=pygame.sprite.groupcollide(sprite_power1, sprite_p2, deathpower1, death2, pygame.sprite.collide_mask)
     hit_power2=pygame.sprite.groupcollide(sprite_power2, sprite_p1, deathpower2, death1, pygame.sprite.collide_mask)
     if hit_power1:
@@ -60,10 +53,12 @@ while game:
         if player1.life<=0:
             death1=True
 
+    # Verifica os socos e causa os danos
     hit = pygame.sprite.spritecollide(player2, sprite_p1, death1, pygame.sprite.collide_mask)
     if hit:
         encostou(player1, player2)
         hit = []
+    verificamorreu(player1, player2)
 
     #Timer
     segundos -= 1

@@ -13,6 +13,10 @@ HEIGHT=600
 game = True
 tempo = 150
 segundos = 64
+death1=False
+death2=False
+deathpower1=False
+deathpower2=False
 font = pygame.font.SysFont(None, 48)
 
 #CONTROLE DE FPS
@@ -219,19 +223,26 @@ def tecla_pressionada(player1, player2, segundos):
 
 def encostou(player1, player2):
     if player2.image in player2.punch_img or player2.image in player2.goldpunch_img:
-            player1.life -= player2.damage
+        player1.life -= player2.damage
     if player1.rect.centerx >= player2.rect.centerx:
         player1.rect.x += 30
     if player1.rect.centerx < player2.rect.centerx:
         player1.rect.x -= 30
     if player1.life<=0:            
-        death1=True
+        player1.kill()
     if player1.image in player1.punch_img or player1.image in player1.goldpunch_img:
         player2.life -= player1.damage
     if player2.rect.centerx >= player1.rect.centerx:
         player2.rect.x += 30
     if player2.rect.centerx < player1.rect.centerx:
         player2.rect.x -= 30
+    if player2.life<=0:
+        player2.kill()
+    return 0
+
+def verificamorreu(player1, player2):
+    if player1.life<=0:            
+        player1.kill()
     if player2.life<=0:
         player2.kill()
     return 0
