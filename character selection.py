@@ -3,11 +3,15 @@ from assets import *
 QUIT=2
 GAME=1
 INIT=1
+seta_esq=pygame.image.load('Setinha de selecao pra esquerda.png').convert()
+seta_dir=pygame.image.load('Setinha de selecao pra direita.png').convert()
+seta_esq=pygame.transform.scale(seta_esq(100,46))
+seta_dir=pygame.transform.scale(seta_dir(100,46))
 class Seta(pygame.sprite.Sprite):
     def _init_(self,orientacao,img):
         pygame.sprite.Sprite._init_(self) 
         self.orientacao=orientacao
-        self.centerx=
+        self.centerx=50
         self.img=img
 def character_selection(screen):
     # Variável para o ajuste de velocidade
