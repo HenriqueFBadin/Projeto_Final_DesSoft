@@ -27,8 +27,8 @@ sprite_power2=pygame.sprite.Group()
 sprite_punch=pygame.sprite.Group()
 
 # ----- Definindo os Players 
-player1 = Player(1, [pl_dio_img, pr_dio_img], [pl_wolf2_img, pr_wolf2_img], all_sprites, all_powers, sprite_power1, power_img, sprite_punch, [sl_dio_img, sr_dio_img], [sl_dio_img, sr_dio_img], [al_dio_img, ar_dio_img], [al_dio_img, ar_dio_img], [jl_dio_img, jr_dio_img], [jl_dio_img, jr_dio_img])
-player2 = Player(0, [pl_humb_img, pr_humb_img], [pl_humb2_img, pr_humb2_img], all_sprites, all_powers, sprite_power2, power2_img, sprite_punch, [sl_humb_img, sr_humb_img], [sl_humb2_img, sl_humb2_img], [al_humb_img, al_humb_img], [al_humb_img, al_humb_img], [jl_humb_img, jr_humb_img], [jl_humb_img, jr_humb_img])
+player1 = Player(1, all_sprites, all_powers, sprite_power1, sprite_punch, imagens[1][0], imagens[1][1], imagens[1][2], imagens[1][3], imagens[1][4], imagens[1][5], imagens[1][6], imagens[1][7], imagens[1][8])
+player2 = Player(0, all_sprites, all_powers, sprite_power2, sprite_punch, imagens[3][0], imagens[3][1], imagens[3][2], imagens[3][3], imagens[3][4], imagens[3][5], imagens[3][6], imagens[3][7], imagens[3][8])
 all_sprites.add(player1)
 all_sprites.add(player2)
 sprite_p1.add(player1)

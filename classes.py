@@ -10,7 +10,7 @@ p1_shoot=False
 p2_shoot=False
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, orientacao, imgs, img_weaks, all_sprites, all_powers, sprite_power, power_img, sprite_punch, punch_img, goldpunch_img, shoot_img, goldshot_img, jump_img, goldjump_img):
+    def __init__(self, orientacao, all_sprites, all_powers, sprite_power, sprite_punch, power_img, imgs, img_weaks, punch_img, goldpunch_img, shoot_img, goldshot_img, jump_img, goldjump_img):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
 
@@ -116,7 +116,7 @@ class Player(pygame.sprite.Sprite):
 
         self.is_shooting=True
         self.shooting_energy=12
-        new_power=Power(self.orientacao, [self.power_img, self.power_img], self.rect.bottom-85, self.rect.centerx)
+        new_power=Power(self.orientacao, self.power_img, self.rect.bottom-85, self.rect.centerx)
         self.all_sprites.add(new_power)
         self.all_powers.add(new_power)
         self.sprite_power.add(new_power)
