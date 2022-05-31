@@ -61,6 +61,7 @@ background_img = pygame.image.load('Imagem/cenário.jpg').convert_alpha()
 background2_img = pygame.image.load('Imagem/Background2.png').convert_alpha()
 background3_img = pygame.image.load('Imagem/Background3.png').convert_alpha()
 background4_img = pygame.image.load('Imagem/Background4.png').convert_alpha()
+barradefundo_img = pygame.image.load('Imagem/Fundo branco.png').convert_alpha()
 
 pr_dio_img=pygame.image.load('Imagem/DIO_Parado_Direita.png').convert_alpha() 
 pl_dio_img=pygame.image.load('Imagem/DIO_Parado_Esquerda.png').convert_alpha() 
@@ -134,7 +135,9 @@ faca_direita_img=pygame.transform.scale(faca_direita_img,(80,30))
 background_img=pygame.transform.scale(background_img, (WIDTH, HEIGHT))
 background2_img=pygame.transform.scale(background2_img, (WIDTH, HEIGHT))
 background3_img=pygame.transform.scale(background3_img, (WIDTH, HEIGHT))
-background4_img=pygame.transform.scale(background4_img, (WIDTH+30, HEIGHT))
+background4_img=pygame.transform.scale(background4_img, (WIDTH+30, HEIGHT)) 
+barradefundo_img = pygame.transform.scale(barradefundo_img, (300, 40))
+barradefundotempo_img = pygame.transform.scale(barradefundo_img, (100, 30))
 
 imagens={
     #DIO
@@ -148,7 +151,7 @@ imagens={
 }
 
 def texto(font, variavel, pos):
-    text_surface = font.render("{:0d}".format(variavel), True, (0, 0, 0))
+    text_surface = font.render("{}".format(variavel), True, (0, 0, 0))
     text_rect = text_surface.get_rect()
     text_rect.midtop = (pos[0],  pos[1])
     window.blit(text_surface, (pos[0],  pos[1]))

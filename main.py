@@ -74,7 +74,15 @@ while game:
     # ----- Gera saídas
     window.fill((255, 255, 255))  # Preenche com a cor branca
     window.blit(background4_img,(0,0))
+    window.blit(barradefundo_img, (10, 5))
+    window.blit(barradefundotempo_img, (WIDTH/2 - 20, 10))
+    window.blit(barradefundo_img, (500, 5))
     texto(font, tempo, [WIDTH/2,10])
+    Player1life = 'Player1 Life: {}'.format(player1.life)
+    Player2life = 'Player2 Life: {}'.format(player2.life)
+
+    texto(font, Player1life , [15, 10])
+    texto(font, Player2life , [510, 10])
     # Desenhando os players
     all_sprites.draw(window)
 
