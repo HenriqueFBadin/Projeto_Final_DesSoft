@@ -10,10 +10,10 @@ P1_WIDTH=150
 P1_HEIGHT=150
 WIDTH=800
 HEIGHT=600
-death1=False
-death2=False
-deathpower1=False
-deathpower2=False
+game = True
+tempo = 150
+segundos = 64
+font = pygame.font.SysFont(None, 48)
 
 #CONTROLE DE FPS
 clock = pygame.time.Clock()
@@ -142,3 +142,96 @@ imagens={
     #Humberto
     3: [[fogo_esquerda_img, fogo_direita_img],[pl_humb_img, pr_humb_img], [pl_humb2_img, pr_humb2_img], [sl_humb_img, sr_humb_img], [sl_humb2_img, sr_humb2_img], [al_humb_img, ar_humb_img], [al_humb2_img, ar_humb2_img], [jl_humb_img, jr_humb_img], [jl_humb_img, jr_humb_img]]
 }
+
+def timer(font, tempo):
+    text_surface = font.render("{:0d}".format(tempo), True, (0, 0, 0))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (WIDTH / 2,  10)
+    window.blit(text_surface, (WIDTH/2,10))
+    return 0
+
+def tecla_pressionada(player1, player2, segundos):
+    for event in pygame.event.get():
+        # Verifica se apertou alguma tecla.
+        if event.type == pygame.KEYDOWN:
+# ----------Movimentação do player 2 (Setinhas):
+            if event.key == pygame.K_LEFT:
+                player2.orientacao = 0
+                player2.speedx -= 8
+            if event.key == pygame.K_RIGHT:
+                player2.orientacao = 1
+                player2.speedx += 8
+            if event.key == pygame.K_UP:
+                player2.jump()
+
+# ----------Movimentação do player 1 (W,A,D):
+            if event.key == pygame.K_a:
+                player1.orientacao = 0
+                player1.speedx -= 8
+            if event.key == pygame.K_d:
+                player1.orientacao = 1
+                player1.speedx += 8
+            if event.key==pygame.K_w:
+                player1.jump()
+
+# ----------Tiros (Q, L):            
+            if event.key==pygame.K_q and player1.life > 0 and player1.segundostiro == 0:
+                player1.shoot()
+                player1.segundostiro = 64
+            if event.key==pygame.K_l and player2.life > 0 and player2.segundostiro == 0:
+                player2.shoot()
+                player2.segundostiro = 64
+
+# ----------Sprite do soco (E, <):
+            if event.key == pygame.K_e and player1.segundossoco == 0:
+                if player1.orientacao == 0:
+                    player1.rect.x -= 30
+                elif player1.orientacao == 1:
+                    player1.rect.x += 30
+                player1.punch()
+                player1.segundossoco = 30
+            if event.key == pygame.K_COMMA and player2.segundossoco == 0:
+                if player2.orientacao == 0:
+                    player2.rect.x -= 30
+                elif player2.orientacao == 1:
+                    player2.rect.x += 30
+                player2.punch()
+                player2.segundossoco = 30
+                
+        
+        # Verifica se soltou alguma tecla.
+        if event.type == pygame.KEYUP:
+            # Dependendo da tecla, altera a velocidade.
+            if event.key == pygame.K_LEFT:
+                player2.speedx += 8
+            if event.key == pygame.K_RIGHT:
+                player2.speedx -= 8
+            if event.key == pygame.K_a:
+                player1.speedx += 8
+            if event.key == pygame.K_d:
+                player1.speedx -= 8
+            if event.key == pygame.K_UP:
+                player2.jump()
+        # ----- Verifica consequências
+        if event.type == pygame.QUIT:
+            pygame.quit()
+    return True
+
+def encostou(player1, player2):
+    if player2.image in player2.punch_img or player2.image in player2.goldpunch_img:
+            player1.life -= player2.damage
+    if player1.rect.centerx >= player2.rect.centerx:
+        player1.rect.x += 30
+    if player1.rect.centerx < player2.rect.centerx:
+        player1.rect.x -= 30
+    if player1.life<=0:            
+        death1=True
+    if player1.image in player1.punch_img or player1.image in player1.goldpunch_img:
+        player2.life -= player1.damage
+    if player2.rect.centerx >= player1.rect.centerx:
+        player2.rect.x += 30
+    if player2.rect.centerx < player1.rect.centerx:
+        player2.rect.x -= 30
+    if player2.life<=0:
+        player2.kill()
+    return 0

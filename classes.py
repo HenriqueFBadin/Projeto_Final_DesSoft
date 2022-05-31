@@ -46,11 +46,17 @@ class Player(pygame.sprite.Sprite):
         self.damage = 10
         self.mask = pygame.mask.from_surface(self.image)
         self.mask_weak = pygame.mask.from_surface(self.image_weak)
+        self.segundostiro = 0
+        self.segundossoco = 0
 
     def update(self):
         # Atualização da posição do player
         self.rect.x += self.speedx
         self.rect.y += self.energy
+        if self.segundostiro > 0:
+            self.segundostiro -= 1
+        if self.segundossoco > 0:
+            self.segundossoco -= 1
 
         if self.life <= 50:
             self.damage = 15
