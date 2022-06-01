@@ -27,7 +27,8 @@ def character_selection(screen):
                 pygame.quit()        
             if event==pygame.MOUSEMOTION:
                 if event==pygame.MOUSEBUTTONDOWN:
-                    mouse_pousition=pygame.mouse.get.pos()
+                    #mouse_pousition=pygame.mouse.get.pos()
+                    running=False
 
 
         # A cada loop, redesenha o fundo e os sprites
@@ -36,6 +37,6 @@ def character_selection(screen):
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
         state=4
-        running=False
+      
 
     return state
