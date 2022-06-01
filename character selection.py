@@ -1,7 +1,7 @@
 import pygame
 from assets import *
 QUIT=2
-GAME=1
+GAME=3
 INIT=1
 player1_selecionou=False
 player2_selecionou=False
@@ -14,7 +14,7 @@ seta_dir_img=pygame.transform.scale(seta_dir_img,(100,46))
 
 class Seta(pygame.sprite.Sprite):
     def _init_(self,all_setas,img):
-        pygame.sprite.Sprite._init_(self,img) 
+        pygame.sprite.Sprite._init_(self,all_setas,img) 
 
         self.centerx=50
         self.rect.y=400
