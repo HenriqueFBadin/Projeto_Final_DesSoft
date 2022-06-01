@@ -1,8 +1,10 @@
 import pygame
 pygame.init()
+from funcoes import *
 from assets import *
 from game_screen import game_screen
 from init_sceen import init_screen
+
 QUIT=5
 GAME=3
 window = pygame.display.set_mode((WIDTH, HEIGHT))

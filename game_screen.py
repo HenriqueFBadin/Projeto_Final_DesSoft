@@ -5,8 +5,7 @@ from time import time
 import pygame
 from classes import *
 from assets import *
-
-
+from funcoes import *
 
 # ----- Colisões dos Players
 
