@@ -195,15 +195,7 @@ faca_direita_img=pygame.transform.scale(faca_direita_img,(80,30))
 cerveja_esquerda_img=pygame.transform.scale(cerveja_esquerda_img,(80,30))
 cerveja_direita_img=pygame.transform.scale(cerveja_direita_img,(80,30))
 
-background_img=pygame.transform.scale(background_img, (WIDTH, HEIGHT))
-background2_img=pygame.transform.scale(background2_img, (WIDTH, HEIGHT))
-background3_img=pygame.transform.scale(background3_img, (WIDTH, HEIGHT))
-background4_img=pygame.transform.scale(background4_img, (WIDTH+30, HEIGHT)) 
-barradefundo_img = pygame.transform.scale(barradefundo_img, (300, 40))
-barradefundotempo_img = pygame.transform.scale(barradefundo_img, (100, 30))
-barraverde_img = pygame.transform.scale(barraverde_img, (compbarraverd, 40))
-barravermelha_img = pygame.transform.scale(barravermelha_img, (compbarraverm, 40))
-barradevida_img = pygame.transform.scale(barradevida_img, (300, 40))
+
 
 imagens={
     #DIO
@@ -214,4 +206,7 @@ imagens={
     
     #Humberto
     3: [[fogo_esquerda_img, fogo_direita_img],[pl_humb_img, pr_humb_img], [pl_humb2_img, pr_humb2_img], [sl_humb_img, sr_humb_img], [sl_humb2_img, sr_humb2_img], [al_humb_img, ar_humb_img], [al_humb2_img, ar_humb2_img], [jl_humb_img, jr_humb_img], [jl_humb2_img, jr_humb2_img]]
+    
+    #Honda
+    #4: [[cerveja_esquerda_img, cerveja_direita_img],[pl_honda_img, pr_honda_img], [pl_honda2_img, pr_honda2_img], [sl_honda_img, sr_honda_img], [sl_honda2_img, sr_honda2_img], [al_honda_img, ar_honda_img], [al_honda2_img, ar_honda2_img], [jl_honda_img, jr_honda_img], [jl_honda2_img, jr_honda2_img]]
 }
