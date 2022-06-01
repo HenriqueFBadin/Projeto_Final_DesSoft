@@ -11,7 +11,7 @@ def character_selection(screen):
     clock = pygame.time.Clock()
 
     # Carrega o fundo da tela inicial
-    background = pygame.image.load('character selection menu.png').convert()
+    background = pygame.image.load('Imagem/character selection menu.png').convert()
     background_rect = background.get_rect()
 
     running = True
@@ -22,6 +22,8 @@ def character_selection(screen):
 
         # Processa os eventos (mouse, teclado, botão, etc).
         for event in pygame.event.get():
+            if event==pygame.quit:
+                running=False    
             if event==pygame.MOUSEMOTION:
                 if event==pygame.MOUSEBUTTONDOWN:
                     mouse_pousition=pygame.mouse.get.pos()
@@ -33,6 +35,6 @@ def character_selection(screen):
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
         state=4
-        running =False
+        running=
 
     return state
