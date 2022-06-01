@@ -6,33 +6,38 @@ import pygame
 from classes import *
 from assets import *
 
-pygame.init()
 
-# ----- Gera tela principal
-window = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Mortal Insper!')
-
-# ----- Agrupando as sprites
-all_sprites = pygame.sprite.Group()
-all_powers=pygame.sprite.Group()
-sprite_p1= pygame.sprite.Group()
-sprite_p2= pygame.sprite.Group()
-sprite_power1=pygame.sprite.Group()
-sprite_power2=pygame.sprite.Group()
-sprite_punch=pygame.sprite.Group()
-
-# ----- Definindo os Players 
-player1 = Player(1, all_sprites, all_powers, sprite_power1, sprite_punch, imagens[1][0], imagens[1][1], imagens[1][2], imagens[1][3], imagens[1][4], imagens[1][5], imagens[1][6], imagens[1][7], imagens[1][8])
-player2 = Player(0, all_sprites, all_powers, sprite_power2, sprite_punch, imagens[3][0], imagens[3][1], imagens[3][2], imagens[3][3], imagens[3][4], imagens[3][5], imagens[3][6], imagens[3][7], imagens[3][8])
-all_sprites.add(player1)
-all_sprites.add(player2)
-sprite_p1.add(player1)
-sprite_p2.add(player2)
 
 # ----- Colisões dos Players
 
 # ===== Loop principal =====
 def game_screen(window):
+    all_sprites = pygame.sprite.Group()
+    all_powers=pygame.sprite.Group()
+    sprite_p1= pygame.sprite.Group()
+    sprite_p2= pygame.sprite.Group()
+    sprite_power1=pygame.sprite.Group()
+    sprite_power2=pygame.sprite.Group()
+    sprite_punch=pygame.sprite.Group()
+
+    # ----- Definindo os Players 
+    player1 = Player(1, all_sprites, all_powers, sprite_power1, sprite_punch, imagens[1][0], imagens[1][1], imagens[1][2], imagens[1][3], imagens[1][4], imagens[1][5], imagens[1][6], imagens[1][7], imagens[1][8])
+    player2 = Player(0, all_sprites, all_powers, sprite_power2, sprite_punch, imagens[3][0], imagens[3][1], imagens[3][2], imagens[3][3], imagens[3][4], imagens[3][5], imagens[3][6], imagens[3][7], imagens[3][8])
+    all_sprites.add(player1)
+    all_sprites.add(player2)
+    sprite_p1.add(player1)
+    sprite_p2.add(player2)
+    death1=False
+    death2=False
+    deathpower1=False
+    deathpower2=False
+    podecomecar=False
+    tempo = 150
+    segundos = 64
+    segundos2 = 64
+
+
+    timer = 0
     while game:
         # Define tick rate
         clock.tick(tick_rate)
