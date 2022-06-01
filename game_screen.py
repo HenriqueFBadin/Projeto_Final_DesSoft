@@ -5,8 +5,7 @@ from time import time
 import pygame
 from classes import *
 from assets import *
-
-
+from funcoes import *
 
 # ----- Colisões dos Players
 
@@ -51,11 +50,13 @@ def game_screen(window):
         hit_power2=pygame.sprite.groupcollide(sprite_power2, sprite_p1, deathpower2, death1, pygame.sprite.collide_mask)
         if hit_power1:
             player2.life-=(player1.damage-5)
+            player2.compbarraverd -= 5
             deathpower1=True
             if player2.life<=0:
                 death2=True
         if hit_power2:
             player1.life-=(player2.damage-5)
+            player1.compbarraverd -= 5
             deathpower2=True
             if player1.life<=0:
                 death1=True
@@ -85,13 +86,17 @@ def game_screen(window):
         window.blit(background4_img,(0,0))
         window.blit(barradefundo_img, (10, 5))
         window.blit(barradefundotempo_img, (WIDTH/2 - 20, 10))
-        window.blit(barradefundo_img, (500, 5))
+        window.blit(barradevida_img, (500, 5))
+        window.blit(barraverde_img, (15, 5))
+        window.blit(barravermelha_img, (15, 5))
+        window.blit(barraverde_img, (510, 5))
+        window.blit(barravermelha_img, (510, 5))
         texto(font, tempo, [WIDTH/2,10])
-        Player1life = 'Player1 Life: {}'.format(player1.life)
+        '''Player1life = 'Player1 Life: {}'.format(player1.life)
         Player2life = 'Player2 Life: {}'.format(player2.life)
 
         texto(font, Player1life , [15, 10])
-        texto(font, Player2life , [510, 10])
+        texto(font, Player2life , [510, 10])'''
 
         valores = [3,2,1,0,'Go!',' ']
         segundos2 -= 1

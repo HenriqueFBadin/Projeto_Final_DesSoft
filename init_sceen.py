@@ -1,4 +1,5 @@
 import pygame
+from funcoes import *
 
 from assets import HEIGHT, WIDTH
 FPS=64
