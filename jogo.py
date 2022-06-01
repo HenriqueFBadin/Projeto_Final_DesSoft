@@ -15,10 +15,10 @@ while state!= QUIT:
     if state==INIT:
         state=init_screen(window)
     elif state==GAME:
-        state=character_selection(window)
-    elif state==4:
         state=game_screen(window)
     else:
         state=QUIT
 pygame.quit()
 
+'''elif state==GAME:
+        state=character_selection(window)'''

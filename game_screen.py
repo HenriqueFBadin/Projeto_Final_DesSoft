@@ -3,8 +3,8 @@ print("Criadores do projeto: Eduardo Selber Castanho, Henrique Fazzio Badin, Hen
 # ----- Importa e inicia pacotes
 from time import time
 import pygame
-from classes import *
 from assets import *
+from classes import *
 from funcoes import *
 
 # ----- Colisões dos Players
@@ -34,7 +34,12 @@ def game_screen(window):
     tempo = 150
     segundos = 64
     segundos2 = 64
-
+    barraverde1_img = pygame.image.load('Imagem/barraverde.png').convert_alpha()
+    barravermelha1_img = pygame.image.load('Imagem/barravermelha.png').convert_alpha()
+    barradevida1_img = pygame.image.load('Imagem/barradevida.png').convert_alpha()
+    barraverde2_img = pygame.image.load('Imagem/barraverde.png').convert_alpha()
+    barravermelha2_img = pygame.image.load('Imagem/barravermelha.png').convert_alpha()
+    barradevida2_img = pygame.image.load('Imagem/barradevida.png').convert_alpha()
 
     timer = 0
     while game:
@@ -86,11 +91,17 @@ def game_screen(window):
         window.blit(background4_img,(0,0))
         window.blit(barradefundo_img, (10, 5))
         window.blit(barradefundotempo_img, (WIDTH/2 - 20, 10))
-        window.blit(barradevida_img, (500, 5))
-        window.blit(barraverde_img, (15, 5))
-        window.blit(barravermelha_img, (15, 5))
-        window.blit(barraverde_img, (510, 5))
-        window.blit(barravermelha_img, (510, 5))
+        barravermelha1_img = pygame.transform.scale(barravermelha1_img, (player1.compbarraverm, 40))
+        barraverde1_img = pygame.transform.scale(barraverde1_img, (player1.compbarraverd, 40))
+        barravermelha2_img = pygame.transform.scale(barravermelha2_img, (player2.compbarraverm, 40))
+        barraverde2_img = pygame.transform.scale(barraverde2_img, (player2.compbarraverd, 40))
+        window.blit(barradevida1_img, (15, 5))
+        window.blit(barradevida2_img, (510, 5))
+        window.blit(barravermelha1_img, (15, 5))
+        window.blit(barraverde1_img, (15, 5))
+        window.blit(barravermelha2_img, (510, 5))
+        window.blit(barraverde2_img, (510, 5))
+        
         texto(font, tempo, [WIDTH/2,10])
         '''Player1life = 'Player1 Life: {}'.format(player1.life)
         Player2life = 'Player2 Life: {}'.format(player2.life)

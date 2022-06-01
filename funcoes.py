@@ -81,6 +81,7 @@ def encostou(player1, player2):
         if player2.umsoco == 1:
             player1.life -= player2.damage
             player2.umsoco = 0
+            player1.compbarraverd -= 5
     if player1.rect.centerx >= player2.rect.centerx:
         player1.rect.x += 30
     if player1.rect.centerx < player2.rect.centerx:
@@ -91,6 +92,7 @@ def encostou(player1, player2):
         if player1.umsoco == 1:
             player2.life -= player1.damage
             player1.umsoco = 0
+            player2.compbarraverd -= 5
     if player2.rect.centerx >= player1.rect.centerx:
         player2.rect.x += 30
     if player2.rect.centerx < player1.rect.centerx:

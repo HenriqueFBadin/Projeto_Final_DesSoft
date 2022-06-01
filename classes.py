@@ -49,8 +49,8 @@ class Player(pygame.sprite.Sprite):
         self.segundostiro = 0
         self.segundossoco = 0
         self.umsoco = 1
-        self.compbarraverd = 500
-        self.compbarraverm = 500
+        self.compbarraverd = 300
+        self.compbarraverm = 300
 
     def update(self):
         # Atualização da posição do player
