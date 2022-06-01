@@ -93,7 +93,7 @@ def game_screen(window):
         # ----- Gera saídas
         window.fill((255, 255, 255))  # Preenche com a cor branca
         window.blit(background4_img,(0,0))
-        window.blit(barradefundotempo_img, (WIDTH/2 -14, 10))
+        #window.blit(barradefundotempo_img, (WIDTH/2 -14, 10))
         barradevida1_img = pygame.transform.scale(barradevida1_img, (310, 60))
         barradevida2_img = pygame.transform.scale(barradevida2_img, (310, 60))
         barravermelha1_img = pygame.transform.scale(barravermelha1_img, (player1.compbarraverm, 40))
