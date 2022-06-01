@@ -7,7 +7,7 @@ from assets import *
 from classes import *
 from funcoes import *
 
-# ----- Colisões dos Players
+rodada = 1
 
 # ===== Loop principal =====
 def game_screen(window):
@@ -57,13 +57,17 @@ def game_screen(window):
         hit_power2=pygame.sprite.groupcollide(sprite_power2, sprite_p1, deathpower2, death1, pygame.sprite.collide_mask)
         if hit_power1:
             player2.life-=(player1.damage-5)
-            if player1.compbarraverd > 0:
+            if player2.compbarraverd > 0 and rodada == 1:
                 player2.compbarraverd -= 13
+            elif player2.compbarraverm > 0 and rodada == 2:
+                player2.compbarraverm -= 13
             deathpower1=True
         if hit_power2:
             player1.life-=(player2.damage-5)
-            if player1.compbarraverd > 0:
+            if player1.compbarraverd > 0 and rodada == 1:
                 player1.compbarraverd -= 13
+            elif player1.compbarraverm > 0 and rodada == 2:
+                player1.compbarraverm -= 13
             deathpower2=True
 
         # Verifica os socos e causa os danos
