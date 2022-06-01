@@ -34,6 +34,8 @@ def game_screen(window):
     tempo = 150
     segundos = 64
     segundos2 = 64
+    Player1life = 'P1'
+    Player2life = 'P2'
     barraverde1_img = pygame.image.load('Imagem/barraverde.png').convert_alpha()
     barravermelha1_img = pygame.image.load('Imagem/barravermelha.png').convert_alpha()
     barradevida1_img = pygame.image.load('Imagem/barradevida.png').convert_alpha()
@@ -55,16 +57,14 @@ def game_screen(window):
         hit_power2=pygame.sprite.groupcollide(sprite_power2, sprite_p1, deathpower2, death1, pygame.sprite.collide_mask)
         if hit_power1:
             player2.life-=(player1.damage-5)
-            player2.compbarraverd -= 5
+            if player1.compbarraverd > 0:
+                player2.compbarraverd -= 13
             deathpower1=True
-            if player2.life<=0:
-                death2=True
         if hit_power2:
             player1.life-=(player2.damage-5)
-            player1.compbarraverd -= 5
+            if player1.compbarraverd > 0:
+                player1.compbarraverd -= 13
             deathpower2=True
-            if player1.life<=0:
-                death1=True
 
         # Verifica os socos e causa os danos
         hit = pygame.sprite.spritecollide(player2, sprite_p1, death1, pygame.sprite.collide_mask)
@@ -89,25 +89,23 @@ def game_screen(window):
         # ----- Gera saídas
         window.fill((255, 255, 255))  # Preenche com a cor branca
         window.blit(background4_img,(0,0))
-        window.blit(barradefundo_img, (10, 5))
-        window.blit(barradefundotempo_img, (WIDTH/2 - 20, 10))
+        window.blit(barradefundotempo_img, (WIDTH/2 -14, 10))
+        barradevida1_img = pygame.transform.scale(barradevida1_img, (310, 60))
+        barradevida2_img = pygame.transform.scale(barradevida2_img, (310, 60))
         barravermelha1_img = pygame.transform.scale(barravermelha1_img, (player1.compbarraverm, 40))
         barraverde1_img = pygame.transform.scale(barraverde1_img, (player1.compbarraverd, 40))
         barravermelha2_img = pygame.transform.scale(barravermelha2_img, (player2.compbarraverm, 40))
         barraverde2_img = pygame.transform.scale(barraverde2_img, (player2.compbarraverd, 40))
         window.blit(barradevida1_img, (15, 5))
-        window.blit(barradevida2_img, (510, 5))
-        window.blit(barravermelha1_img, (15, 5))
-        window.blit(barraverde1_img, (15, 5))
-        window.blit(barravermelha2_img, (510, 5))
-        window.blit(barraverde2_img, (510, 5))
+        window.blit(barradevida2_img, (480, 5))
+        window.blit(barravermelha1_img, (19, 10))
+        window.blit(barraverde1_img, (19, 10))
+        window.blit(barravermelha2_img, (484, 10))
+        window.blit(barraverde2_img, (484, 10))
         
-        texto(font, tempo, [WIDTH/2,10])
-        '''Player1life = 'Player1 Life: {}'.format(player1.life)
-        Player2life = 'Player2 Life: {}'.format(player2.life)
-
-        texto(font, Player1life , [15, 10])
-        texto(font, Player2life , [510, 10])'''
+        texto(font, tempo, [WIDTH/2 -10,10])
+        texto(font, Player1life , [25, 15])
+        texto(font, Player2life , [490, 15])
 
         valores = [3,2,1,0,'Go!',' ']
         segundos2 -= 1

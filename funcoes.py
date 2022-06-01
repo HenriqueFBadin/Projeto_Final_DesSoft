@@ -81,7 +81,8 @@ def encostou(player1, player2):
         if player2.umsoco == 1:
             player1.life -= player2.damage
             player2.umsoco = 0
-            player1.compbarraverd -= 5
+            if player1.compbarraverd > 0:
+                player1.compbarraverd -= 20
     if player1.rect.centerx >= player2.rect.centerx:
         player1.rect.x += 30
     if player1.rect.centerx < player2.rect.centerx:
@@ -92,7 +93,8 @@ def encostou(player1, player2):
         if player1.umsoco == 1:
             player2.life -= player1.damage
             player1.umsoco = 0
-            player2.compbarraverd -= 5
+            if player2.compbarraverd > 0:
+                player2.compbarraverd -= 20
     if player2.rect.centerx >= player1.rect.centerx:
         player2.rect.x += 30
     if player2.rect.centerx < player1.rect.centerx:
@@ -102,10 +104,12 @@ def encostou(player1, player2):
     return 0
 
 def verificamorreu(player1, player2):
-    if player1.life<=0:            
+    if player1.life<=0:     
+        player1.compbarraverd = 0       
         player1.kill()
         player1.life = 0
     if player2.life<=0:
+        player2.compbarraverd = 0
         player2.kill()
         player2.life = 0
     return 0

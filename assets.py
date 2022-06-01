@@ -204,13 +204,13 @@ background2_img=pygame.transform.scale(background2_img, (WIDTH, HEIGHT))
 background3_img=pygame.transform.scale(background3_img, (WIDTH, HEIGHT))
 background4_img=pygame.transform.scale(background4_img, (WIDTH+30, HEIGHT)) 
 barradefundo_img = pygame.transform.scale(barradefundo_img, (300, 40))
-barradefundotempo_img = pygame.transform.scale(barradefundo_img, (100, 30))
+barradefundotempo_img = pygame.transform.scale(barradefundo_img, (60, 30))
 barraverde1_img = pygame.transform.scale(barraverde1_img, (compbarraverd, 40))
 barraverde2_img = pygame.transform.scale(barraverde2_img, (compbarraverd, 40))
 barravermelha1_img = pygame.transform.scale(barravermelha1_img, (compbarraverm, 40))
-barradevida1_img = pygame.transform.scale(barradevida1_img, (300, 40))
+barradevida1_img = pygame.transform.scale(barradevida1_img, (300, 60))
 barravermelha2_img = pygame.transform.scale(barravermelha2_img, (compbarraverm, 40))
-barradevida2_img = pygame.transform.scale(barradevida2_img, (300, 40))
+barradevida2_img = pygame.transform.scale(barradevida2_img, (300, 60))
 
 imagens={
     #DIO
