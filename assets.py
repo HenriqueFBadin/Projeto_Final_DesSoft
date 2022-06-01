@@ -11,15 +11,7 @@ P1_HEIGHT=150
 WIDTH=800
 HEIGHT=600
 game = True
-tempo = 150
-segundos = 64
-segundos2 = 64
-death1=False
-death2=False
-deathpower1=False
-deathpower2=False
-podecomecar = False
-timer = 0
+
 font = pygame.font.SysFont(None, 48)
 font2 = pygame.font.SysFont(None, 100)
 
