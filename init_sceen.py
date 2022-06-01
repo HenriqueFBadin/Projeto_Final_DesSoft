@@ -1,4 +1,6 @@
 import pygame
+
+from assets import HEIGHT, WIDTH
 FPS=64
 QUIT=3
 GAME=3
@@ -9,6 +11,7 @@ def init_screen(window):
 
     # Carrega o fundo da tela inicial
     background = pygame.image.load('Imagem/Menu.png').convert()
+    background= pygame.transform.scale(background,(WIDTH,HEIGHT))
     background_rect = background.get_rect()
 
     running = True

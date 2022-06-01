@@ -1,7 +1,7 @@
 import pygame
 pygame.init()
 from assets import *
-from main import game_screen
+from game_screen import game_screen
 from init_sceen import init_screen
 QUIT=5
 GAME=3
