@@ -10,6 +10,8 @@ P1_WIDTH=150
 P1_HEIGHT=150
 WIDTH=800
 HEIGHT=600
+compbarraverd = 500
+compbarraverm = 500
 game = True
 
 font = pygame.font.SysFont(None, 48)
@@ -159,8 +161,8 @@ background3_img=pygame.transform.scale(background3_img, (WIDTH, HEIGHT))
 background4_img=pygame.transform.scale(background4_img, (WIDTH+30, HEIGHT)) 
 barradefundo_img = pygame.transform.scale(barradefundo_img, (300, 40))
 barradefundotempo_img = pygame.transform.scale(barradefundo_img, (100, 30))
-barraverde_img = pygame.transform.scale(barraverde_img, (300, 40))
-barravermelha_img = pygame.transform.scale(barravermelha_img, (300, 40))
+barraverde_img = pygame.transform.scale(barraverde_img, (compbarraverd, 40))
+barravermelha_img = pygame.transform.scale(barravermelha_img, (compbarraverm, 40))
 barradevida_img = pygame.transform.scale(barradevida_img, (300, 40))
 
 imagens={
