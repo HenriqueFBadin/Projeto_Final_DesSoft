@@ -121,8 +121,8 @@ sl_humb2_img=pygame.transform.scale(sl_humb2_img, (180+30, P1_HEIGHT+30))
 sr_humb2_img=pygame.transform.scale(sr_humb2_img, (200+30, P1_HEIGHT+30))
 al_humb2_img=pygame.transform.scale(al_humb2_img, (200+30, P1_HEIGHT+30))
 ar_humb2_img=pygame.transform.scale(ar_humb2_img, (200+30, P1_HEIGHT+30))
-jl_humb2_img=pygame.transform.scale(jl_humb_img, (180, P1_HEIGHT+30))
-jr_humb2_img=pygame.transform.scale(jr_humb_img, (180, P1_HEIGHT+30))
+jl_humb2_img=pygame.transform.scale(jl_humb2_img, (180, P1_HEIGHT+30))
+jr_humb2_img=pygame.transform.scale(jr_humb2_img, (180, P1_HEIGHT+30))
 
 
 pr_dio_img=pygame.transform.scale(pr_dio_img, (180, P1_HEIGHT+30))
