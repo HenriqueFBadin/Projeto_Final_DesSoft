@@ -3,16 +3,24 @@ from assets import *
 QUIT=2
 GAME=1
 INIT=1
-seta_esq=pygame.image.load('Setinha de selecao pra esquerda.png').convert()
-seta_dir=pygame.image.load('Setinha de selecao pra direita.png').convert()
-seta_esq=pygame.transform.scale(seta_esq(100,46))
-seta_dir=pygame.transform.scale(seta_dir(100,46))
+state=False
+seta_esq_img=pygame.image.load('Setinha de selecao pra esquerda.png').convert()
+seta_dir_img=pygame.image.load('Setinha de selecao pra direita.png').convert()
+seta_esq_img=pygame.transform.scale(seta_esq_img(100,46))
+seta_dir_img=pygame.transform.scale(seta_dir_img(100,46))
+
 class Seta(pygame.sprite.Sprite):
-    def _init_(self,orientacao,img):
+    def _init_(self,img):
         pygame.sprite.Sprite._init_(self) 
-        self.orientacao=orientacao
+
         self.centerx=50
+        self.rect.y=400
         self.img=img
+        self.speedy=0
+    def update(self):
+        self.rect.y+=self.speedy
+seta_esq=Seta(seta_esq_img)
+seta_dir=Seta(seta_dir_img)
 def character_selection(screen):
     # Variável para o ajuste de velocidade
     clock = pygame.time.Clock()
@@ -30,12 +38,9 @@ def character_selection(screen):
         # Processa os eventos (mouse, teclado, botão, etc).
         for event in pygame.event.get():
             # Verifica se foi fechado.
-            if event.type == pygame.QUIT:
-                state = QUIT
-                running = False
-
             if event.type == pygame.KEYUP:
-                state = GAME
+                if event.type==pygame.K_w:
+                    seta_esq.speedy+=50
                 running = False
 
         # A cada loop, redesenha o fundo e os sprites
