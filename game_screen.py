@@ -8,12 +8,12 @@ from classes import *
 from funcoes import *
 
 # ===== Loop principal =====
-def game_screen(window):
+def game_screen(window,player1_esc,player2_esc):
     rodada = 1
-    morreu1 = 0
-    morreu2 = 0
-    while rodada < 2:
-        def rodada_do_jogo(rodada,morreu1,morreu2):
+    p1h=player1_esc
+    p2h=player2_esc
+    while rodada < 3:
+        def rodada_do_jogo(p1h,p2h):
             all_sprites = pygame.sprite.Group()
             all_powers=pygame.sprite.Group()
             sprite_p1= pygame.sprite.Group()
@@ -23,8 +23,8 @@ def game_screen(window):
             sprite_punch=pygame.sprite.Group()
 
             # ----- Definindo os Players 
-            player1 = Player(1, all_sprites, all_powers, sprite_power1, sprite_punch, imagens[1][0], imagens[1][1], imagens[1][2], imagens[1][3], imagens[1][4], imagens[1][5], imagens[1][6], imagens[1][7], imagens[1][8])
-            player2 = Player(0, all_sprites, all_powers, sprite_power2, sprite_punch, imagens[3][0], imagens[3][1], imagens[3][2], imagens[3][3], imagens[3][4], imagens[3][5], imagens[3][6], imagens[3][7], imagens[3][8])
+            player1 = Player(1, all_sprites, all_powers, sprite_power1, sprite_punch, imagens[p1h][0], imagens[p1h][1], imagens[p1h][2], imagens[p1h][3], imagens[p1h][4], imagens[p1h][5], imagens[p1h][6], imagens[p1h][7], imagens[p1h][8])
+            player2 = Player(0, all_sprites, all_powers, sprite_power2, sprite_punch, imagens[p2h][0], imagens[p2h][1], imagens[p2h][2], imagens[p2h][3], imagens[p2h][4], imagens[p2h][5], imagens[p2h][6], imagens[p2h][7], imagens[p2h][8])
             all_sprites.add(player1)
             all_sprites.add(player2)
             sprite_p1.add(player1)
@@ -39,12 +39,14 @@ def game_screen(window):
             segundos2 = 64
             Player1life = 'P1'
             Player2life = 'P2'
-            barraverde1_img = pygame.image.load('Imagem/barraverde.png').convert_alpha()
-            barravermelha1_img = pygame.image.load('Imagem/barravermelha.png').convert_alpha()
+            barraverde_img = pygame.image.load('Imagem/barraverde.png').convert_alpha()
+            barravermelha_img = pygame.image.load('Imagem/barravermelha.png').convert_alpha()
             barradevida1_img = pygame.image.load('Imagem/barradevida.png').convert_alpha()
-            barraverde2_img = pygame.image.load('Imagem/barraverde.png').convert_alpha()
-            barravermelha2_img = pygame.image.load('Imagem/barravermelha.png').convert_alpha()
+            barraverde_img = pygame.image.load('Imagem/barraverde.png').convert_alpha()
+            barravermelha_img = pygame.image.load('Imagem/barravermelha.png').convert_alpha()
             barradevida2_img = pygame.image.load('Imagem/barradevida.png').convert_alpha()
+            barradevidaplayer1 = BarraHp(player1.life,1,barravermelha_img,barraverde_img)
+            barradevidaplayer2 = BarraHp(player2.life,2,barravermelha_img,barraverde_img)
 
             timer = 0
             while game:
@@ -53,45 +55,31 @@ def game_screen(window):
 
                 # Tecla é pressionada
                 if podecomecar == True:
-                    tecla_pressionada(player1, player2, segundos)
+                    tecla_pressionada(player1, player2)
                 
                 # Verifica os disparos e causa o dano
                 hit_power1=pygame.sprite.groupcollide(sprite_power1, sprite_p2, deathpower1, death2, pygame.sprite.collide_mask)
                 hit_power2=pygame.sprite.groupcollide(sprite_power2, sprite_p1, deathpower2, death1, pygame.sprite.collide_mask)
                 if hit_power1:
                     player2.life-=(player1.damage-5)
-                    if player2.compbarraverd > 0 and rodada == 1:
+                    '''if player2.compbarraverd > 0:
                         player2.compbarraverd -= 13
-                    elif player2.compbarraverm > 0 and rodada == 2:
-                        if morreu2 > 0:
-                            player2.compbarraverm -= 13
-                        else:
-                            player2.compbarraverd -= 13
+                    elif player2.compbarraverm > 0 and player2.morreu > 0:
+                        player2.compbarraverm -= 13'''
                     deathpower1=True
                 if hit_power2:
                     player1.life-=(player2.damage-5)
-                    if player1.compbarraverd > 0 and rodada == 1:
+                    '''if player1.compbarraverd > 0:
                         player1.compbarraverd -= 13
-                    elif player1.compbarraverm > 0 and rodada == 2:
-                        if morreu1 > 0:
-                            player1.compbarraverm -= 13
-                        else:
-                            player1.compbarraverd -= 13
+                    elif player1.compbarraverm > 0 and player1.morreu > 0:
+                        player1.compbarraverm -= 13'''
                     deathpower2=True
 
                 # Verifica os socos e causa os danos
                 hit = pygame.sprite.spritecollide(player2, sprite_p1, death1, pygame.sprite.collide_mask)
                 if hit:
-                    encostou(player1, player2,rodada,morreu1,morreu2)
+                    encostou(player1, player2)
                     hit = []
-                verificajogador1morreu(player1,morreu1)
-                if verificajogador1morreu(player1,morreu1) != 0:
-                    morreu1 += verificajogador1morreu(player1,morreu1)
-                    tempo = 0
-                verificajogador2morreu(player2,morreu2)
-                if verificajogador2morreu(player2,morreu2) != 0:
-                    morreu2 += verificajogador2morreu(player2,morreu2)
-                    tempo = 0
 
                 #Timer
                 segundos -= 1
@@ -101,7 +89,7 @@ def game_screen(window):
                     player1.umsoco = 1
                     player2.umsoco = 1
                 if tempo <= 0:
-                    return [1, morreu1, morreu2]
+                    return 1
 
                 # Atualizando a situação dos players
                 all_sprites.update()
@@ -109,22 +97,31 @@ def game_screen(window):
                 # ----- Gera saídas
                 window.fill((255, 255, 255))  # Preenche com a cor branca
                 window.blit(background4_img,(0,0))
-                #window.blit(barradefundotempo_img, (WIDTH/2 -14, 10))
                 barradevida1_img = pygame.transform.scale(barradevida1_img, (310, 60))
                 barradevida2_img = pygame.transform.scale(barradevida2_img, (310, 60))
-                barravermelha1_img = pygame.transform.scale(barravermelha1_img, (player1.compbarraverm, 40))
-                barraverde1_img = pygame.transform.scale(barraverde1_img, (player1.compbarraverd, 40))
-                barravermelha2_img = pygame.transform.scale(barravermelha2_img, (player2.compbarraverm, 40))
-                barraverde2_img = pygame.transform.scale(barraverde2_img, (player2.compbarraverd, 40))
-                
                 window.blit(barradevida1_img, (15, 5))
                 window.blit(barradevida2_img, (480, 5))
-                window.blit(barravermelha1_img, (19, 10))
-                if morreu1 == 0:
-                    window.blit(barraverde1_img, (19, 10))
-                window.blit(barravermelha2_img, (484, 10))
-                if morreu2 == 0:
-                    window.blit(barraverde2_img, (484, 10))
+                # Barra de vida
+                barradevidaplayer1.playerlife = player1.life
+                barradevidaplayer2.playerlife = player2.life
+                barradevidaplayer1.compbarraverd = 300*((barradevidaplayer1.playerlife-100)/100)
+                barradevidaplayer2.compbarraverd = 300*((barradevidaplayer2.playerlife-100)/100)
+                barradevidaplayer1.compbarraverm = 300*(barradevidaplayer1.playerlife/100)
+                barradevidaplayer2.compbarraverm = 300*(barradevidaplayer2.playerlife/100)
+                if barradevidaplayer1.playerlife > 100:
+                    barradevidaplayer1.barraverde_img = pygame.transform.scale(barradevidaplayer1.barraverde_img, (barradevidaplayer1.compbarraverd, 40))
+                else:
+                    barradevidaplayer1.barravermelha_img = pygame.transform.scale(barradevidaplayer1.barravermelha_img, (barradevidaplayer1.compbarraverm, 40))
+                if barradevidaplayer2.playerlife > 100:
+                    barradevidaplayer2.barraverde_img = pygame.transform.scale(barradevidaplayer2.barraverde_img, (barradevidaplayer2.compbarraverd, 40))
+                else:
+                    barradevidaplayer2.barravermelha_img = pygame.transform.scale(barradevidaplayer2.barravermelha_img, (barradevidaplayer2.compbarraverm, 40))
+                window.blit(barradevidaplayer1.barravermelha_img, (19, 10))
+                if player1.life > 100:
+                    window.blit(barradevidaplayer1.barraverde_img, (19, 10))
+                window.blit(barradevidaplayer2.barravermelha_img, (484, 10))
+                if player2.life > 100:
+                    window.blit(barradevidaplayer2.barraverde_img, (484, 10))
                 
                 texto(font, tempo, [WIDTH/2 -10,10])
                 texto(font, Player1life , [25, 15])
@@ -153,7 +150,5 @@ def game_screen(window):
 
             # ===== Finalização =====
             pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
-        rodada_do_jogo(rodada,morreu1,morreu2)
+        rodada_do_jogo(p1h,p2h)
         rodada += 1
-        morreu1 = rodada_do_jogo(rodada,morreu1,morreu2)[1]
-        morreu2 = rodada_do_jogo(rodada,morreu1,morreu2)[2]

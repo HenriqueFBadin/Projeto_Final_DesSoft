@@ -70,6 +70,7 @@ def character_selection(screen):
             print ("(%d, %d)" % event.pos)
         elif player1_selecionou and player2_selecionou:
             state=GAME
+            
             running=False
 
 
@@ -84,4 +85,4 @@ def character_selection(screen):
      
       
    
-    return state 
+    return [state,p1c,p2c] 

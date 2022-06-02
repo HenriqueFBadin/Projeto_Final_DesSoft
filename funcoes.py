@@ -9,7 +9,7 @@ def texto(font, variavel, pos):
     window.blit(text_surface, (pos[0],  pos[1]))
     return 0
 
-def tecla_pressionada(player1, player2, segundos):
+def tecla_pressionada(player1, player2):
     for event in pygame.event.get():
         # Verifica se apertou alguma tecla.
         if event.type == pygame.KEYDOWN:
@@ -76,27 +76,21 @@ def tecla_pressionada(player1, player2, segundos):
             pygame.quit()
     return True
 
-def encostou(player1, player2,rodada,morreu1,morreu2):
+def encostou(player1, player2):
     if player2.image in player2.punch_img or player2.image in player2.goldpunch_img:
         if player2.umsoco == 1:
             player1.life -= player2.damage
             player2.umsoco = 0
-            if player2.image in player2.punch_img:
-                if player1.compbarraverd > 0 and rodada == 1:
+            '''if player2.image in player2.punch_img:
+                if player1.compbarraverd > 0:
                     player1.compbarraverd -= 30
-                elif player1.compbarraverd > 0 and rodada == 2:
-                    player1.compbarraverd -= 30
-                elif player1.compbarraverm > 0 and rodada == 2:
-                    if morreu1 > 0:
-                        player1.compbarraverd = 0
+                elif player1.compbarraverm > 0 and player1.morreu > 0:
                     player1.compbarraverm -= 30
             elif player2.image in player2.goldpunch_img:
-                if player1.compbarraverd > 0 and rodada == 1:
+                if player1.compbarraverd > 0:
                     player1.compbarraverd -= 45
-                elif player1.compbarraverm > 0 and rodada == 2:
-                    if morreu1 > 0:
-                        player1.compbarraverd = 0
-                    player1.compbarraverm -= 45
+                elif player1.compbarraverm > 0 and player1.morreu > 0:
+                    player1.compbarraverm -= 45'''
     if player1.rect.centerx >= player2.rect.centerx:
         player1.rect.x += 30
     if player1.rect.centerx < player2.rect.centerx:
@@ -107,44 +101,22 @@ def encostou(player1, player2,rodada,morreu1,morreu2):
         if player1.umsoco == 1:
             player2.life -= player1.damage
             player1.umsoco = 0
-            if player1.image in player1.punch_img:
-                if player2.compbarraverd > 0 and rodada == 1:
+            '''if player1.image in player1.punch_img:
+                if player2.compbarraverd > 0:
                     player2.compbarraverd -= 30
-                elif player2.compbarraverm > 0 and rodada == 2:
-                    if morreu2 > 0:
-                        player2.compbarraverd = 0
+                elif player2.compbarraverm > 0 and player2.morreu > 0:
                     player2.compbarraverm -= 30
             elif player1.image in player1.goldpunch_img:
-                if player2.compbarraverd > 0 and rodada == 1:
+                if player2.compbarraverd > 0:
                     player2.compbarraverd -= 45
-                elif player2.compbarraverm > 0 and rodada == 2:
-                    if morreu2 > 0:
-                        player2.compbarraverd = 0
-                    player2.compbarraverm -= 45
+                elif player2.compbarraverm > 0 and player2.morreu > 0:
+                    player2.compbarraverm -= 45'''
     if player2.rect.centerx >= player1.rect.centerx:
         player2.rect.x += 30
     if player2.rect.centerx < player1.rect.centerx:
         player2.rect.x -= 30
     if player2.life<=0:
         player2.kill()
-    return 0
-
-def verificajogador1morreu(player1,morreu1):
-    if player1.life<=0:     
-        player1.compbarraverd = 0       
-        player1.kill()
-        player1.life = 0
-        morreu1 += 1
-        return 1
-    return 0
-
-def verificajogador2morreu(player2,morreu2):
-    if player2.life<=0:
-        player2.compbarraverd = 0
-        player2.kill()
-        player2.life = 0
-        morreu2 += 1
-        return 1
     return 0
 
 def contadorinicial(font,pos,all_sprites):
