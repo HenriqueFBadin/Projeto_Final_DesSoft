@@ -1,5 +1,6 @@
 import pygame
 pygame.init()
+pygame.mixer.init()
 from assets import *
 from funcoes import *
 from game_screen import game_screen

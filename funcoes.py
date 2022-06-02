@@ -1,5 +1,7 @@
 import pygame
 pygame.init()
+import os
+from os import path
 from assets import *
 
 def texto(font, variavel, pos, cores):
@@ -9,7 +11,7 @@ def texto(font, variavel, pos, cores):
     window.blit(text_surface, (pos[0],  pos[1]))
     return 0
 
-def tecla_pressionada(player1, player2):
+def tecla_pressionada(player1, player2,player1_esc,player2_esc):
     for event in pygame.event.get():
         # Verifica se apertou alguma tecla.
         if event.type == pygame.KEYDOWN:
@@ -49,6 +51,8 @@ def tecla_pressionada(player1, player2):
                     player1.rect.x += 30
                 player1.punch()
                 player1.segundossoco = 30
+                if player1_esc == 1:
+                    socododio_som.play()
             if event.key == pygame.K_COMMA and player2.segundossoco == 0:
                 if player2.orientacao == 0:
                     player2.rect.x -= 30
@@ -56,6 +60,8 @@ def tecla_pressionada(player1, player2):
                     player2.rect.x += 30
                 player2.punch()
                 player2.segundossoco = 30
+                if player2_esc == 1:
+                    socododio_som.play()
                 
         
         # Verifica se soltou alguma tecla.

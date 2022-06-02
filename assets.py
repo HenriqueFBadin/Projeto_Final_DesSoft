@@ -1,6 +1,9 @@
 import pygame
 
 pygame.init()
+
+import os
+from os import path
 # ----- Gera tela principal
 window = pygame.display.set_mode((800, 600))
 pygame.display.set_caption('Mortal Insper!')
@@ -13,6 +16,7 @@ HEIGHT=600
 compbarraverd = 300
 compbarraverm = 300
 game = True
+SND_DIR = path.join(path.dirname(__file__), 'Audios')
 
 font = pygame.font.SysFont(None, 48)
 font2 = pygame.font.SysFont(None, 100)
@@ -225,3 +229,11 @@ imagens={
     #Honda
     #4: [[cerveja_esquerda_img, cerveja_direita_img],[pl_honda_img, pr_honda_img], [pl_honda2_img, pr_honda2_img], [sl_honda_img, sr_honda_img], [sl_honda2_img, sr_honda2_img], [al_honda_img, ar_honda_img], [al_honda2_img, ar_honda2_img], [jl_honda_img, jr_honda_img], [jl_honda2_img, jr_honda2_img]]
 }
+
+# Sons
+
+pygame.mixer.music.load(os.path.join(SND_DIR, 'Audio_Giorno.mp3'))
+pygame.mixer.music.set_volume(0.2)
+socododio_som = pygame.mixer.Sound(os.path.join(SND_DIR, 'Dio_Ataque.mp3'))
+socododio_som.set_volume(1.5)
+#jojosongambient_som = pygame.mixer.Sound(os.path.join(SND_DIR, 'Audio_Giorno.mp3'))

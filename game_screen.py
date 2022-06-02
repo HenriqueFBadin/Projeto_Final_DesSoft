@@ -8,6 +8,7 @@ from classes import *
 from funcoes import *
 
 # ===== Loop principal =====
+pygame.mixer.music.play(loops=-1)
 def game_screen(window,player1_esc,player2_esc):
     rodada = 1
     p1h=player1_esc
@@ -55,7 +56,7 @@ def game_screen(window,player1_esc,player2_esc):
 
                 # Tecla é pressionada
                 if podecomecar == True:
-                    tecla_pressionada(player1, player2)
+                    tecla_pressionada(player1, player2,player1_esc,player2_esc)
                 
                 # Verifica os disparos e causa o dano
                 hit_power1=pygame.sprite.groupcollide(sprite_power1, sprite_p2, deathpower1, death2, pygame.sprite.collide_mask)
