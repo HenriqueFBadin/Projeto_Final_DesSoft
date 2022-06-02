@@ -20,6 +20,8 @@ def character_selection(screen):
     player1_selecionou=False
     player2_selecionou=False
     running = True
+    p1c=0
+    p2c=0
     while running:
 
         # Ajusta a velocidade do jogo.
@@ -32,27 +34,35 @@ def character_selection(screen):
         elif event.type == pygame.MOUSEBUTTONUP and event.button == LEFT:
             if event.pos[0]>=112 and event.pos[0]<=230 and event.pos[1]>=81 and event.pos[1]<=195:
                 print("P1 escolheu o lobisomen")
+                p1c=2
                 player1_selecionou=True
             if event.pos[0]>=111 and event.pos[0]<=230 and event.pos[1]>=208 and event.pos[1]<=322:
                 print("P1 escolheu o Dio")
+                p1c=1
                 player1_selecionou=True
             if event.pos[0]>=111 and event.pos[0]<=230 and event.pos[1]>=335 and event.pos[1]<=449:
                 print("P1 escolheu o Honda")
+                p1c=1 #mudar para 4, quando o Honda estiver pronto
                 player1_selecionou=True
             if event.pos[0]>=111 and event.pos[0]<=230 and event.pos[1]>=462 and event.pos[1]<=576:
                 print("P1 escolheu o Humberto")
+                p1c=3
                 player1_selecionou=True
             if event.pos[0]>=563 and event.pos[0]<=685 and event.pos[1]>=81 and event.pos[1]<=195:
                 print("P2 escolheu o lobisomen")
+                p2c=2
                 player2_selecionou=True
             if event.pos[0]>=563 and event.pos[0]<=685 and event.pos[1]>=208 and event.pos[1]<=322:
                 print("P2 escolheu o Dio")
+                p2c=1
                 player2_selecionou=True
             if event.pos[0]>=563 and event.pos[0]<=685 and event.pos[1]>=335 and event.pos[1]<=449:
                 print("P2 escolheu o Honda")
+                p2c=1 #mudar para 4 dps que o honda estiver pronto
                 player2_selecionou=True
             if event.pos[0]>=563 and event.pos[0]<=685 and event.pos[1]>=462 and event.pos[1]<=576:
                 print("P2 escolheu o Humberto")
+                p2c=3
                 player2_selecionou=True
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == RIGHT:
             print ("(%d, %d)" % event.pos)
@@ -61,7 +71,7 @@ def character_selection(screen):
         elif player1_selecionou and player2_selecionou:
             state=GAME
             running=False
-        
+
 
                 
 
@@ -73,5 +83,5 @@ def character_selection(screen):
         pygame.display.flip()
      
       
-
-    return state
+   
+    return state 
