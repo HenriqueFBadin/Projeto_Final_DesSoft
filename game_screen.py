@@ -62,17 +62,9 @@ def game_screen(window,player1_esc,player2_esc):
                 hit_power2=pygame.sprite.groupcollide(sprite_power2, sprite_p1, deathpower2, death1, pygame.sprite.collide_mask)
                 if hit_power1:
                     player2.life-=(player1.damage-5)
-                    '''if player2.compbarraverd > 0:
-                        player2.compbarraverd -= 13
-                    elif player2.compbarraverm > 0 and player2.morreu > 0:
-                        player2.compbarraverm -= 13'''
                     deathpower1=True
                 if hit_power2:
                     player1.life-=(player2.damage-5)
-                    '''if player1.compbarraverd > 0:
-                        player1.compbarraverd -= 13
-                    elif player1.compbarraverm > 0 and player1.morreu > 0:
-                        player1.compbarraverm -= 13'''
                     deathpower2=True
 
                 # Verifica os socos e causa os danos
@@ -83,7 +75,7 @@ def game_screen(window,player1_esc,player2_esc):
 
                 #Timer
                 segundos -= 1
-                if segundos <= 0 and podecomecar == True:
+                if segundos <= 0 and podecomecar == True and player1.life > 0 and player2.life > 0:
                     tempo -= 1
                     segundos = 64
                     player1.umsoco = 1
@@ -101,31 +93,17 @@ def game_screen(window,player1_esc,player2_esc):
                 barradevida2_img = pygame.transform.scale(barradevida2_img, (310, 60))
                 window.blit(barradevida1_img, (15, 5))
                 window.blit(barradevida2_img, (480, 5))
-                # Barra de vida
-                barradevidaplayer1.playerlife = player1.life
-                barradevidaplayer2.playerlife = player2.life
-                barradevidaplayer1.compbarraverd = 300*((barradevidaplayer1.playerlife-100)/100)
-                barradevidaplayer2.compbarraverd = 300*((barradevidaplayer2.playerlife-100)/100)
-                barradevidaplayer1.compbarraverm = 300*(barradevidaplayer1.playerlife/100)
-                barradevidaplayer2.compbarraverm = 300*(barradevidaplayer2.playerlife/100)
-                if barradevidaplayer1.playerlife > 100:
-                    barradevidaplayer1.barraverde_img = pygame.transform.scale(barradevidaplayer1.barraverde_img, (barradevidaplayer1.compbarraverd, 40))
-                else:
-                    barradevidaplayer1.barravermelha_img = pygame.transform.scale(barradevidaplayer1.barravermelha_img, (barradevidaplayer1.compbarraverm, 40))
-                if barradevidaplayer2.playerlife > 100:
-                    barradevidaplayer2.barraverde_img = pygame.transform.scale(barradevidaplayer2.barraverde_img, (barradevidaplayer2.compbarraverd, 40))
-                else:
-                    barradevidaplayer2.barravermelha_img = pygame.transform.scale(barradevidaplayer2.barravermelha_img, (barradevidaplayer2.compbarraverm, 40))
-                window.blit(barradevidaplayer1.barravermelha_img, (19, 10))
-                if player1.life > 100:
-                    window.blit(barradevidaplayer1.barraverde_img, (19, 10))
-                window.blit(barradevidaplayer2.barravermelha_img, (484, 10))
-                if player2.life > 100:
-                    window.blit(barradevidaplayer2.barraverde_img, (484, 10))
+
+                # Barra de vida e finalização
+                barrasdevidaefinalização(player2,player1,barradevidaplayer1,barradevidaplayer2)
                 
-                texto(font, tempo, [WIDTH/2 -10,10])
-                texto(font, Player1life , [25, 15])
-                texto(font, Player2life , [490, 15])
+                texto(font, tempo, [WIDTH/2 -10,10], (0,0,0))
+                texto(font, Player1life , [25, 15], (0,0,0))
+                texto(font, Player2life , [490, 15], (0,0,0))
+                if player1.life <= 0:
+                    texto(font2, "Player 2 wins" , [145, HEIGHT/2], (255,255,255))
+                if player2.life <= 0:
+                    texto(font2, "Player 1 wins" , [145, HEIGHT/2], (255,255,255))
 
                 valores = [3,2,1,0,'Go!',' ']
                 segundos2 -= 1

@@ -2,8 +2,8 @@ import pygame
 pygame.init()
 from assets import *
 
-def texto(font, variavel, pos):
-    text_surface = font.render("{}".format(variavel), True, (0, 0, 0))
+def texto(font, variavel, pos, cores):
+    text_surface = font.render("{}".format(variavel), True, cores)
     text_rect = text_surface.get_rect()
     text_rect.midtop = (pos[0],  pos[1])
     window.blit(text_surface, (pos[0],  pos[1]))
@@ -81,16 +81,6 @@ def encostou(player1, player2):
         if player2.umsoco == 1:
             player1.life -= player2.damage
             player2.umsoco = 0
-            '''if player2.image in player2.punch_img:
-                if player1.compbarraverd > 0:
-                    player1.compbarraverd -= 30
-                elif player1.compbarraverm > 0 and player1.morreu > 0:
-                    player1.compbarraverm -= 30
-            elif player2.image in player2.goldpunch_img:
-                if player1.compbarraverd > 0:
-                    player1.compbarraverd -= 45
-                elif player1.compbarraverm > 0 and player1.morreu > 0:
-                    player1.compbarraverm -= 45'''
     if player1.rect.centerx >= player2.rect.centerx:
         player1.rect.x += 30
     if player1.rect.centerx < player2.rect.centerx:
@@ -101,16 +91,6 @@ def encostou(player1, player2):
         if player1.umsoco == 1:
             player2.life -= player1.damage
             player1.umsoco = 0
-            '''if player1.image in player1.punch_img:
-                if player2.compbarraverd > 0:
-                    player2.compbarraverd -= 30
-                elif player2.compbarraverm > 0 and player2.morreu > 0:
-                    player2.compbarraverm -= 30
-            elif player1.image in player1.goldpunch_img:
-                if player2.compbarraverd > 0:
-                    player2.compbarraverd -= 45
-                elif player2.compbarraverm > 0 and player2.morreu > 0:
-                    player2.compbarraverm -= 45'''
     if player2.rect.centerx >= player1.rect.centerx:
         player2.rect.x += 30
     if player2.rect.centerx < player1.rect.centerx:
@@ -127,4 +107,36 @@ def contadorinicial(font,pos,all_sprites):
         text_rect.midtop = (pos[0],  pos[1])
         window.blit(text_surface, (pos[0],  pos[1]))
         all_sprites.draw(window)
+    return 0
+
+def barrasdevidaefinalização(player2,player1,barradevidaplayer1,barradevidaplayer2):
+    barradevidaplayer1.playerlife = player1.life
+    barradevidaplayer2.playerlife = player2.life
+    if player1.life > 0 or player2.life > 0:
+        barradevidaplayer1.compbarraverd = 300*((barradevidaplayer1.playerlife-100)/100)
+        barradevidaplayer2.compbarraverd = 300*((barradevidaplayer2.playerlife-100)/100)
+        barradevidaplayer1.compbarraverm = 300*(barradevidaplayer1.playerlife/100)
+        barradevidaplayer2.compbarraverm = 300*(barradevidaplayer2.playerlife/100)
+    if barradevidaplayer1.playerlife > 100:
+        barradevidaplayer1.barraverde_img = pygame.transform.scale(barradevidaplayer1.barraverde_img, (barradevidaplayer1.compbarraverd, 40))
+    elif barradevidaplayer1.playerlife <= 100 and barradevidaplayer1.playerlife > 5:
+        barradevidaplayer1.barravermelha_img = pygame.transform.scale(barradevidaplayer1.barravermelha_img, (barradevidaplayer1.compbarraverm, 40))
+    if barradevidaplayer2.playerlife > 100:
+        barradevidaplayer2.barraverde_img = pygame.transform.scale(barradevidaplayer2.barraverde_img, (barradevidaplayer2.compbarraverd, 40))
+    elif barradevidaplayer2.playerlife <= 100 and barradevidaplayer2.playerlife > 5:
+        barradevidaplayer2.barravermelha_img = pygame.transform.scale(barradevidaplayer2.barravermelha_img, (barradevidaplayer2.compbarraverm, 40))
+    window.blit(barradevidaplayer1.barravermelha_img, (19, 10))
+    if player1.life > 100:
+        window.blit(barradevidaplayer1.barraverde_img, (19, 10))
+    window.blit(barradevidaplayer2.barravermelha_img, (484, 10))
+    if player2.life > 100:
+        window.blit(barradevidaplayer2.barraverde_img, (484, 10))
+    if player1.life <= 0:
+        barradevidaplayer1.compbarraverd = 0
+        barradevidaplayer1.compbarraverm = 0
+        window.blit(barradevida1_img, (15, 5))
+    elif player2.life <= 0:
+        barradevidaplayer2.compbarraverd = 0
+        barradevidaplayer2.compbarraverm = 0
+        window.blit(barradevida2_img, (485, 5))
     return 0
