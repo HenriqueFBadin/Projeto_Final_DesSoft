@@ -18,7 +18,7 @@ while state!= QUIT:
     elif state==MENU:
         state=character_selection(window)
     elif state==4:
-        state=game_screen
+        state=game_screen(window)
     else:
         state=QUIT
 pygame.quit()
