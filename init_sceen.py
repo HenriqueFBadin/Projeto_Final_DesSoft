@@ -4,7 +4,7 @@ from funcoes import *
 from assets import HEIGHT, WIDTH
 FPS=64
 QUIT=3
-GAME=3
+MENU=3
 def init_screen(window):
 
     # Variável para o ajuste de velocidade
@@ -29,7 +29,7 @@ def init_screen(window):
                 running = False
 
             if event.type == pygame.KEYUP:
-                state = GAME
+                state = MENU
                 running = False
 
       
