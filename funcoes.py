@@ -170,11 +170,11 @@ def verificaplayer1ganhou(player2,podeacabar,player1vitorias,timer2,segundos3):
 
 def verificaplayer2ganhou(player1,podeacabar,player2vitorias,timer2,segundos3):
     if player1.life <= 0 and podeacabar == False:
-        texto(font2, "Player 1 wins" , [145, HEIGHT/2], (255,255,255))
+        texto(font2, "Player 2 wins" , [145, HEIGHT/2], (255,255,255))
         podeacabar = True
         timer2 = 0
     elif player1.life <= 0 and podeacabar == True:
-        texto(font2, "Player 1 wins" , [145, HEIGHT/2], (255,255,255))
+        texto(font2, "Player 2 wins" , [145, HEIGHT/2], (255,255,255))
         segundos3 -= 1
         if segundos3==1:
             if timer2 <= 5:
