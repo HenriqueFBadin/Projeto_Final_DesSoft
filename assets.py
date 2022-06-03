@@ -91,14 +91,14 @@ ar_honda_img=pygame.image.load('Imagem/Honda_Atirando_Direita.png').convert_alph
 jl_honda_img=pygame.image.load('Imagem/Honda_Pulando_Esquerda.png').convert_alpha()
 jr_honda_img=pygame.image.load('Imagem/Honda_Pulando_Direita.png').convert_alpha()
 
-'''pl_honda2_img=pygame.image.load('Imagem/Honda_Gold_Parado_Esquerda.png').convert_alpha()
+pl_honda2_img=pygame.image.load('Imagem/Honda_Gold_Parado_Esquerda.png').convert_alpha()
 pr_honda2_img=pygame.image.load('Imagem/Honda_Gold_Parado_Direita.png').convert_alpha()
 sl_honda2_img=pygame.image.load('Imagem/Honda_Gold_Socando_Esquerda.png').convert_alpha()
 sr_honda2_img=pygame.image.load('Imagem/Honda_Gold_Socando_Direita.png').convert_alpha()
 al_honda2_img=pygame.image.load('Imagem/Honda_Gold_Atirando_Esquerda.png').convert_alpha()
 ar_honda2_img=pygame.image.load('Imagem/Honda_Gold_Atirando_Direita.png').convert_alpha()
 jl_honda2_img=pygame.image.load('Imagem/Honda_Gold_Pulando_Esquerda.png').convert_alpha()
-jr_honda2_img=pygame.image.load('Imagem/Honda_Gold_Pulando_Direita.png').convert_alpha()'''
+jr_honda2_img=pygame.image.load('Imagem/Honda_Gold_Pulando_Direita.png').convert_alpha()
 
 fogo_lobo_esquerda_img=pygame.image.load('Imagem/Poder_Lobo_Esquerda.png').convert_alpha()
 fogo_lobo_direita_img=pygame.image.load('Imagem/Poder_Lobo_Direita.png').convert_alpha()
@@ -184,14 +184,14 @@ al_honda_img=pygame.transform.scale(al_honda_img, (P1_WIDTH+30, P1_HEIGHT+30))
 jr_honda_img=pygame.transform.scale(jr_honda_img, (P1_WIDTH+30, P1_HEIGHT+30))
 jl_honda_img=pygame.transform.scale(jl_honda_img, (P1_WIDTH+30, P1_HEIGHT+30))
 
-'''pr_honda2_img=pygame.transform.scale(pr_honda2_img, (P1_WIDTH, P1_HEIGHT+30))
+pr_honda2_img=pygame.transform.scale(pr_honda2_img, (P1_WIDTH, P1_HEIGHT+30))
 pl_honda2_img=pygame.transform.scale(pl_honda2_img, (P1_WIDTH, P1_HEIGHT+30))
 sr_honda2_img=pygame.transform.scale(sr_honda2_img, (P1_WIDTH+30, P1_HEIGHT+30))
 sl_honda2_img=pygame.transform.scale(sl_honda2_img, (P1_WIDTH+30, P1_HEIGHT+30))
 ar_honda2_img=pygame.transform.scale(ar_honda2_img, (P1_WIDTH+30, P1_HEIGHT+30))
 al_honda2_img=pygame.transform.scale(al_honda2_img, (P1_WIDTH+30, P1_HEIGHT+30))
 jr_honda2_img=pygame.transform.scale(jr_honda2_img, (P1_WIDTH+30, P1_HEIGHT+30))
-jl_honda2_img=pygame.transform.scale(jl_honda2_img, (P1_WIDTH+30, P1_HEIGHT+30))'''
+jl_honda2_img=pygame.transform.scale(jl_honda2_img, (P1_WIDTH+30, P1_HEIGHT+30))
 
 fogo_lobo_esquerda_img=pygame.transform.scale(fogo_lobo_esquerda_img,(80,80))
 fogo_lobo_direita_img=pygame.transform.scale(fogo_lobo_direita_img,(80,80))
@@ -224,10 +224,10 @@ imagens={
     2: [[fogo_lobo_esquerda_img, fogo_lobo_direita_img], [pl_wolf_img, pr_wolf_img], [pl_wolf2_img, pr_wolf2_img], [sl_wolf_img, sr_wolf_img], [sl_wolf2_img, sr_wolf2_img], [al_wolf_img, ar_wolf_img], [al_wolf2_img, ar_wolf2_img], [jl_wolf_img, jr_wolf_img], [jl_wolf2_img, jr_wolf2_img]],
     
     #Humberto
-    3: [[fogo_esquerda_img, fogo_direita_img],[pl_humb_img, pr_humb_img], [pl_humb2_img, pr_humb2_img], [sl_humb_img, sr_humb_img], [sl_humb2_img, sr_humb2_img], [al_humb_img, ar_humb_img], [al_humb2_img, ar_humb2_img], [jl_humb_img, jr_humb_img], [jl_humb2_img, jr_humb2_img]]
+    3: [[fogo_esquerda_img, fogo_direita_img],[pl_humb_img, pr_humb_img], [pl_humb2_img, pr_humb2_img], [sl_humb_img, sr_humb_img], [sl_humb2_img, sr_humb2_img], [al_humb_img, ar_humb_img], [al_humb2_img, ar_humb2_img], [jl_humb_img, jr_humb_img], [jl_humb2_img, jr_humb2_img]],
     
     #Honda
-    #4: [[cerveja_esquerda_img, cerveja_direita_img],[pl_honda_img, pr_honda_img], [pl_honda2_img, pr_honda2_img], [sl_honda_img, sr_honda_img], [sl_honda2_img, sr_honda2_img], [al_honda_img, ar_honda_img], [al_honda2_img, ar_honda2_img], [jl_honda_img, jr_honda_img], [jl_honda2_img, jr_honda2_img]]
+    4: [[cerveja_esquerda_img, cerveja_direita_img],[pl_honda_img, pr_honda_img], [pl_honda2_img, pr_honda2_img], [sl_honda_img, sr_honda_img], [sl_honda2_img, sr_honda2_img], [al_honda_img, ar_honda_img], [al_honda2_img, ar_honda2_img], [jl_honda_img, jr_honda_img], [jl_honda2_img, jr_honda2_img]]
 }
 
 # Sons

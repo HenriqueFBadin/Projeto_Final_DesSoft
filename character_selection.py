@@ -42,7 +42,7 @@ def character_selection(screen):
                 player1_selecionou=True
             if event.pos[0]>=111 and event.pos[0]<=230 and event.pos[1]>=335 and event.pos[1]<=449:
                 print("P1 escolheu o Honda")
-                p1c=1 #mudar para 4, quando o Honda estiver pronto
+                p1c=4 #mudar para 4, quando o Honda estiver pronto
                 player1_selecionou=True
             if event.pos[0]>=111 and event.pos[0]<=230 and event.pos[1]>=462 and event.pos[1]<=576:
                 print("P1 escolheu o Humberto")
@@ -58,7 +58,7 @@ def character_selection(screen):
                 player2_selecionou=True
             if event.pos[0]>=563 and event.pos[0]<=685 and event.pos[1]>=335 and event.pos[1]<=449:
                 print("P2 escolheu o Honda")
-                p2c=1 #mudar para 4 dps que o honda estiver pronto
+                p2c=4 #mudar para 4 dps que o honda estiver pronto
                 player2_selecionou=True
             if event.pos[0]>=563 and event.pos[0]<=685 and event.pos[1]>=462 and event.pos[1]<=576:
                 print("P2 escolheu o Humberto")
