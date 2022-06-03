@@ -6,7 +6,6 @@ INIT=1
 LEFT=1
 RIGHT=3
 
-state=1
 player1_selecionou=False
 player2_selecionou=False
 def character_selection(screen):
