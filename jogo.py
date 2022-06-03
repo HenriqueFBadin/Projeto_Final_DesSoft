@@ -7,9 +7,10 @@ from assets import *
 from funcoes import *
 from game_screen import game_screen
 from init_sceen import init_screen
+from tela_final import tela_final
 
 from character_selection import character_selection
-QUIT=5
+QUIT=6
 MENU=3
 GAME=4
 player1_esc=0
@@ -30,6 +31,8 @@ while state!= QUIT:
         player1_esc=state[1]
         player2_esc=state[2]
         state=game_screen(window,player1_esc,player2_esc)
-    if state!=INIT and state!=MENU and state[0]!=4:
+    if state==5:
+        state=tela_final(window)
+    if state!=INIT and state!=MENU and state[0]!=4  and state!=5:
         state=QUIT
 pygame.quit()

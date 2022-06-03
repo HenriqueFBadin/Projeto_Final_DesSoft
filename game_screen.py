@@ -159,5 +159,5 @@ def game_screen(window,player1_esc,player2_esc):
         pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
     rodada_do_jogo(p1h,p2h)
     #delay(3000)
-    return INIT
+    return 5
     
