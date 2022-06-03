@@ -8,8 +8,8 @@ from funcoes import *
 from game_screen import game_screen
 from init_sceen import init_screen
 from tela_final import tela_final
-
 from character_selection import character_selection
+
 QUIT=6
 MENU=3
 GAME=4
@@ -21,12 +21,10 @@ INIT=1
 state=INIT
 while state!= QUIT:
     if state==INIT:
-
         state=init_screen(window)
     if state==MENU:
         state=character_selection(window)
         print(state)
-        
     if state[0]==4:
         player1_esc=state[1]
         player2_esc=state[2]

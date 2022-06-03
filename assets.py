@@ -120,6 +120,9 @@ barradevida1_img = pygame.image.load('Imagem/barradevida.png').convert_alpha()
 barraverde2_img = pygame.image.load('Imagem/barraverde.png').convert_alpha()
 barravermelha2_img = pygame.image.load('Imagem/barravermelha.png').convert_alpha()
 barradevida2_img = pygame.image.load('Imagem/barradevida.png').convert_alpha()
+barraverde_img = pygame.image.load('Imagem/barraverde.png').convert_alpha()
+barravermelha_img = pygame.image.load('Imagem/barravermelha.png').convert_alpha()
+barradevida_img = pygame.image.load('Imagem/barradevida.png').convert_alpha()
 
 pr_dio_img=pygame.transform.scale(pr_dio_img, (180, P1_HEIGHT+30))
 pl_dio_img=pygame.transform.scale(pl_dio_img, (180, P1_HEIGHT+30))
@@ -215,6 +218,7 @@ barravermelha1_img = pygame.transform.scale(barravermelha1_img, (compbarraverm, 
 barradevida1_img = pygame.transform.scale(barradevida1_img, (300, 60))
 barravermelha2_img = pygame.transform.scale(barravermelha2_img, (compbarraverm, 40))
 barradevida2_img = pygame.transform.scale(barradevida2_img, (300, 60))
+barradevida_img = pygame.transform.scale(barradevida_img, (310, 60))
 
 imagens={
     #DIO

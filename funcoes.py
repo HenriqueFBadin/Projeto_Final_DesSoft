@@ -115,7 +115,7 @@ def contadorinicial(font,pos,all_sprites):
         all_sprites.draw(window)
     return 0
 
-def barrasdevidaefinalização(player2,player1,barradevidaplayer1,barradevidaplayer2):
+def barrasdevida(player2,player1,barradevidaplayer1,barradevidaplayer2,barradevida1_img,barradevida2_img):
     barradevidaplayer1.playerlife = player1.life
     barradevidaplayer2.playerlife = player2.life
     if player1.life > 0 or player2.life > 0:
@@ -140,9 +140,62 @@ def barrasdevidaefinalização(player2,player1,barradevidaplayer1,barradevidapla
     if player1.life <= 0:
         barradevidaplayer1.compbarraverd = 0
         barradevidaplayer1.compbarraverm = 0
+        barradevida1_img = pygame.transform.scale(barradevida1_img, (320, 60))
         window.blit(barradevida1_img, (15, 5))
     elif player2.life <= 0:
         barradevidaplayer2.compbarraverd = 0
         barradevidaplayer2.compbarraverm = 0
-        window.blit(barradevida2_img, (485, 5))
+        barradevida2_img = pygame.transform.scale(barradevida2_img, (320, 60))
+        window.blit(barradevida2_img, (480, 5))
     return 0
+
+def verificaplayer1ganhou(player2,podeacabar,player1vitorias,timer2,segundos3):
+    if player2.life <= 0 and podeacabar == False:
+        texto(font2, "Player 1 wins" , [145, HEIGHT/2], (255,255,255))
+        podeacabar = True
+        timer2 = 0
+    elif player2.life <= 0 and podeacabar == True:
+        texto(font2, "Player 1 wins" , [145, HEIGHT/2], (255,255,255))
+        segundos3 -= 1
+        if segundos3==1:
+            if timer2 <= 5:
+                timer2 += 1
+                print(timer2)
+            segundos3 = 64
+    if timer2 >= 5:
+        player1vitorias += 1
+        print(player1vitorias)
+        return ['acabou',player1vitorias]
+    return [segundos3, timer2, podeacabar]
+
+def verificaplayer2ganhou(player1,podeacabar,player2vitorias,timer2,segundos3):
+    if player1.life <= 0 and podeacabar == False:
+        texto(font2, "Player 1 wins" , [145, HEIGHT/2], (255,255,255))
+        podeacabar = True
+        timer2 = 0
+    elif player1.life <= 0 and podeacabar == True:
+        texto(font2, "Player 1 wins" , [145, HEIGHT/2], (255,255,255))
+        segundos3 -= 1
+        if segundos3==1:
+            if timer2 <= 5:
+                timer2 += 1
+                print(timer2)
+            segundos3 = 64
+    if timer2 >= 5:
+        player2vitorias += 1
+        print(player2vitorias)
+        return ['acabou',player2vitorias]
+    return [segundos3, timer2, podeacabar]
+
+def temporizador(segundos,tempo,podecomecar,player1,player2):
+    segundos -= 1
+    tempo = tempo
+    podecomecar = podecomecar
+    player1 = player1
+    player2 = player2
+    if segundos <= 0 and podecomecar == True and player1.life > 0 and player2.life > 0:
+        tempo -= 1
+        segundos = 64
+        player1.umsoco = 1
+        player2.umsoco = 1
+    return [segundos,tempo,player1.umsoco,player2.umsoco]
