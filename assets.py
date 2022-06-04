@@ -20,6 +20,7 @@ SND_DIR = path.join(path.dirname(__file__), 'Audios')
 
 font = pygame.font.SysFont(None, 48)
 font2 = pygame.font.SysFont(None, 100)
+fontwins = pygame.font.SysFont(None, 30)
 
 #CONTROLE DE FPS
 clock = pygame.time.Clock()
@@ -123,6 +124,7 @@ barradevida2_img = pygame.image.load('Imagem/barradevida.png').convert_alpha()
 barraverde_img = pygame.image.load('Imagem/barraverde.png').convert_alpha()
 barravermelha_img = pygame.image.load('Imagem/barravermelha.png').convert_alpha()
 barradevida_img = pygame.image.load('Imagem/barradevida.png').convert_alpha()
+barradevidacomvitorias_img = pygame.image.load('Imagem/barradevidacomvitorias.png').convert_alpha()
 
 pr_dio_img=pygame.transform.scale(pr_dio_img, (180, P1_HEIGHT+30))
 pl_dio_img=pygame.transform.scale(pl_dio_img, (180, P1_HEIGHT+30))
@@ -219,6 +221,7 @@ barradevida1_img = pygame.transform.scale(barradevida1_img, (300, 60))
 barravermelha2_img = pygame.transform.scale(barravermelha2_img, (compbarraverm, 40))
 barradevida2_img = pygame.transform.scale(barradevida2_img, (300, 60))
 barradevida_img = pygame.transform.scale(barradevida_img, (310, 60))
+barradevidacomvitorias_img = pygame.transform.scale(barradevidacomvitorias_img, (311, 90))
 
 imagens={
     #DIO

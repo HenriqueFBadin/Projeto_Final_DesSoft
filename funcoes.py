@@ -115,7 +115,7 @@ def contadorinicial(font,pos,all_sprites):
         all_sprites.draw(window)
     return 0
 
-def barrasdevida(player2,player1,barradevidaplayer1,barradevidaplayer2,barradevida1_img,barradevida2_img):
+def barrasdevida(player2,player1,barradevidaplayer1,barradevidaplayer2,barradevidacomvitorias_img):
     barradevidaplayer1.playerlife = player1.life
     barradevidaplayer2.playerlife = player2.life
     if player1.life > 0 or player2.life > 0:
@@ -140,13 +140,13 @@ def barrasdevida(player2,player1,barradevidaplayer1,barradevidaplayer2,barradevi
     if player1.life <= 0:
         barradevidaplayer1.compbarraverd = 0
         barradevidaplayer1.compbarraverm = 0
-        barradevida1_img = pygame.transform.scale(barradevida1_img, (320, 60))
-        window.blit(barradevida1_img, (15, 5))
+        barradevidacomvitorias_img = pygame.transform.scale(barradevidacomvitorias_img, (311, 90))
+        window.blit(barradevidacomvitorias_img, (15, 5))
     elif player2.life <= 0:
         barradevidaplayer2.compbarraverd = 0
         barradevidaplayer2.compbarraverm = 0
-        barradevida2_img = pygame.transform.scale(barradevida2_img, (320, 60))
-        window.blit(barradevida2_img, (480, 5))
+        barradevidacomvitorias_img = pygame.transform.scale(barradevidacomvitorias_img, (311, 90))
+        window.blit(barradevidacomvitorias_img, (480, 5))
     return 0
 
 def verificaplayer1ganhou(player2,podeacabar,player1vitorias,timer2,segundos3):

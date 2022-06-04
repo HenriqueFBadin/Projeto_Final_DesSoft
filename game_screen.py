@@ -104,11 +104,11 @@ def game_screen(window,player1_esc,player2_esc):
 
                 # Exibe o background e os fundos das barras de vida
                 window.blit(background4_img,(0,0))
-                window.blit(barradevida_img, (15, 5))
-                window.blit(barradevida_img, (480, 5))
+                window.blit(barradevidacomvitorias_img, (15, 5))
+                window.blit(barradevidacomvitorias_img, (480, 5))
 
                 # Barras de vida e finalização
-                barrasdevida(player2,player1,barradevidaplayer1,barradevidaplayer2,barradevida1_img,barradevida2_img)
+                barrasdevida(player2,player1,barradevidaplayer1,barradevidaplayer2,barradevidacomvitorias_img)
                 verificaplayer1ganhou(player2,podeacabar,player1vitorias,timer2,segundos3)
                 verificaplayer2ganhou(player1,podeacabar,player2vitorias,timer2,segundos3)
 
@@ -136,6 +136,17 @@ def game_screen(window,player1_esc,player2_esc):
                 texto(font, tempo, [WIDTH/2 -10,10], (0,0,0))
                 texto(font, Player1life , [25, 15], (0,0,0))
                 texto(font, Player2life , [490, 15], (0,0,0))
+
+                # Exibe e corrige o número de vitórias dos jogadores
+                if (rodada == 3 and player2.life <= 0) or (rodada == 2 and player2.life <= 0 and player1vitorias == 1):
+                    texto(fontwins, "WINS {}".format(player1vitorias+1), [251, 68], (0,0,0))
+                    texto(fontwins, "WINS {}".format(player2vitorias) , [716, 68], (0,0,0))
+                elif (rodada == 3 and player1.life <= 0) or (rodada == 2 and player1.life <= 0 and player2vitorias == 1):
+                    texto(fontwins, "WINS {}".format(player1vitorias) , [251, 68], (0,0,0))
+                    texto(fontwins, "WINS {}".format(player2vitorias+1) , [716, 68], (0,0,0))
+                elif player1.life > 0 or player2.life > 0 :
+                    texto(fontwins, "WINS {}".format(player1vitorias) , [251, 68], (0,0,0))
+                    texto(fontwins, "WINS {}".format(player2vitorias) , [716, 68], (0,0,0))
                 
                 # Faz a contagem inicial para os jogadores poderem lutar
                 valores = [3,2,1,0,'Go!',' ']
@@ -150,7 +161,7 @@ def game_screen(window,player1_esc,player2_esc):
                         timer += 1
                     segundos2 = 64
                 if timer != 5 and podecomecar == False:
-                    texto(font2, "Round {}".format(rodada) , [WIDTH/2 - 120,  HEIGHT/2 - 225], (255,255,255))
+                    texto(font2, "Round {}".format(rodada) , [WIDTH/2 - 120,  HEIGHT/2 - 190], (255,255,255))
                 if timer == 5:
                     podecomecar = True
                 window.blit(text_surface2, (WIDTH/2 - 10,  HEIGHT/2))
