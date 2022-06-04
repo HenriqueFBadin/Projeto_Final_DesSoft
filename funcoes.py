@@ -18,20 +18,33 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
 # ----------Movimentação do player 2 (Setinhas):
             if event.key == pygame.K_LEFT:
                 player2.orientacao = 0
-                player2.speedx -= 8
+                player2.speedx += -8
+                if player2_esc == 2 and player2.life < 100:
+                    player2.speedx += -12
+            
             if event.key == pygame.K_RIGHT:
                 player2.orientacao = 1
                 player2.speedx += 8
+                if player2_esc == 2 and player2.life < 100:
+                    player2.speedx += 12
+
             if event.key == pygame.K_UP:
                 player2.jump()
 
 # ----------Movimentação do player 1 (W,A,D):
             if event.key == pygame.K_a:
                 player1.orientacao = 0
-                player1.speedx -= 8
+                player1.speedx += -8
+                if player1_esc == 2 and player1.life < 100:
+                    player1.speedx += -12
+            
             if event.key == pygame.K_d:
                 player1.orientacao = 1
                 player1.speedx += 8
+                if player1_esc == 2 and player1.life < 100:
+                    player1.speedx += 12
+
+
             if event.key==pygame.K_w:
                 player1.jump()
 
@@ -67,26 +80,44 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
         # Verifica se soltou alguma tecla.
         if event.type == pygame.KEYUP:
             # Dependendo da tecla, altera a velocidade.
+
+            # Player 1
+            if event.key == pygame.K_a:
+                player1.speedx += +8
+                if player1_esc == 2 and player1.life < 100:
+                    player1.speedx += +12
+            
+            if event.key == pygame.K_d:
+                player1.speedx += -8
+                if player1_esc == 2 and player1.life < 100:
+                    player1.speedx += -12
+
+            # Player 2
             if event.key == pygame.K_LEFT:
                 player2.speedx += 8
+                if player2_esc == 2 and player2.life < 100:
+                    player2.speedx += 12
+            
             if event.key == pygame.K_RIGHT:
-                player2.speedx -= 8
-            if event.key == pygame.K_a:
-                player1.speedx += 8
-            if event.key == pygame.K_d:
-                player1.speedx -= 8
+                player2.speedx += -8
+                if player2_esc == 2 and player2.life < 100:
+                    player2.speedx += -12
+
             if event.key == pygame.K_UP:
                 player2.jump()
+            
         # ----- Verifica consequências
         if event.type == pygame.QUIT:
             pygame.quit()
     return True
 
-def encostou(player1, player2):
+def encostou(player1, player2, ph1, ph2):
     if player2.image in player2.punch_img or player2.image in player2.goldpunch_img:
         if player2.umsoco == 1:
             player1.life -= player2.damage
             player2.umsoco = 0
+            if player2.image in player2.goldpunch_img and ph2 == 1:
+                player1.life -= 5
     if player1.rect.centerx >= player2.rect.centerx:
         player1.rect.x += 30
     if player1.rect.centerx < player2.rect.centerx:
@@ -97,6 +128,8 @@ def encostou(player1, player2):
         if player1.umsoco == 1:
             player2.life -= player1.damage
             player1.umsoco = 0
+            if player1.image in player1.goldpunch_img and ph1 == 1:
+                player2.life -= 5
     if player2.rect.centerx >= player1.rect.centerx:
         player2.rect.x += 30
     if player2.rect.centerx < player1.rect.centerx:

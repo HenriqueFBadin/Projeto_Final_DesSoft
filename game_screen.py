@@ -86,7 +86,7 @@ def game_screen(window,player1_esc,player2_esc):
                 # Verifica os socos e causa os danos
                 hit = pygame.sprite.spritecollide(player2, sprite_p1, death1, pygame.sprite.collide_mask)
                 if hit:
-                    encostou(player1, player2)
+                    encostou(player1, player2, p1h, p2h)
                     hit = []
 
                 # Timer
