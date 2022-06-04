@@ -97,7 +97,8 @@ def game_screen(window,player1_esc,player2_esc):
                 player1.umsoco = resultado_temporizador[2]
                 player2.umsoco = resultado_temporizador[3]
                 if tempo <= 0:
-                    return 1
+                    state = INIT
+                    return state
                 
                 # Atualizando a situação dos players
                 all_sprites.update()
@@ -171,13 +172,13 @@ def game_screen(window,player1_esc,player2_esc):
 
                 # ----- Atualiza estado do jogo
                 pygame.display.update()  # Mostra o novo frame para o jogador
-
             # ===== Finalização =====
             pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
         #Inicia a função da rodada do jogo
         resultadorodada = rodada_do_jogo(p1h,p2h,rodada,player1vitorias,player2vitorias)
-        player1vitorias = resultadorodada[0]
-        player2vitorias = resultadorodada[1]
+        if type(resultadorodada) == list and len(resultadorodada) > 1:
+            player1vitorias = resultadorodada[0]
+            player2vitorias = resultadorodada[1]
         print(player1vitorias,player2vitorias)
         if player1vitorias >= 2 or player2vitorias >= 2:
             break

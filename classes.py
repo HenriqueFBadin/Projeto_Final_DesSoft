@@ -53,6 +53,12 @@ class Player(pygame.sprite.Sprite):
 
     def update(self):
         # Atualização da posição do player
+        if self.speedx >= 13:
+            self.speedx = 12
+        if self.speedx <= -13:
+            self.speedx = -12
+        if self.speedx == 4 or self.speedx == -4:
+            self.speedx = 0
         self.rect.x += self.speedx
         self.rect.y += self.energy
         if self.segundostiro > 0:
@@ -60,7 +66,7 @@ class Player(pygame.sprite.Sprite):
         if self.segundossoco > 0:
             self.segundossoco -= 1
 
-        if self.life <= 100:
+        if self.life < 100:
             self.damage = 15
             self.image = self.img_weaks[self.orientacao]
 

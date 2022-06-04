@@ -79,8 +79,9 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
                 player2.segundossoco = 30
                 if player2_esc == 1:
                     socododio_som.play()
+            
+            print(player1.speedx, " ", player2.speedx)
                 
-        
         # Verifica se soltou alguma tecla.
         if event.type == pygame.KEYUP:
             # Dependendo da tecla, altera a velocidade.
@@ -103,18 +104,20 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
                 if player2_esc != 2 or (player2_esc == 2 and player2.life >= 100):
                     player2.speedx += 8
                 elif player2_esc == 2 and player2.life < 100:
-                    player2.speedx += 12
+                    player2.speedx = 0
             
             if event.key == pygame.K_RIGHT:
                 if player2_esc != 2 or (player2_esc == 2 and player2.life >= 100):
                     player2.speedx += -8
                 elif player2_esc == 2 and player2.life < 100:
-                    player2.speedx += -12
+                    player2.speedx = 0
 
             if event.key == pygame.K_UP:
                 player2.jump()
             
-        # ----- Verifica consequências
+            print(player1.speedx, " ", player2.speedx)
+            
+        # Verifica se o jogo foi fechado
         if event.type == pygame.QUIT:
             pygame.quit()
     return True
