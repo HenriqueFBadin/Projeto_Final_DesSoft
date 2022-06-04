@@ -18,14 +18,16 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
 # ----------Movimentação do player 2 (Setinhas):
             if event.key == pygame.K_LEFT:
                 player2.orientacao = 0
-                player2.speedx += -8
-                if player2_esc == 2 and player2.life < 100:
+                if player2_esc != 2 or (player2_esc == 2 and player2.life >= 100):
+                    player2.speedx += -8
+                elif player2_esc == 2 and player2.life < 100:
                     player2.speedx += -12
             
             if event.key == pygame.K_RIGHT:
                 player2.orientacao = 1
-                player2.speedx += 8
-                if player2_esc == 2 and player2.life < 100:
+                if player2_esc != 2 or (player2_esc == 2 and player2.life >= 100):
+                    player2.speedx += 8
+                elif player2_esc == 2 and player2.life < 100:
                     player2.speedx += 12
 
             if event.key == pygame.K_UP:
@@ -34,14 +36,16 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
 # ----------Movimentação do player 1 (W,A,D):
             if event.key == pygame.K_a:
                 player1.orientacao = 0
-                player1.speedx += -8
-                if player1_esc == 2 and player1.life < 100:
+                if player1_esc != 2 or (player1_esc == 2 and player1.life >= 100):
+                    player1.speedx += -8
+                elif player1_esc == 2 and player1.life < 100:
                     player1.speedx += -12
             
             if event.key == pygame.K_d:
                 player1.orientacao = 1
-                player1.speedx += 8
-                if player1_esc == 2 and player1.life < 100:
+                if player1_esc != 2 or (player1_esc == 2 and player1.life >= 100):
+                    player1.speedx += 8
+                elif player1_esc == 2 and player1.life < 100:
                     player1.speedx += 12
 
 
@@ -83,24 +87,28 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
 
             # Player 1
             if event.key == pygame.K_a:
-                player1.speedx += +8
-                if player1_esc == 2 and player1.life < 100:
+                if player1_esc != 2 or (player1_esc == 2 and player1.life >= 100):
+                    player1.speedx += +8
+                elif player1_esc == 2 and player1.life < 100:
                     player1.speedx += +12
             
             if event.key == pygame.K_d:
-                player1.speedx += -8
-                if player1_esc == 2 and player1.life < 100:
+                if player1_esc != 2 or (player1_esc == 2 and player1.life >= 100):
+                    player1.speedx += -8
+                elif player1_esc == 2 and player1.life < 100:
                     player1.speedx += -12
 
             # Player 2
             if event.key == pygame.K_LEFT:
-                player2.speedx += 8
-                if player2_esc == 2 and player2.life < 100:
+                if player2_esc != 2 or (player2_esc == 2 and player2.life >= 100):
+                    player2.speedx += 8
+                elif player2_esc == 2 and player2.life < 100:
                     player2.speedx += 12
             
             if event.key == pygame.K_RIGHT:
-                player2.speedx += -8
-                if player2_esc == 2 and player2.life < 100:
+                if player2_esc != 2 or (player2_esc == 2 and player2.life >= 100):
+                    player2.speedx += -8
+                elif player2_esc == 2 and player2.life < 100:
                     player2.speedx += -12
 
             if event.key == pygame.K_UP:
