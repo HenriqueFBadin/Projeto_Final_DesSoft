@@ -41,53 +41,53 @@ def character_selection(screen):
                 print("P1 escolheu o lobisomen")
                 p1c=2
                 player1_selecionou=True
-                x1=[[52,102],[52,178],[106,141]]               
+                x1=[[86,94],[86,152],[121,122]]               
                 
             if event.pos[0]>=124 and event.pos[0]<=226 and event.pos[1]>=177 and event.pos[1]<=273:
                 print("P1 escolheu o Dio")
                 p1c=1
                 player1_selecionou=True
-                x1=[[52,222],[52,306],[101,262]]
+                x1=[[86,197],[86,258],[121,228]]
             if event.pos[0]>=124 and event.pos[0]<=226 and event.pos[1]>=278 and event.pos[1]<=373:
                 print("P1 escolheu o Honda")
                 p1c=4 #mudar para 4, quando o Honda estiver pronto
                 player1_selecionou=True
-                x1=[[52,349],[52,438],[106,390]]
+                x1=[[86,295],[86,352],[121,323]]
             if event.pos[0]>=124 and event.pos[0]<=226 and event.pos[1]>=379 and event.pos[1]<=474:
                 print("P1 escolheu o Humberto")
                 p1c=3
                 player1_selecionou=True
-                x1=[[52,482],[52,554],[102,520]]
+                x1=[[86,388],[86,459],[121,422]]
             if event.pos[0]>=124 and event.pos[0]<=226 and event.pos[1]>=480 and event.pos[1]<=578:
                 print("P1 escolheu o Yoshi")
                 p1c=5
                 player1_selecionou=True
-                x1=[[52,482],[52,554],[102,520]]
+                x1=[[86,481],[86,554],[121,522]]
             if event.pos[0]>=603 and event.pos[0]<=706 and event.pos[1]>=74 and event.pos[1]<=172:
                 print("P2 escolheu o lobisomen")
                 p2c=2
                 player2_selecionou=True
-                x2=[[694,140],[747,106],[747,186]]
+                x2=[[738,108],[738,145],[710,123]]
             if event.pos[0]>=603 and event.pos[0]<=706 and event.pos[1]>=176 and event.pos[1]<=273:
                 print("P2 escolheu o Dio")
                 p2c=1
                 player2_selecionou=True
-                x2=[[694,264],[747,218],[747,309]]
+                x2=[[744,186],[744,251],[710,227]]
             if event.pos[0]>=603 and event.pos[0]<=706 and event.pos[1]>=277 and event.pos[1]<=374:
                 print("P2 escolheu o Honda")
                 p2c=4 
                 player2_selecionou=True
-                x2=[[694,393],[747,350],[747,443]]
+                x2=[[744,298],[744,351],[710,324]]
             if event.pos[0]>=603 and event.pos[0]<=706 and event.pos[1]>=378 and event.pos[1]<=474:
                 print("P2 escolheu o Humberto")
                 p2c=3
                 player2_selecionou=True
-                x2=[[694,516],[747,468],[747,563]]
+                x2=[[744,398],[744,451],[710,424]]
             if event.pos[0]>=603 and event.pos[0]<=706 and event.pos[1]>=478 and event.pos[1]<=578:
                 print("P2 escolheu o Yoshi")
                 p2c=5
                 player2_selecionou=True
-                x2=[[52,482],[52,554],[102,520]]
+                x2=[[744,498],[744,551],[710,524]]
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == RIGHT:
             print ("(%d, %d)" % event.pos)
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == RIGHT:
