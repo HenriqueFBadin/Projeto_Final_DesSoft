@@ -72,7 +72,7 @@ def character_selection(screen):
                 print("P2 escolheu o Dio")
                 p2c=1
                 player2_selecionou=True
-                x2=[[744,186],[744,251],[710,227]]
+                x2=[[744,200],[744,251],[710,227]]
             if event.pos[0]>=603 and event.pos[0]<=706 and event.pos[1]>=277 and event.pos[1]<=374:
                 print("P2 escolheu o Honda")
                 p2c=4 
