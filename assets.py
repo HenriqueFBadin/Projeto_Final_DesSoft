@@ -267,8 +267,8 @@ cerveja_esquerda_img=pygame.transform.scale(cerveja_esquerda_img,(80,30))
 cerveja_direita_img=pygame.transform.scale(cerveja_direita_img,(80,30))
 ovo_esquerda_img=pygame.transform.scale(ovo_esquerda_img,(60,70))
 ovo_direita_img=pygame.transform.scale(ovo_direita_img,(60,70))
-flecha_esquerda_img=pygame.transform.scale(ovo_esquerda_img,(80,30))
-flecha_direita_img=pygame.transform.scale(ovo_direita_img,(80,30))
+flecha_esquerda_img=pygame.transform.scale(flecha_esquerda_img,(80,30))
+flecha_direita_img=pygame.transform.scale(flecha_direita_img,(80,30))
 
 
 background_img=pygame.transform.scale(background_img, (WIDTH, HEIGHT))
