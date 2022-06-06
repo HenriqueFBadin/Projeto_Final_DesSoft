@@ -239,8 +239,6 @@ imagens={
 
 # Sons
 
-pygame.mixer.music.load(os.path.join(SND_DIR, 'Audio_Giorno.mp3'))
+pygame.mixer.music.load(os.path.join(SND_DIR, 'Musica_Inicio.mp3'))
 pygame.mixer.music.set_volume(0.2)
-socododio_som = pygame.mixer.Sound(os.path.join(SND_DIR, 'Dio_Ataque.mp3'))
-socododio_som.set_volume(1.5)
 #jojosongambient_som = pygame.mixer.Sound(os.path.join(SND_DIR, 'Audio_Giorno.mp3'))
