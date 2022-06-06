@@ -9,6 +9,7 @@ from assets import *
 from character_selection import INIT
 from classes import *
 from funcoes import *
+from random import *
 state = 0
 # ===== Loop principal =====
 pygame.mixer.music.play(loops=-1)
@@ -66,6 +67,7 @@ def game_screen(window,player1_esc,player2_esc):
 
             # Loop do jogo
             while game:
+            
                 # Define tick rate
                 clock.tick(tick_rate)
 
@@ -178,6 +180,13 @@ def game_screen(window,player1_esc,player2_esc):
                 pygame.display.update()  # Mostra o novo frame para o jogador
             # ===== Finalização =====
             pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
+        # Chance  de dar o personagem secreto
+        if randint(0,5) > 2 and p1h != 5 and rodada == 2:
+            print("Player 1 virou o personagem secreto")
+            p1h = 5
+        elif randint(0,5) < 3 and p2h != 5 and rodada == 2:
+            print("Player 2 virou o persoangem secreto")
+            p2h = 5
         #Inicia a função da rodada do jogo
         resultadorodada = rodada_do_jogo(p1h,p2h,rodada,player1vitorias,player2vitorias)
         if type(resultadorodada) == list and len(resultadorodada) > 1:
