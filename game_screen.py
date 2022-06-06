@@ -158,23 +158,30 @@ def game_screen(window,player1_esc,player2_esc):
                 # Faz a contagem inicial para os jogadores poderem lutar
                 valores = [3,2,1,0,'Go!',' ']
                 segundos2 -= 1
-                if timer == 0:
+                if timer == 0 and p1h != 6 or p2h != 6:
                     text_surface2 = font2.render("{}".format(valores[timer]), True, (255, 255, 0))
                 if segundos2 <= 0 and timer <= 5:
                     if timer < 6:
-                        text_surface2 = font2.render("{}".format(valores[timer]), True, (255, 255, 0))
+                        if p1h != 6 or p2h != 6:
+                            text_surface2 = font2.render("{}".format(valores[timer]), True, (255, 255, 0))
                         text_rect = text_surface2.get_rect()
                         text_rect.midtop = (400,  400)
                         timer += 1
                     segundos2 = 64
                 if timer != 5 and podecomecar == False:
-                    texto(font2, "Round {}".format(rodada) , [WIDTH/2 - 120,  HEIGHT/2 - 190], (255,255,255))
+                    if p1h == 6 or p2h == 6:
+                        window.blit(teladopersonagemsecreto_img , (0,0))
+                    else:
+                        texto(font2, "Round {}".format(rodada) , [WIDTH/2 - 120,  HEIGHT/2 - 190], (255,255,255))
                 if timer == 5:
                     podecomecar = True
                 window.blit(text_surface2, (WIDTH/2 - 10,  HEIGHT/2))
 
                 # Desenhando todos os sprites
-                all_sprites.draw(window)
+                if p1h != 6 or p2h != 6:
+                    all_sprites.draw(window)
+                elif p1h == 6 or p2h == 6 and timer == 5:
+                    all_sprites.draw(window)
 
                 # ----- Atualiza estado do jogo
                 pygame.display.update()  # Mostra o novo frame para o jogador
@@ -182,11 +189,9 @@ def game_screen(window,player1_esc,player2_esc):
             pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
         # Chance  de dar o personagem secreto
         if randint(0,5) > 2 and p1h != 5 and rodada == 2:
-            print("Player 1 virou o personagem secreto")
-            p1h = 5
+            p1h = 6
         elif randint(0,5) < 3 and p2h != 5 and rodada == 2:
-            print("Player 2 virou o persoangem secreto")
-            p2h = 5
+            p2h = 6
         #Inicia a função da rodada do jogo
         resultadorodada = rodada_do_jogo(p1h,p2h,rodada,player1vitorias,player2vitorias)
         if type(resultadorodada) == list and len(resultadorodada) > 1:
