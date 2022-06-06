@@ -86,7 +86,7 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
             if event.key == pygame.K_a:
                 if player1_esc != 2 or (player1_esc == 2 and player1.life >= 100):
                     player1.speedx += +8
-                elif player1_esc == 2 and player1.life < 100:
+                elif (player1_esc == 2 or player1_esc == 6) and player1.life < 100:
                     player1.speedx += +12
             
             if event.key == pygame.K_d:
@@ -99,7 +99,7 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
             if event.key == pygame.K_LEFT:
                 if player2_esc != 2 or (player2_esc == 2 and player2.life >= 100):
                     player2.speedx += 8
-                elif player2_esc == 2 and player2.life < 100:
+                elif (player2_esc == 2 or player2_esc == 6) and player2.life < 100:
                     player2.speedx = 0
             
             if event.key == pygame.K_RIGHT:
@@ -123,7 +123,7 @@ def encostou(player1, player2, ph1, ph2):
         if player2.umsoco == 1:
             player1.life -= player2.damage
             player2.umsoco = 0
-            if player2.image in player2.goldpunch_img and ph2 == 1:
+            if player2.image in player2.goldpunch_img and (ph2 == 1 or ph2 == 6):
                 player1.life -= 5
     if player1.rect.centerx >= player2.rect.centerx:
         player1.rect.x += 30
@@ -135,7 +135,7 @@ def encostou(player1, player2, ph1, ph2):
         if player1.umsoco == 1:
             player2.life -= player1.damage
             player1.umsoco = 0
-            if player1.image in player1.goldpunch_img and ph1 == 1:
+            if player1.image in player1.goldpunch_img and (ph1 == 1 or ph1 == 6):
                 player2.life -= 5
     if player2.rect.centerx >= player1.rect.centerx:
         player2.rect.x += 30
