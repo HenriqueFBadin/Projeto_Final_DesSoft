@@ -158,12 +158,11 @@ def game_screen(window,player1_esc,player2_esc):
                 # Faz a contagem inicial para os jogadores poderem lutar
                 valores = [3,2,1,0,'Go!',' ']
                 segundos2 -= 1
-                if timer == 0 and (p1h != 6 and p2h != 6):
+                if timer == 0:
                     text_surface2 = font2.render("{}".format(valores[0]), True, (255, 255, 0))
                 if segundos2 <= 0 and timer <= 5:
                     if timer < 6:
-                        if p1h != 6 and p2h != 6:
-                            text_surface2 = font2.render("{}".format(valores[timer]), True, (255, 255, 0))
+                        text_surface2 = font2.render("{}".format(valores[timer]), True, (255, 255, 0))
                         text_rect = text_surface2.get_rect()
                         text_rect.midtop = (400,  400)
                         timer += 1
@@ -175,7 +174,8 @@ def game_screen(window,player1_esc,player2_esc):
                         texto(font2, "Round {}".format(rodada) , [WIDTH/2 - 120,  HEIGHT/2 - 190], (255,255,255))
                 if timer == 5:
                     podecomecar = True
-                window.blit(text_surface2, (WIDTH/2 - 10,  HEIGHT/2))
+                if p1h != 6 and p2h != 6:
+                    window.blit(text_surface2, (WIDTH/2 - 10,  HEIGHT/2))
 
                 # Desenhando todos os sprites
                 if p1h != 6 or p2h != 6:
