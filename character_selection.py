@@ -85,9 +85,9 @@ def character_selection(screen):
                 x2=[[694,516],[747,468],[747,563]]
             if event.pos[0]>=603 and event.pos[0]<=706 and event.pos[1]>=478 and event.pos[1]<=578:
                 print("P2 escolheu o Yoshi")
-                p1c=5
-                player1_selecionou=True
-                x1=[[52,482],[52,554],[102,520]]
+                p2c=5
+                player2_selecionou=True
+                x2=[[52,482],[52,554],[102,520]]
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == RIGHT:
             print ("(%d, %d)" % event.pos)
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == RIGHT:
