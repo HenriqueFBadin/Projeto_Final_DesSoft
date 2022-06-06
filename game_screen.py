@@ -78,9 +78,13 @@ def game_screen(window,player1_esc,player2_esc):
                 hit_power2=pygame.sprite.groupcollide(sprite_power2, sprite_p1, deathpower2, death1, pygame.sprite.collide_mask)
                 if hit_power1:
                     player2.life-=(player1.damage-5)
+                    if p2h == 5 and player2.life <= 100:
+                        player2.life-=5
                     deathpower1=True
                 if hit_power2:
                     player1.life-=(player2.damage-5)
+                    if p1h == 5 and player1.life <= 100:
+                        player1.life-=5
                     deathpower2=True
 
                 # Verifica os socos e causa os danos
