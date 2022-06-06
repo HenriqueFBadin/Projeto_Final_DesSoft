@@ -110,6 +110,15 @@ al_yoshi_img=pygame.image.load('Imagem/Yoshi_Atirando_Esquerda.png').convert_alp
 jl_yoshi_img=pygame.image.load('Imagem/Yoshi_pulando_esquerda.png').convert_alpha() 
 jr_yoshi_img=pygame.image.load('Imagem/Yoshi_pulando_direita.png').convert_alpha()
 
+pr_link_img=pygame.image.load('Imagem/Link_Parado_Direita.png').convert_alpha() 
+pl_link_img=pygame.image.load('Imagem/Link_Parado_Esquerda.png').convert_alpha() 
+sr_link_img=pygame.image.load('Imagem/Link_Socando_Direita.png').convert_alpha() 
+sl_link_img=pygame.image.load('Imagem/Link_Socando_Esquerda.png').convert_alpha() 
+ar_link_img=pygame.image.load('Imagem/Link_Atirando_Direita.png').convert_alpha() 
+al_link_img=pygame.image.load('Imagem/Link_Atirando_Esquerda.png').convert_alpha() 
+jl_link_img=pygame.image.load('Imagem/Link_pulando_esquerda.png').convert_alpha() 
+jr_link_img=pygame.image.load('Imagem/Link_pulando_direita.png').convert_alpha()
+
 fogo_lobo_esquerda_img=pygame.image.load('Imagem/Poder_Lobo_Esquerda.png').convert_alpha()
 fogo_lobo_direita_img=pygame.image.load('Imagem/Poder_Lobo_Direita.png').convert_alpha()
 fogo_esquerda_img=pygame.image.load('Imagem/Poder_Fogo_Esquerda.png').convert_alpha()
@@ -120,6 +129,8 @@ cerveja_direita_img=pygame.image.load('Imagem/Poder_Cerveja_Direita.png').conver
 cerveja_esquerda_img=pygame.image.load('Imagem/Poder_Cerveja_Esquerda.png').convert_alpha()
 ovo_esquerda_img=pygame.image.load('Imagem/Poder_Ovo_Esquerda.png').convert_alpha()
 ovo_direita_img=pygame.image.load('Imagem/Poder_Ovo_Direita.png').convert_alpha()
+flecha_esquerda_img=pygame.image.load('Imagem/Poder_Flecha_Esquerda.png').convert_alpha()
+flecha_direita_img=pygame.image.load('Imagem/Poder_Flecha_Direita.png').convert_alpha()
 
 background_img = pygame.image.load('Imagem/cenário.jpg').convert_alpha()
 background2_img = pygame.image.load('Imagem/Background2.png').convert_alpha()
@@ -218,6 +229,15 @@ ar_yoshi_img=pygame.transform.scale(ar_yoshi_img, (200, P1_HEIGHT))
 jl_yoshi_img=pygame.transform.scale(jl_yoshi_img, (180, P1_HEIGHT-20))
 jr_yoshi_img=pygame.transform.scale(jr_yoshi_img, (180, P1_HEIGHT-20))
 
+pl_link_img=pygame.transform.scale(pl_link_img, (P1_WIDTH, P1_HEIGHT))
+pr_link_img=pygame.transform.scale(pr_link_img, (P1_WIDTH, P1_HEIGHT))
+sl_link_img=pygame.transform.scale(sl_link_img, (200, P1_HEIGHT))
+sr_link_img=pygame.transform.scale(sr_link_img, (200, P1_HEIGHT))
+al_link_img=pygame.transform.scale(al_link_img, (200, P1_HEIGHT))
+ar_link_img=pygame.transform.scale(ar_link_img, (200, P1_HEIGHT))
+jl_link_img=pygame.transform.scale(jl_link_img, (200, P1_HEIGHT))
+jr_link_img=pygame.transform.scale(jr_link_img, (180, P1_HEIGHT))
+
 fogo_lobo_esquerda_img=pygame.transform.scale(fogo_lobo_esquerda_img,(80,80))
 fogo_lobo_direita_img=pygame.transform.scale(fogo_lobo_direita_img,(80,80))
 fogo_esquerda_img=pygame.transform.scale(fogo_esquerda_img,(80,80))
@@ -228,6 +248,8 @@ cerveja_esquerda_img=pygame.transform.scale(cerveja_esquerda_img,(80,30))
 cerveja_direita_img=pygame.transform.scale(cerveja_direita_img,(80,30))
 ovo_esquerda_img=pygame.transform.scale(ovo_esquerda_img,(60,70))
 ovo_direita_img=pygame.transform.scale(ovo_direita_img,(60,70))
+flecha_esquerda_img=pygame.transform.scale(ovo_esquerda_img,(80,30))
+flecha_direita_img=pygame.transform.scale(ovo_direita_img,(80,30))
 
 
 background_img=pygame.transform.scale(background_img, (WIDTH, HEIGHT))
@@ -259,7 +281,10 @@ imagens={
     4: [[cerveja_esquerda_img, cerveja_direita_img],[pl_honda_img, pr_honda_img], [pl_honda2_img, pr_honda2_img], [sl_honda_img, sr_honda_img], [sl_honda2_img, sr_honda2_img], [al_honda_img, ar_honda_img], [al_honda2_img, ar_honda2_img], [jl_honda_img, jr_honda_img], [jl_honda2_img, jr_honda2_img]],
 
     #Yoshi
-    5: [[ovo_esquerda_img, ovo_direita_img],[pl_yoshi_img, pr_yoshi_img], [pl_yoshi_img, pr_yoshi_img], [sl_yoshi_img, sr_yoshi_img], [sl_yoshi_img, sr_yoshi_img], [al_yoshi_img, ar_yoshi_img], [al_yoshi_img, ar_yoshi_img], [jl_yoshi_img, jr_yoshi_img], [jl_yoshi_img, jr_yoshi_img]]
+    5: [[ovo_esquerda_img, ovo_direita_img],[pl_yoshi_img, pr_yoshi_img], [pl_yoshi_img, pr_yoshi_img], [sl_yoshi_img, sr_yoshi_img], [sl_yoshi_img, sr_yoshi_img], [al_yoshi_img, ar_yoshi_img], [al_yoshi_img, ar_yoshi_img], [jl_yoshi_img, jr_yoshi_img], [jl_yoshi_img, jr_yoshi_img]],
+
+    #Link
+    6: [[flecha_esquerda_img, flecha_direita_img],[pl_link_img, pr_link_img], [pl_link_img, pr_link_img], [sl_link_img, sr_link_img], [sl_link_img, sr_link_img], [al_link_img, ar_link_img], [al_link_img, ar_link_img], [jl_link_img, jr_link_img], [jl_link_img, jr_link_img]]
 }
 
 # Sons
