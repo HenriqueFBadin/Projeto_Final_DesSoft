@@ -110,6 +110,15 @@ al_yoshi_img=pygame.image.load('Imagem/Yoshi_Atirando_Esquerda.png').convert_alp
 jl_yoshi_img=pygame.image.load('Imagem/Yoshi_pulando_esquerda.png').convert_alpha() 
 jr_yoshi_img=pygame.image.load('Imagem/Yoshi_pulando_direita.png').convert_alpha()
 
+pr_yoshi2_img=pygame.image.load('Imagem/Yoshi_Gold_Parado_Direita.png').convert_alpha() 
+pl_yoshi2_img=pygame.image.load('Imagem/Yoshi_Gold_Parado_Esquerda.png').convert_alpha() 
+sr_yoshi2_img=pygame.image.load('Imagem/Yoshi_Gold_Socando_Direita.png').convert_alpha() 
+sl_yoshi2_img=pygame.image.load('Imagem/Yoshi_Gold_Socando_Esquerda.png').convert_alpha() 
+ar_yoshi2_img=pygame.image.load('Imagem/Yoshi_Gold_Atirando_Direita.png').convert_alpha() 
+al_yoshi2_img=pygame.image.load('Imagem/Yoshi_Gold_Atirando_Esquerda.png').convert_alpha() 
+jl_yoshi2_img=pygame.image.load('Imagem/Yoshi_Gold_pulando_esquerda.png').convert_alpha() 
+jr_yoshi2_img=pygame.image.load('Imagem/Yoshi_Gold_pulando_direita.png').convert_alpha()
+
 pr_link_img=pygame.image.load('Imagem/Link_Parado_Direita.png').convert_alpha() 
 pl_link_img=pygame.image.load('Imagem/Link_Parado_Esquerda.png').convert_alpha() 
 sr_link_img=pygame.image.load('Imagem/Link_Socando_Direita.png').convert_alpha() 
@@ -229,6 +238,15 @@ ar_yoshi_img=pygame.transform.scale(ar_yoshi_img, (200, P1_HEIGHT))
 jl_yoshi_img=pygame.transform.scale(jl_yoshi_img, (180, P1_HEIGHT-20))
 jr_yoshi_img=pygame.transform.scale(jr_yoshi_img, (180, P1_HEIGHT-20))
 
+pl_yoshi2_img=pygame.transform.scale(pl_yoshi2_img, (P1_WIDTH, P1_HEIGHT))
+pr_yoshi2_img=pygame.transform.scale(pr_yoshi2_img, (P1_WIDTH, P1_HEIGHT))
+sl_yoshi2_img=pygame.transform.scale(sl_yoshi2_img, (200, P1_HEIGHT))
+sr_yoshi2_img=pygame.transform.scale(sr_yoshi2_img, (200, P1_HEIGHT))
+al_yoshi2_img=pygame.transform.scale(al_yoshi2_img, (200, P1_HEIGHT))
+ar_yoshi2_img=pygame.transform.scale(ar_yoshi2_img, (200, P1_HEIGHT))
+jl_yoshi2_img=pygame.transform.scale(jl_yoshi2_img, (180, P1_HEIGHT-20))
+jr_yoshi2_img=pygame.transform.scale(jr_yoshi2_img, (180, P1_HEIGHT-20))
+
 pl_link_img=pygame.transform.scale(pl_link_img, (P1_WIDTH, P1_HEIGHT))
 pr_link_img=pygame.transform.scale(pr_link_img, (P1_WIDTH, P1_HEIGHT))
 sl_link_img=pygame.transform.scale(sl_link_img, (200, P1_HEIGHT))
@@ -281,7 +299,7 @@ imagens={
     4: [[cerveja_esquerda_img, cerveja_direita_img],[pl_honda_img, pr_honda_img], [pl_honda2_img, pr_honda2_img], [sl_honda_img, sr_honda_img], [sl_honda2_img, sr_honda2_img], [al_honda_img, ar_honda_img], [al_honda2_img, ar_honda2_img], [jl_honda_img, jr_honda_img], [jl_honda2_img, jr_honda2_img]],
 
     #Yoshi
-    5: [[ovo_esquerda_img, ovo_direita_img],[pl_yoshi_img, pr_yoshi_img], [pl_yoshi_img, pr_yoshi_img], [sl_yoshi_img, sr_yoshi_img], [sl_yoshi_img, sr_yoshi_img], [al_yoshi_img, ar_yoshi_img], [al_yoshi_img, ar_yoshi_img], [jl_yoshi_img, jr_yoshi_img], [jl_yoshi_img, jr_yoshi_img]],
+    5: [[ovo_esquerda_img, ovo_direita_img],[pl_yoshi_img, pr_yoshi_img], [pl_yoshi2_img, pr_yoshi2_img], [sl_yoshi_img, sr_yoshi_img], [sl_yoshi2_img, sr_yoshi2_img], [al_yoshi_img, ar_yoshi_img], [al_yoshi2_img, ar_yoshi2_img], [jl_yoshi_img, jr_yoshi_img], [jl_yoshi2_img, jr_yoshi2_img]],
 
     #Link
     6: [[flecha_esquerda_img, flecha_direita_img],[pl_link_img, pr_link_img], [pl_link_img, pr_link_img], [sl_link_img, sr_link_img], [sl_link_img, sr_link_img], [al_link_img, ar_link_img], [al_link_img, ar_link_img], [jl_link_img, jr_link_img], [jl_link_img, jr_link_img]]
