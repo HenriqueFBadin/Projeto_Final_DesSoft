@@ -20,14 +20,14 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
                 player2.orientacao = 0
                 if player2_esc != 2 or (player2_esc == 2 and player2.life >= 100):
                     player2.speedx += -8
-                elif player2_esc == 2 and player2.life < 100:
+                elif (player2_esc == 2 or player2_esc == 6) and player2.life < 100:
                     player2.speedx += -12
             
             if event.key == pygame.K_RIGHT:
                 player2.orientacao = 1
                 if player2_esc != 2 or (player2_esc == 2 and player2.life >= 100):
                     player2.speedx += 8
-                elif player2_esc == 2 and player2.life < 100:
+                elif (player2_esc == 2 or player2_esc == 6) and player2.life < 100:
                     player2.speedx += 12
 
             if event.key == pygame.K_UP:
@@ -38,14 +38,14 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
                 player1.orientacao = 0
                 if player1_esc != 2 or (player1_esc == 2 and player1.life >= 100):
                     player1.speedx += -8
-                elif player1_esc == 2 and player1.life < 100:
+                elif (player1_esc == 2 or player1_esc == 6) and player1.life < 100:
                     player1.speedx += -12
             
             if event.key == pygame.K_d:
                 player1.orientacao = 1
                 if player1_esc != 2 or (player1_esc == 2 and player1.life >= 100):
                     player1.speedx += 8
-                elif player1_esc == 2 and player1.life < 100:
+                elif (player1_esc == 2 or player1_esc == 6) and player1.life < 100:
                     player1.speedx += 12
 
 
@@ -92,7 +92,7 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
             if event.key == pygame.K_d:
                 if player1_esc != 2 or (player1_esc == 2 and player1.life >= 100):
                     player1.speedx += -8
-                elif player1_esc == 2 and player1.life < 100:
+                elif (player1_esc == 2 or player1_esc == 6) and player1.life < 100:
                     player1.speedx += -12
 
             # Player 2
@@ -105,7 +105,7 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
             if event.key == pygame.K_RIGHT:
                 if player2_esc != 2 or (player2_esc == 2 and player2.life >= 100):
                     player2.speedx += -8
-                elif player2_esc == 2 and player2.life < 100:
+                elif (player2_esc == 2 or player2_esc == 6) and player2.life < 100:
                     player2.speedx = 0
 
             if event.key == pygame.K_UP:
