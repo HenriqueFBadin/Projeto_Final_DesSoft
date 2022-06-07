@@ -60,7 +60,7 @@ def character_selection(screen):
                 x1=[[86,388],[86,459],[121,422]]
             if event.pos[0]>=124 and event.pos[0]<=226 and event.pos[1]>=480 and event.pos[1]<=578:
                 print("P1 escolheu o Yoshi")
-                p1c=5
+                p1c=7
                 player1_selecionou=True
                 x1=[[86,481],[86,554],[121,522]]
             if event.pos[0]>=603 and event.pos[0]<=706 and event.pos[1]>=74 and event.pos[1]<=172:

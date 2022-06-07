@@ -128,6 +128,24 @@ al_link_img=pygame.image.load('Imagem/Link_Atirando_Esquerda.png').convert_alpha
 jl_link_img=pygame.image.load('Imagem/Link_pulando_esquerda.png').convert_alpha() 
 jr_link_img=pygame.image.load('Imagem/Link_pulando_direita.png').convert_alpha()
 
+pr_dino_img=pygame.image.load('Imagem/Dino_Parado_Direita.png').convert_alpha() 
+pl_dino_img=pygame.image.load('Imagem/Dino_Parado_Esquerda.png').convert_alpha() 
+sr_dino_img=pygame.image.load('Imagem/Dino_Socando_Direita.png').convert_alpha() 
+sl_dino_img=pygame.image.load('Imagem/Dino_Socando_Esquerda.png').convert_alpha() 
+ar_dino_img=pygame.image.load('Imagem/Dino_Atirando_Direita.png').convert_alpha() 
+al_dino_img=pygame.image.load('Imagem/Dino_Atirando_Esquerda.png').convert_alpha() 
+jl_dino_img=pygame.image.load('Imagem/Dino_pulando_esquerda.png').convert_alpha() 
+jr_dino_img=pygame.image.load('Imagem/Dino_pulando_direita.png').convert_alpha()
+
+pr_dino2_img=pygame.image.load('Imagem/Dino_Gold_Parado_Direita.png').convert_alpha() 
+pl_dino2_img=pygame.image.load('Imagem/Dino_Gold_Parado_Esquerda.png').convert_alpha() 
+sr_dino2_img=pygame.image.load('Imagem/Dino_Gold_Socando_Direita.png').convert_alpha() 
+sl_dino2_img=pygame.image.load('Imagem/Dino_Gold_Socando_Esquerda.png').convert_alpha() 
+ar_dino2_img=pygame.image.load('Imagem/Dino_Gold_Atirando_Direita.png').convert_alpha() 
+al_dino2_img=pygame.image.load('Imagem/Dino_Gold_Atirando_Esquerda.png').convert_alpha() 
+jl_dino2_img=pygame.image.load('Imagem/Dino_Gold_pulando_esquerda.png').convert_alpha() 
+jr_dino2_img=pygame.image.load('Imagem/Dino_Gold_pulando_direita.png').convert_alpha()
+
 fogo_lobo_esquerda_img=pygame.image.load('Imagem/Poder_Lobo_Esquerda.png').convert_alpha()
 fogo_lobo_direita_img=pygame.image.load('Imagem/Poder_Lobo_Direita.png').convert_alpha()
 fogo_esquerda_img=pygame.image.load('Imagem/Poder_Fogo_Esquerda.png').convert_alpha()
@@ -138,6 +156,8 @@ cerveja_direita_img=pygame.image.load('Imagem/Poder_Cerveja_Direita.png').conver
 cerveja_esquerda_img=pygame.image.load('Imagem/Poder_Cerveja_Esquerda.png').convert_alpha()
 ovo_esquerda_img=pygame.image.load('Imagem/Poder_Ovo_Esquerda.png').convert_alpha()
 ovo_direita_img=pygame.image.load('Imagem/Poder_Ovo_Direita.png').convert_alpha()
+meteoro_esquerda_img=pygame.image.load('Imagem/Poder_Dino_Esquerda.png').convert_alpha()
+meteoro_direita_img=pygame.image.load('Imagem/Poder_Dino_Direita.png').convert_alpha()
 flecha_esquerda_img=pygame.image.load('Imagem/Poder_Flecha_Esquerda.png').convert_alpha()
 flecha_direita_img=pygame.image.load('Imagem/Poder_Flecha_Direita.png').convert_alpha()
 
@@ -257,6 +277,24 @@ ar_link_img=pygame.transform.scale(ar_link_img, (200, P1_HEIGHT))
 jl_link_img=pygame.transform.scale(jl_link_img, (200, P1_HEIGHT))
 jr_link_img=pygame.transform.scale(jr_link_img, (180, P1_HEIGHT))
 
+pr_dino_img=pygame.transform.scale(pr_dino_img, (180, P1_HEIGHT+30))
+pl_dino_img=pygame.transform.scale(pl_dino_img, (180, P1_HEIGHT+30))
+sr_dino_img=pygame.transform.scale(sr_dino_img, (180, P1_HEIGHT+30))
+sl_dino_img=pygame.transform.scale(sl_dino_img, (180, P1_HEIGHT+30))
+ar_dino_img=pygame.transform.scale(ar_dino_img, (200, P1_HEIGHT+30))
+al_dino_img=pygame.transform.scale(al_dino_img, (200, P1_HEIGHT+30))
+jl_dino_img=pygame.transform.scale(jl_dino_img, (200, P1_HEIGHT+30))
+jr_dino_img=pygame.transform.scale(jr_dino_img, (200, P1_HEIGHT+30))
+
+pr_dino2_img=pygame.transform.scale(pr_dino2_img, (180, P1_HEIGHT+30))
+pl_dino2_img=pygame.transform.scale(pl_dino2_img, (180, P1_HEIGHT+30))
+sr_dino2_img=pygame.transform.scale(sr_dino2_img, (180, P1_HEIGHT+30))
+sl_dino2_img=pygame.transform.scale(sl_dino2_img, (180, P1_HEIGHT+30))
+ar_dino2_img=pygame.transform.scale(ar_dino2_img, (200, P1_HEIGHT+30))
+al_dino2_img=pygame.transform.scale(al_dino2_img, (200, P1_HEIGHT+30))
+jl_dino2_img=pygame.transform.scale(jl_dino2_img, (200, P1_HEIGHT+30))
+jr_dino2_img=pygame.transform.scale(jr_dino2_img, (200, P1_HEIGHT+30))
+
 fogo_lobo_esquerda_img=pygame.transform.scale(fogo_lobo_esquerda_img,(80,80))
 fogo_lobo_direita_img=pygame.transform.scale(fogo_lobo_direita_img,(80,80))
 fogo_esquerda_img=pygame.transform.scale(fogo_esquerda_img,(80,80))
@@ -267,6 +305,8 @@ cerveja_esquerda_img=pygame.transform.scale(cerveja_esquerda_img,(80,30))
 cerveja_direita_img=pygame.transform.scale(cerveja_direita_img,(80,30))
 ovo_esquerda_img=pygame.transform.scale(ovo_esquerda_img,(60,70))
 ovo_direita_img=pygame.transform.scale(ovo_direita_img,(60,70))
+meteoro_esquerda_img=pygame.transform.scale(meteoro_esquerda_img,(70,70))
+meteoro_direita_img=pygame.transform.scale(meteoro_direita_img,(70,70))
 flecha_esquerda_img=pygame.transform.scale(flecha_esquerda_img,(80,30))
 flecha_direita_img=pygame.transform.scale(flecha_direita_img,(80,30))
 
@@ -304,7 +344,10 @@ imagens={
     5: [[ovo_esquerda_img, ovo_direita_img],[pl_yoshi_img, pr_yoshi_img], [pl_yoshi2_img, pr_yoshi2_img], [sl_yoshi_img, sr_yoshi_img], [sl_yoshi2_img, sr_yoshi2_img], [al_yoshi_img, ar_yoshi_img], [al_yoshi2_img, ar_yoshi2_img], [jl_yoshi_img, jr_yoshi_img], [jl_yoshi2_img, jr_yoshi2_img]],
 
     #Link
-    6: [[flecha_esquerda_img, flecha_direita_img],[pl_link_img, pr_link_img], [pl_link_img, pr_link_img], [sl_link_img, sr_link_img], [sl_link_img, sr_link_img], [al_link_img, ar_link_img], [al_link_img, ar_link_img], [jl_link_img, jr_link_img], [jl_link_img, jr_link_img]]
+    6: [[flecha_esquerda_img, flecha_direita_img],[pl_link_img, pr_link_img], [pl_link_img, pr_link_img], [sl_link_img, sr_link_img], [sl_link_img, sr_link_img], [al_link_img, ar_link_img], [al_link_img, ar_link_img], [jl_link_img, jr_link_img], [jl_link_img, jr_link_img]],
+    #Dino Boxeador
+    7: [[meteoro_esquerda_img, meteoro_direita_img],[pl_dino_img, pr_dino_img], [pl_dino2_img, pr_dino2_img], [sl_dino_img, sr_dino_img], [sl_dino2_img, sr_dino2_img], [al_dino_img, ar_dino_img], [al_dino2_img, ar_dino2_img], [jl_dino_img, jr_dino_img], [jl_dino2_img, jr_dino2_img]]
+
 }
 
 # Sons
