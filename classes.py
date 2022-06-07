@@ -50,6 +50,7 @@ class Player(pygame.sprite.Sprite):
         self.segundossoco = 0
         self.umsoco = 1
         self.morreu = 0
+        self.escolha = 0
 
     def update(self):
         # Atualização da posição do player
@@ -136,6 +137,9 @@ class Player(pygame.sprite.Sprite):
 
         self.is_shooting=True
         self.shooting_energy=12
+        if self.escolha == 7 and self.life < 100:
+            self.power_img[self.orientacao]=pygame.transform.scale(self.power_img[self.orientacao],(140,140))
+            self.rect.bottom = self.rect.bottom+50
         new_power=Power(self.orientacao, self.power_img, self.rect.bottom-85, self.rect.centerx)
         self.all_sprites.add(new_power)
         self.all_powers.add(new_power)

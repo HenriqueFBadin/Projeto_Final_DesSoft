@@ -37,6 +37,8 @@ def game_screen(window,player1_esc,player2_esc):
             # Criando os players e suas barras de vida
             player1 = Player(1, all_sprites, all_powers, sprite_power1, sprite_punch, imagens[p1h][0], imagens[p1h][1], imagens[p1h][2], imagens[p1h][3], imagens[p1h][4], imagens[p1h][5], imagens[p1h][6], imagens[p1h][7], imagens[p1h][8])
             player2 = Player(0, all_sprites, all_powers, sprite_power2, sprite_punch, imagens[p2h][0], imagens[p2h][1], imagens[p2h][2], imagens[p2h][3], imagens[p2h][4], imagens[p2h][5], imagens[p2h][6], imagens[p2h][7], imagens[p2h][8])
+            player1.escolha = p1h
+            player2.escolha = p2h
             barradevidaplayer1 = BarraHp(player1.life,1,barravermelha_img,barraverde_img)
             barradevidaplayer2 = BarraHp(player2.life,2,barravermelha_img,barraverde_img)
 
@@ -80,12 +82,12 @@ def game_screen(window,player1_esc,player2_esc):
                 hit_power2=pygame.sprite.groupcollide(sprite_power2, sprite_p1, deathpower2, death1, pygame.sprite.collide_mask)
                 if hit_power1:
                     player2.life-=(player1.damage-5)
-                    if p2h == 5 and player2.life <= 100:
+                    if (p2h == 5 or p2h == 7) and player2.life <= 100:
                         player2.life-=5
                     deathpower1=True
                 if hit_power2:
                     player1.life-=(player2.damage-5)
-                    if p1h == 5 and player1.life <= 100:
+                    if (p1h == 5 or p1h == 7) and player1.life <= 100:
                         player1.life-=5
                     deathpower2=True
 
@@ -188,9 +190,9 @@ def game_screen(window,player1_esc,player2_esc):
             # ===== Finalização =====
             pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
         # Chance  de dar o personagem secreto
-        if randint(0,5) > 2 and p1h != 5 and rodada == 2:
+        if randint(0,100) < 30 and p1h != 5 and rodada == 2:
             p1h = 6
-        elif randint(0,5) < 3 and p2h != 5 and rodada == 2:
+        elif randint(0,100) < 30 and p2h != 5 and rodada == 2:
             p2h = 6
         #Inicia a função da rodada do jogo
         resultadorodada = rodada_do_jogo(p1h,p2h,rodada,player1vitorias,player2vitorias)
