@@ -112,7 +112,7 @@ def game_screen(window,player1_esc,player2_esc):
                 all_sprites.update()
 
                 # Exibe o background e os fundos das barras de vida
-                window.blit(background4_img,(0,0))
+                window.blit(background5_img,(0,0))
                 window.blit(barradevidacomvitorias_img, (15, 5))
                 window.blit(barradevidacomvitorias_img, (480, 5))
 
