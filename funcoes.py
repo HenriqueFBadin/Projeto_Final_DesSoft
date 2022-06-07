@@ -53,7 +53,7 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
                 player1.jump()
 
 # ----------Tiros (Q, L):            
-            if event.key==pygame.K_q and player1.life > 0 and player1.segundostiro == 0:
+            if event.key==pygame.K_c and player1.life > 0 and player1.segundostiro == 0:
                 player1.shoot()
                 player1.segundostiro = 64
             if event.key==pygame.K_l and player2.life > 0 and player2.segundostiro == 0:
@@ -61,7 +61,7 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
                 player2.segundostiro = 64
 
 # ----------Sprite do soco (E, <):
-            if event.key == pygame.K_e and player1.segundossoco == 0:
+            if event.key == pygame.K_v and player1.segundossoco == 0:
                 if player1.orientacao == 0:
                     player1.rect.x -= 30
                 elif player1.orientacao == 1:
