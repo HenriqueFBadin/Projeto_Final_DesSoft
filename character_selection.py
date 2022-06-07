@@ -60,9 +60,14 @@ def character_selection(screen):
                 x1=[[86,388],[86,459],[121,422]]
             if event.pos[0]>=124 and event.pos[0]<=226 and event.pos[1]>=480 and event.pos[1]<=578:
                 print("P1 escolheu o Yoshi")
-                p1c=7
+                p1c=5
                 player1_selecionou=True
                 x1=[[86,481],[86,554],[121,522]]
+            if event.pos[0]>=250 and event.pos[0]<=343 and event.pos[1]>=79 and event.pos[1]<=168:
+                print("P1 escolheu o Dino")
+                p1c=7
+                player1_selecionou=True
+                x1=[[348,124],[376,94],[376,151]]
             if event.pos[0]>=603 and event.pos[0]<=706 and event.pos[1]>=74 and event.pos[1]<=172:
                 print("P2 escolheu o lobisomen")
                 p2c=2
@@ -88,6 +93,11 @@ def character_selection(screen):
                 p2c=5
                 player2_selecionou=True
                 x2=[[744,498],[744,551],[710,524]]
+            if event.pos[0]>=497 and event.pos[0]<=592 and event.pos[1]>=479 and event.pos[1]<=566:
+                print("P2 escolheu o Dino")
+                p2c=7
+                player2_selecionou=True
+                x2=[[495,528],[444,493],[444,562]]
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == RIGHT:
             print ("(%d, %d)" % event.pos)
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == RIGHT:
