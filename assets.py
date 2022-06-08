@@ -356,9 +356,11 @@ imagens={
 
 pygame.mixer.music.load(os.path.join(SND_DIR, 'Musica_Inicio.mp3'))
 pygame.mixer.music.set_volume(0.2)
-dio_soco_sound = pygame.mixer.Sound(os.path.join(SND_DIR, 'Dio_Ataque.mp3'))
+dio_soco_sound = pygame.mixer.Sound(os.path.join(SND_DIR, 'Dio_Ataque.ogg'))
 dio_soco_sound.set_volume(1.0)
 honda_soco_sound = pygame.mixer.Sound(os.path.join(SND_DIR, 'Honda_Ataque.mp3'))
 honda_soco_sound.set_volume(0.5)
 humberto_shoot_sound = pygame.mixer.Sound(os.path.join(SND_DIR, 'Humberto_Atirando.mp3'))
 humberto_shoot_sound.set_volume(0.5)
+yoshi_soco_sound = pygame.mixer.Sound(os.path.join(SND_DIR, 'Yoshi sound.ogg'))
+yoshi_soco_sound.set_volume(0.5)

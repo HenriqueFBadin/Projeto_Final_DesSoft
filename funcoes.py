@@ -78,6 +78,9 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
                 if player1_esc == 4:
                     honda_soco_sound.stop()
                     honda_soco_sound.play()
+                if player1_esc == 5:
+                    yoshi_soco_sound.stop()
+                    yoshi_soco_sound.play()
                 player1.punch()
                 player1.segundossoco = 30
             if event.key == pygame.K_COMMA and player2.segundossoco == 0:
@@ -91,6 +94,9 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
                 if player2_esc == 4:
                     honda_soco_sound.stop()
                     honda_soco_sound.play()
+                if player2_esc == 5:
+                    yoshi_soco_sound.stop()
+                    yoshi_soco_sound.play()
                 player2.punch()
                 player2.segundossoco = 30
             
