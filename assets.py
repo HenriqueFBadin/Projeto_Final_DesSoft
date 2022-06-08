@@ -347,9 +347,9 @@ imagens={
 
     #Link
     6: [[flecha_esquerda_img, flecha_direita_img],[pl_link_img, pr_link_img], [pl_link_img, pr_link_img], [sl_link_img, sr_link_img], [sl_link_img, sr_link_img], [al_link_img, ar_link_img], [al_link_img, ar_link_img], [jl_link_img, jr_link_img], [jl_link_img, jr_link_img]],
+    
     #Dino Boxeador
     7: [[meteoro_esquerda_img, meteoro_direita_img],[pl_dino_img, pr_dino_img], [pl_dino2_img, pr_dino2_img], [sl_dino_img, sr_dino_img], [sl_dino2_img, sr_dino2_img], [al_dino_img, ar_dino_img], [al_dino2_img, ar_dino2_img], [jl_dino_img, jr_dino_img], [jl_dino2_img, jr_dino2_img]]
-
 }
 
 # Sons
@@ -358,3 +358,7 @@ pygame.mixer.music.load(os.path.join(SND_DIR, 'Musica_Inicio.mp3'))
 pygame.mixer.music.set_volume(0.2)
 dio_soco_sound = pygame.mixer.Sound(os.path.join(SND_DIR, 'Dio_Ataque.mp3'))
 dio_soco_sound.set_volume(1.0)
+honda_soco_sound = pygame.mixer.Sound(os.path.join(SND_DIR, 'Honda_Ataque.mp3'))
+honda_soco_sound.set_volume(0.5)
+humberto_shoot_sound = pygame.mixer.Sound(os.path.join(SND_DIR, 'Humberto_Atirando.mp3'))
+humberto_shoot_sound.set_volume(0.5)

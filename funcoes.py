@@ -54,9 +54,15 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
 
 # ----------Tiros (Q, L):            
             if event.key==pygame.K_c and player1.life > 0 and player1.segundostiro == 0:
+                if player1_esc == 3:
+                    humberto_shoot_sound.stop()
+                    humberto_shoot_sound.play()
                 player1.shoot()
                 player1.segundostiro = 64
             if event.key==pygame.K_l and player2.life > 0 and player2.segundostiro == 0:
+                if player2_esc == 3:
+                    humberto_shoot_sound.stop()
+                    humberto_shoot_sound.play()
                 player2.shoot()
                 player2.segundostiro = 64
 
@@ -69,6 +75,9 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
                 if player1_esc == 1:
                     dio_soco_sound.stop()
                     dio_soco_sound.play()
+                if player1_esc == 4:
+                    honda_soco_sound.stop()
+                    honda_soco_sound.play()
                 player1.punch()
                 player1.segundossoco = 30
             if event.key == pygame.K_COMMA and player2.segundossoco == 0:
@@ -76,6 +85,12 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
                     player2.rect.x -= 30
                 elif player2.orientacao == 1:
                     player2.rect.x += 30
+                if player2_esc == 1:
+                    dio_soco_sound.stop()
+                    dio_soco_sound.play()
+                if player2_esc == 4:
+                    honda_soco_sound.stop()
+                    honda_soco_sound.play()
                 player2.punch()
                 player2.segundossoco = 30
             
