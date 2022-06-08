@@ -190,9 +190,9 @@ def game_screen(window,player1_esc,player2_esc):
             # ===== Finalização =====
             pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
         # Chance  de dar o personagem secreto
-        if randint(0,100) < 30 and p1h != 5 and rodada == 2:
+        if randint(0,100) < 10 and p1h != 5 and rodada == 2:
             p1h = 6
-        elif randint(0,100) < 30 and p2h != 5 and rodada == 2:
+        elif randint(0,100) < 10 and p2h != 5 and rodada == 2:
             p2h = 6
         #Inicia a função da rodada do jogo
         resultadorodada = rodada_do_jogo(p1h,p2h,rodada,player1vitorias,player2vitorias)

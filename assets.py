@@ -11,8 +11,8 @@ pygame.display.set_caption('Mortal Insper!')
 #VARIÁVEIS:
 P1_WIDTH=150
 P1_HEIGHT=150
-WIDTH=800
-HEIGHT=600
+WIDTH=800 #800
+HEIGHT=600 #600
 compbarraverd = 300
 compbarraverm = 300
 game = True
