@@ -66,6 +66,9 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
                     player1.rect.x -= 30
                 elif player1.orientacao == 1:
                     player1.rect.x += 30
+                if player1_esc == 1:
+                    dio_soco_sound.stop()
+                    dio_soco_sound.play()
                 player1.punch()
                 player1.segundossoco = 30
             if event.key == pygame.K_COMMA and player2.segundossoco == 0:

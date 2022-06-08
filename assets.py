@@ -356,4 +356,5 @@ imagens={
 
 pygame.mixer.music.load(os.path.join(SND_DIR, 'Musica_Inicio.mp3'))
 pygame.mixer.music.set_volume(0.2)
-#jojosongambient_som = pygame.mixer.Sound(os.path.join(SND_DIR, 'Audio_Giorno.mp3'))
+dio_soco_sound = pygame.mixer.Sound(os.path.join(SND_DIR, 'Dio_Ataque.mp3'))
+dio_soco_sound.set_volume(1.0)
