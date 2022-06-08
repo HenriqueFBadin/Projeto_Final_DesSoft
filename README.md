@@ -1,11 +1,21 @@
 # Projeto_Final_DesSoft
 
 Repositório para o Projeto Final da matéria de DesSoft:https://github.com/HenriqueFBadin/Projeto_Final_DesSoft.git
-O grupo é composto pelos alunos Henrique Badin, Henrique Bomfim e Eduardo Selber da sala 1A de Engenharia do Insper.
 
-Link do vídeo sobre o jogo, no estilo trailer: https://youtu.be/SpFoWM9AOd8
+O grupo é composto pelos alunos:
 
-O arquivo python que se deve rodar para jogar o jogo se chama jogo.py
+-Henrique Badin
+
+-Henrique Bomfim 
+
+-Eduardo Selber 
+
+Todos da sala 1A de Engenharia do Insper.
+
+O arquivo python que se deve rodar para jogar o jogo se chama
+
+jogo.py
+
 
 Para o player jogar, primeiro é necessário a instalação da biblioteca do pygame.
 
