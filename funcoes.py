@@ -222,7 +222,7 @@ def barrasdevida(player2,player1,barradevidaplayer1,barradevidaplayer2,barradevi
     return 0
 
 def verificaplayer1ganhou(player2,podeacabar,player1vitorias,timer2,segundos3):
-    """ Função que verifica se um player ganhou e gera resultados """
+    """ Função que verifica se o player 1 ganhou e gera resultados """
     if player2.life <= 0 and podeacabar == False:
         texto(font2, "Player 1 wins" , [145, HEIGHT/2], (255,255,255))
         podeacabar = True
@@ -242,6 +242,7 @@ def verificaplayer1ganhou(player2,podeacabar,player1vitorias,timer2,segundos3):
     return [segundos3, timer2, podeacabar]
 
 def verificaplayer2ganhou(player1,podeacabar,player2vitorias,timer2,segundos3):
+    """ Função que verifica se o player 2 ganhou e gera resultados """
     if player1.life <= 0 and podeacabar == False:
         texto(font2, "Player 2 wins" , [145, HEIGHT/2], (255,255,255))
         podeacabar = True
@@ -261,6 +262,7 @@ def verificaplayer2ganhou(player1,podeacabar,player2vitorias,timer2,segundos3):
     return [segundos3, timer2, podeacabar]
 
 def temporizador(segundos,tempo,podecomecar,player1,player2):
+    """ Função que converte os ticks em segundos e serve como cooldown para algumas features """
     segundos -= 1
     tempo = tempo
     podecomecar = podecomecar
