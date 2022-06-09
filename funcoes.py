@@ -1,6 +1,5 @@
 import pygame
 pygame.init()
-import os
 from os import path
 from assets import *
 
@@ -13,7 +12,7 @@ def texto(font, variavel, pos, cores):
     return 0
 
 def tecla_pressionada(player1, player2,player1_esc,player2_esc):
-    """" Função que interpreta todos os eventos e gera resultados para cada um deles"""
+    """ Função que interpreta todos os eventos e gera resultados para cada um deles"""
     for event in pygame.event.get():
         # Verifica se apertou alguma tecla.
         if event.type == pygame.KEYDOWN:
@@ -173,17 +172,6 @@ def encostou(player1, player2, ph1, ph2):
         player2.rect.x -= 30
     if player2.life<=0:
         player2.kill()
-    return 0
-
-def contadorinicial(font,pos,all_sprites):
-    """ Faz a contagem regressiva de tempo no começo dos rounds """
-    valores = [3,2,1,0,'go',' ']
-    for valor in valores:
-        text_surface = font.render("{}".format(valor), True, (0, 0, 0))
-        text_rect = text_surface.get_rect()
-        text_rect.midtop = (pos[0],  pos[1])
-        window.blit(text_surface, (pos[0],  pos[1]))
-        all_sprites.draw(window)
     return 0
 
 def barrasdevida(player2,player1,barradevidaplayer1,barradevidaplayer2,barradevidacomvitorias_img):

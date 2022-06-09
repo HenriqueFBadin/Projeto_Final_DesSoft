@@ -21,17 +21,17 @@ O arquivo python que se deve rodar para jogar o jogo se chama:
 Python jogo.py
 ```
 
-Para o player jogar, primeiro é necessário a instalação da biblioteca do pygame.
+Para o player jogar, primeiro é necessário a instalação da biblioteca do pygame através do comando pip install pygame no Prompt de Comando.
 
 
 ## Sinopse do Jogo
 ```
-O jogo Mortal Insper é um PvP, player versus player, do genero de Luta. Esse jogo inclui uma seleção de 6 personagens diversos, abrangendo personagens como o Humbertor, professor de programação do Insper responsável pela matéria de Design de Software, e um dinossauro boxeador.
+O jogo Mortal Insper é um PvP, player versus player, do gênero de Luta. Esse jogo inclui uma seleção de 6 personagens diversos, abrangendo personagens como o Humbertor, professor de programação do Insper responsável pela matéria de Design de Software, e um dinossauro boxeador.
 ```
 
 ## Como Iniciar o Jogo
 ```
-Para selecionar os personagens é necessário clicar com o botão esquerdo do mouse na imagem do personagem desejado na tela de selção dos personagens, que é que vem logo em seguida da tela inicial. O jogador 1 escolhe os personagens da esquerda enquanto o jogador 2 escolhe os da direita da tela de seleção.  
+Para selecionar os personagens é necessário clicar com o botão esquerdo do mouse na imagem do personagem desejado na tela de seleção dos personagens, que é que vem logo em seguida da tela inicial. O jogador 1 escolhe os personagens da esquerda enquanto o jogador 2 escolhe os da direita da tela de seleção.  
 ```
 
 
@@ -51,7 +51,7 @@ Todos os comandos são realizados no teclado.
 
 ## Regras do jogo
 ```
-Além disso, o jogo utiliza um sistema de 3 rounds, em que o vencedor é aquele que ganhar 2 rounds primeiro, além de que para ganhar um round em específico precisa reduzir a vida do outro player, que pode ser observado no topo da tela, para zero. Essa vitória em específica também é alcançada quando  o timer, que fica no topo da tela, zera e será declarado vencedor àquele que tiver com mais vida. Por fim, quando um personagem atingir 50% da vida ativa o segundo estágio dele, representado por uma mudança visual, que lhe atribui um buff de status.
+Além disso, o jogo utiliza um sistema de 3 rounds, em que o vencedor é aquele que ganhar 2 rounds primeiro, além de que para ganhar um round em específico precisa reduzir a vida do outro player, que pode ser observado no topo da tela, para zero. Quando o tempo acaba, o Round se encerra e um novo se inicia, recuperando a vida dos players sem dar vitória para nenhum deles. Por fim, quando um personagem atingir 50% da vida, ativa o segundo estágio dele, representado por uma mudança visual, que lhe atribui um buff de status.
 ```
 ```
 Agora é com você! Baixe o jogo e se divirta! :D

@@ -1,9 +1,6 @@
 print("Criadores do projeto: Eduardo Selber Castanho, Henrique Fazzio Badin, Henrique Rocha Bomfim")
 # ===== Inicialização =====
 # ----- Importa e inicia pacotes
-from sre_parse import State
-from time import sleep, time
-#from turtle import delay
 import pygame
 from assets import *
 from character_selection import INIT
@@ -14,8 +11,11 @@ state = 0
 # ===== Loop principal =====
 pygame.mixer.music.play(loops=-1)
 def game_screen(window,player1_esc,player2_esc):
+    """ Função que roda os 3 rounds do jogo, logo, o jogo principal """
     p1h=player1_esc
     p2h=player2_esc
+    p1h_antiga = p1h
+    p2h_antiga = p2h
     player1vitorias = 0
     player2vitorias = 0
     resultadorodada = []
@@ -25,6 +25,7 @@ def game_screen(window,player1_esc,player2_esc):
         rodada += 1
         print(rodada)
         def rodada_do_jogo(p1h,p2h,rodada,player1vitorias,player2vitorias):
+            """ Função que roda cada rodada do jogo """
             # Agrupando sprites
             all_sprites = pygame.sprite.Group()
             all_powers=pygame.sprite.Group()
@@ -189,11 +190,14 @@ def game_screen(window,player1_esc,player2_esc):
                 pygame.display.update()  # Mostra o novo frame para o jogador
             # ===== Finalização =====
             pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
-        # Chance  de dar o personagem secreto
+        # Chance de dar o personagem secreto e remove ele no terceiro turno
         if randint(0,100) < 10 and p1h != 5 and rodada == 2:
             p1h = 6
         elif randint(0,100) < 10 and p2h != 5 and rodada == 2:
             p2h = 6
+        elif rodada == 3:
+            p1h = p1h_antiga
+            p2h = p2h_antiga
         #Inicia a função da rodada do jogo
         resultadorodada = rodada_do_jogo(p1h,p2h,rodada,player1vitorias,player2vitorias)
         if type(resultadorodada) == list and len(resultadorodada) > 1:

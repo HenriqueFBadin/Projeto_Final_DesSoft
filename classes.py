@@ -83,10 +83,12 @@ class Player(pygame.sprite.Sprite):
             self.is_jumping = False
             self.energy = 0
 
+        # Rotaciona o personagem caso ele mude de direção
         if self.life>=100:
             self.image = self.imgs[self.orientacao]
             self.image_weak = self.img_weaks[self.orientacao]
         
+        # Duração do soco e evita que o jogador cause dano mais de uma vez por soco
         if self.is_punching and self.life>=100:
             self.punching_energy-=1
             self.image = self.punch_img[self.orientacao]
@@ -99,6 +101,7 @@ class Player(pygame.sprite.Sprite):
             if self.punching_energy<=0:
                 self.is_punching=False
 
+        # Duração do tiro
         if self.is_shooting and self.life>=100:
             self.shooting_energy-=1
             self.image = self.shoot_img[self.orientacao]
@@ -111,6 +114,7 @@ class Player(pygame.sprite.Sprite):
             if self.shooting_energy<=0:
                 self.is_shooting=False
 
+        # Duração do pulo
         if self.is_jumping and self.life>=100:
             self.energy+=1
             self.image = self.jump_img[self.orientacao]
@@ -119,9 +123,11 @@ class Player(pygame.sprite.Sprite):
             self.energy+=1
             self.image = self.goldjump_img[self.orientacao]
         
+        # Atualiza a máscara dos personagens, para aprimorar as colisões
         self.mask = pygame.mask.from_surface(self.image)
         self.mask_weak = pygame.mask.from_surface(self.image_weak)
 
+        # Mata o jogador caso ele fica com a vida menor ou igual a 0
         if self.life<=0:           
             self.kill()
             self.life = 0
@@ -140,6 +146,9 @@ class Player(pygame.sprite.Sprite):
         if self.escolha == 7 and self.life < 100:
             self.power_img[self.orientacao]=pygame.transform.scale(self.power_img[self.orientacao],(140,140))
             self.rect.bottom = self.rect.bottom+50
+        elif self.escolha == 7 and self.life >= 100:
+            self.power_img[self.orientacao]=pygame.transform.scale(self.power_img[self.orientacao],(70,70))
+            self.rect.bottom = self.rect.bottom+50
         new_power=Power(self.orientacao, self.power_img, self.rect.bottom-85, self.rect.centerx)
         self.all_sprites.add(new_power)
         self.all_powers.add(new_power)
@@ -151,37 +160,38 @@ class Player(pygame.sprite.Sprite):
             self.is_punching=True
 
 class Power(pygame.sprite.Sprite):
-
+    """ Classe para configurar os disparos/tiros """
     # Construtor da classe:
-        def __init__(self, orientacao, img, bottom, centerx):
+    def __init__(self, orientacao, img, bottom, centerx):
 
-            # Construtor da classe mãe (Sprite):
-            pygame.sprite.Sprite.__init__(self)
+        # Construtor da classe mãe (Sprite):
+        pygame.sprite.Sprite.__init__(self)
 
-            self.orientacao = orientacao
-            self.image = img[orientacao]
-            self.rect = self.image.get_rect()
-            self.mask = pygame.mask.from_surface(self.image)
+        self.orientacao = orientacao
+        self.image = img[orientacao]
+        self.rect = self.image.get_rect()
+        self.mask = pygame.mask.from_surface(self.image)
 
-            # Coloca no lugar inicial definido em x, y do constutor:
-            self.rect.centerx = centerx
-            self.rect.bottom = bottom
-            self.speedx = -10  # Velocidade fixa para a horizontal]
+        # Coloca no lugar inicial definido em x, y do constutor:
+        self.rect.centerx = centerx
+        self.rect.bottom = bottom
+        self.speedx = -10  # Velocidade fixa para a horizontal]
 
 
-        def update(self):
+    def update(self):
+        
+        # O poder só se move no eixo x:
+        if self.orientacao==0:
+            self.rect.centerx+=self.speedx
+        if self.orientacao==1:
+            self.rect.centerx-=self.speedx
             
-            # O poder só se move no eixo x:
-            if self.orientacao==0:
-                self.rect.centerx+=self.speedx
-            if self.orientacao==1:
-                self.rect.centerx-=self.speedx
-              
-            # Se o poder passar do inicio da tela, morre:
-            if self.rect.centerx >  WIDTH or self.rect.centerx<0:
-                self.kill()
+        # Se o poder passar do inicio da tela, morre:
+        if self.rect.centerx >  WIDTH or self.rect.centerx<0:
+            self.kill()
 
 class BarraHp(pygame.sprite.Sprite):
+    """ Classe para configurar as barras de vida dos players """
     def __init__(self, playerlife, jogador, barravermelha_img, barraverde_img):
         self.compbarraverd = 300
         self.compbarraverm = 300
