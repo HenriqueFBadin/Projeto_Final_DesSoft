@@ -5,6 +5,7 @@ from os import path
 from assets import *
 
 def texto(font, variavel, pos, cores):
+    """ Função utilizada para gerar textos ao longo do jogo """
     text_surface = font.render("{}".format(variavel), True, cores)
     text_rect = text_surface.get_rect()
     text_rect.midtop = (pos[0],  pos[1])
@@ -12,6 +13,7 @@ def texto(font, variavel, pos, cores):
     return 0
 
 def tecla_pressionada(player1, player2,player1_esc,player2_esc):
+    """" Função que interpreta todos os eventos e gera resultados para cada um deles"""
     for event in pygame.event.get():
         # Verifica se apertou alguma tecla.
         if event.type == pygame.KEYDOWN:
@@ -143,6 +145,10 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
     return True
 
 def encostou(player1, player2, ph1, ph2):
+    """ Função que verifica se o soco de um personagem atingiu o outro e causa o dano com condicionais, como personagem específico tirar mais dano
+        
+        ph1 e ph2 são as variáveis que armazenam a escolha dos jogadores, assim o código abaixo sabe como reagir para cada personagem com
+        característica especial """
     if player2.image in player2.punch_img or player2.image in player2.goldpunch_img:
         if player2.umsoco == 1:
             player1.life -= player2.damage
@@ -170,6 +176,7 @@ def encostou(player1, player2, ph1, ph2):
     return 0
 
 def contadorinicial(font,pos,all_sprites):
+    """ Faz a contagem regressiva de tempo no começo dos rounds """
     valores = [3,2,1,0,'go',' ']
     for valor in valores:
         text_surface = font.render("{}".format(valor), True, (0, 0, 0))
@@ -180,6 +187,7 @@ def contadorinicial(font,pos,all_sprites):
     return 0
 
 def barrasdevida(player2,player1,barradevidaplayer1,barradevidaplayer2,barradevidacomvitorias_img):
+    """ Função que atualiza as barras de vida dos jogadores conforme eles perdem vida """
     barradevidaplayer1.playerlife = player1.life
     barradevidaplayer2.playerlife = player2.life
     if player1.life > 0 or player2.life > 0:
@@ -214,6 +222,7 @@ def barrasdevida(player2,player1,barradevidaplayer1,barradevidaplayer2,barradevi
     return 0
 
 def verificaplayer1ganhou(player2,podeacabar,player1vitorias,timer2,segundos3):
+    """ Função que verifica se um player ganhou e gera resultados """
     if player2.life <= 0 and podeacabar == False:
         texto(font2, "Player 1 wins" , [145, HEIGHT/2], (255,255,255))
         podeacabar = True

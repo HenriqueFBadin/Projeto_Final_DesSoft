@@ -10,6 +10,7 @@ RIGHT=3
 player1_selecionou=False
 player2_selecionou=False
 def character_selection(screen):
+    ''' Código para gerar a tela de seleção de personagens '''
     # Variável para o ajuste de velocidade
     clock = pygame.time.Clock()
 
@@ -20,8 +21,8 @@ def character_selection(screen):
     player1_selecionou=False
     player2_selecionou=False
     running = True
-    p1c=0
-    p2c=0
+    p1c=0 # escolha do player 1
+    p2c=0 # escolha do player 1
     segundos4=64
     timer3=0
     GREEN=(0,255,0)

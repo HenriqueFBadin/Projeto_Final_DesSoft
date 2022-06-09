@@ -31,6 +31,6 @@ while state!= QUIT:
         state=game_screen(window,player1_esc,player2_esc)
     if state==5:
         state=tela_final(window)
-    if state!=INIT and state!=MENU and state[0]!=4  and state!=5:
+    if state!=INIT and state!=MENU and state!=5:
         state=QUIT
 pygame.quit()
