@@ -65,3 +65,6 @@ Agora é com você! Baixe o jogo e se divirta! :D
 * [Sprites Yoshi](https://www.spriters-resource.com/custom_edited/yoshicustoms/sheet/17233/)
 * [Sprites Honda](https://www.spriters-resource.com/mobile/sf2ce/sheet/40736/)
 * [Sprites Link](https://www.spriters-resource.com/custom_edited/supersmashbroscustoms/sheet/147713/)
+* [Audio Socos Dio](https://youtu.be/5_KwV-MAMQ8)
+* [Música de fundo](https://soundcloud.com/hiep612/mortal-kombat-theme-song-original?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing)
+* [Outros Audios](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj1-u_NrJ_4AhWNGbkGHQaoAboQtwJ6BAg2EAE&url=https%3A%2F%2Fwww.101soundboards.com%2Fboards%2F10441-street-fighter-ii-sounds&usg=AOvVaw2d17muKWjNdpg4y4sN5r9E)
