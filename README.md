@@ -69,3 +69,5 @@ Agora é com você! Baixe o jogo e se divirta! :D
 * [Música de fundo](https://soundcloud.com/hiep612/mortal-kombat-theme-song-original?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing)
 * [Outros Audios](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj1-u_NrJ_4AhWNGbkGHQaoAboQtwJ6BAg2EAE&url=https%3A%2F%2Fwww.101soundboards.com%2Fboards%2F10441-street-fighter-ii-sounds&usg=AOvVaw2d17muKWjNdpg4y4sN5r9E)
 * [Background do jogo](https://www.reddit.com/r/gaming/comments/1d7g1p/i_have_a_huge_collection_of_fighting_game/)
+* [sprties Dinossauro](https://www.spriters-resource.com/game_boy_advance/hihiamiyumi/sheet/77775/)
+* [Sprites corpo Ryu](https://www.youtube.com/watch?v=6OlenbCC4WI)
