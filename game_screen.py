@@ -60,8 +60,6 @@ def game_screen(window,player1_esc,player2_esc):
             segundos2 = 64
             segundos3=64
             podeacabar = False
-            player1ganhou = []
-            player2ganhou = []
             resultado_temporizador = []
             Player1life = 'P1'
             Player2life = 'P2'
@@ -119,27 +117,18 @@ def game_screen(window,player1_esc,player2_esc):
 
                 # Barras de vida e finalização
                 barrasdevida(player2,player1,barradevidaplayer1,barradevidaplayer2,barradevidacomvitorias_img)
-                verificaplayer1ganhou(player2,podeacabar,player1vitorias,timer2,segundos3)
-                verificaplayer2ganhou(player1,podeacabar,player2vitorias,timer2,segundos3)
+                verificaplayerganhou(player1,player2,podeacabar,player1vitorias,player2vitorias,timer2,segundos3)
 
-                player1ganhou = verificaplayer1ganhou(player2,podeacabar,player1vitorias,timer2,segundos3)
-                if player1ganhou[0] != 'acabou':
-                    segundos3 = player1ganhou[0]
-                    timer2 = player1ganhou[1]
-                    podeacabar = player1ganhou[2]
+                playerganhou = verificaplayerganhou(player1,player2,podeacabar,player1vitorias,player2vitorias,timer2,segundos3)
+                if playerganhou[0] != 'acabou':
+                    segundos3 = playerganhou[0]
+                    timer2 = playerganhou[1]
+                    podeacabar = playerganhou[2]
                 else:
-                    player1vitorias = player1ganhou[1]
-                    player2vitorias = player2vitorias
-                    return [player1vitorias,player2vitorias]
-
-                player2ganhou = verificaplayer2ganhou(player1,podeacabar,player2vitorias,timer2,segundos3)
-                if player2ganhou[0] != 'acabou':
-                    segundos3 = player2ganhou[0]
-                    timer2 = player2ganhou[1]
-                    podeacabar = player2ganhou[2]
-                else:
-                    player1vitorias = player1vitorias
-                    player2vitorias = player2ganhou[1]
+                    if player2.life <= 0:
+                        player1vitorias = playerganhou[1]
+                    elif player1.life <= 0:
+                        player2vitorias = playerganhou[1]
                     return [player1vitorias,player2vitorias]
                 
                 #Imprime o tempo e os textos "P1" e "P2"

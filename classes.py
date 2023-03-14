@@ -6,6 +6,7 @@ P1_WIDTH=150
 P1_HEIGHT=150
 WIDTH=800
 HEIGHT=600
+MAX_LIFE = 200
 p1_shoot=False
 p2_shoot=False
 
@@ -23,15 +24,9 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.centerx = 50 if orientacao == 1 else WIDTH - 50
         self.rect.y = 400
-        self.speedx = 0
-        self.speedy = 0
-        self.energy = 0
-        self.punching_energy=0
-        self.shooting_energy=0
-        self.is_jumping = False
-        self.is_punching = False
-        self.is_shooting=False
-        self.life=200
+        self.speedx, self.segundostiro, self.speedy, self.energy, self.morreu, self.escolha, self.segundossoco, self.punching_energy, self.shooting_energy = 0,0,0,0,0,0,0,0,0
+        self.is_jumping, self.is_punching, self.is_shooting = False, False, False
+        self.life = MAX_LIFE
         self.all_sprites=all_sprites
         self.all_powers=all_powers
         self.sprite_power=sprite_power
@@ -43,14 +38,9 @@ class Player(pygame.sprite.Sprite):
         self.goldshot_img=goldshot_img
         self.jump_img=jump_img
         self.goldjump_img=goldjump_img
-        self.damage = 10
         self.mask = pygame.mask.from_surface(self.image)
         self.mask_weak = pygame.mask.from_surface(self.image_weak)
-        self.segundostiro = 0
-        self.segundossoco = 0
         self.umsoco = 1
-        self.morreu = 0
-        self.escolha = 0
 
     def update(self):
         # Atualização da posição do player
@@ -67,7 +57,7 @@ class Player(pygame.sprite.Sprite):
         if self.segundossoco > 0:
             self.segundossoco -= 1
 
-        if self.life < 100:
+        if self.life < MAX_LIFE/2:
             self.damage = 15
             self.image = self.img_weaks[self.orientacao]
 
@@ -84,42 +74,19 @@ class Player(pygame.sprite.Sprite):
             self.energy = 0
 
         # Rotaciona o personagem caso ele mude de direção
-        if self.life>=100:
+        if self.life>=MAX_LIFE/2:
             self.image = self.imgs[self.orientacao]
             self.image_weak = self.img_weaks[self.orientacao]
         
-        # Duração do soco e evita que o jogador cause dano mais de uma vez por soco
-        if self.is_punching and self.life>=100:
-            self.punching_energy-=1
-            self.image = self.punch_img[self.orientacao]
-            if self.punching_energy<=0:
-                self.is_punching=False
-
-        if self.is_punching and self.life<100:
-            self.punching_energy-=1
-            self.image = self.goldpunch_img[self.orientacao]
-            if self.punching_energy<=0:
-                self.is_punching=False
-
-        # Duração do tiro
-        if self.is_shooting and self.life>=100:
-            self.shooting_energy-=1
-            self.image = self.shoot_img[self.orientacao]
-            if self.shooting_energy<=0:
-                self.is_shooting=False
-
-        if self.is_shooting and self.life<100:
-            self.shooting_energy-=1
-            self.image = self.goldshot_img[self.orientacao]
-            if self.shooting_energy<=0:
-                self.is_shooting=False
+        # Duração do soco e tiro
+        self.attackDuration()
 
         # Duração do pulo
-        if self.is_jumping and self.life>=100:
+        if self.is_jumping and self.life>=MAX_LIFE/2:
             self.energy+=1
             self.image = self.jump_img[self.orientacao]
 
-        if self.is_jumping and self.life<100:
+        if self.is_jumping and self.life<MAX_LIFE/2:
             self.energy+=1
             self.image = self.goldjump_img[self.orientacao]
         
@@ -133,6 +100,29 @@ class Player(pygame.sprite.Sprite):
             self.life = 0
             self.morreu += 1
 
+    def attackDuration(self):
+        if self.is_punching:
+            if self.life>=MAX_LIFE/2:
+                self.punching_energy -= 1
+                self.image = self.punch_img[self.orientacao]
+                if self.punching_energy<=0:
+                    self.is_punching=False
+            else:
+                self.punching_energy -= 1
+                self.image = self.goldpunch_img[self.orientacao]
+                if self.punching_energy<=0:
+                    self.is_punching=False
+        if self.is_shooting:
+            if self.life >= MAX_LIFE/2:
+                self.shooting_energy -= 1
+                self.image = self.shoot_img[self.orientacao]
+                if self.shooting_energy <= 0:
+                    self.is_shooting=False
+            else:
+                self.shooting_energy -= 1
+                self.image = self.goldshot_img[self.orientacao]
+                if self.shooting_energy <= 0:
+                    self.is_shooting=False
 
     def jump(self):
         if not self.is_jumping:
@@ -140,13 +130,12 @@ class Player(pygame.sprite.Sprite):
             self.is_jumping = True
 
     def shoot(self):
-
         self.is_shooting=True
         self.shooting_energy=12
-        if self.escolha == 7 and self.life < 100:
+        if self.escolha == 7 and self.life < MAX_LIFE/2:
             self.power_img[self.orientacao]=pygame.transform.scale(self.power_img[self.orientacao],(140,140))
             self.rect.bottom = self.rect.bottom+50
-        elif self.escolha == 7 and self.life >= 100:
+        elif self.escolha == 7 and self.life >= MAX_LIFE/2:
             self.power_img[self.orientacao]=pygame.transform.scale(self.power_img[self.orientacao],(70,70))
             self.rect.bottom = self.rect.bottom+50
         new_power=Power(self.orientacao, self.power_img, self.rect.bottom-85, self.rect.centerx)
@@ -157,7 +146,7 @@ class Player(pygame.sprite.Sprite):
     def punch(self):
         if not self.is_punching:
             self.punching_energy = 12
-            self.is_punching=True
+            self.is_punching = True
 
 class Power(pygame.sprite.Sprite):
     """ Classe para configurar os disparos/tiros """
@@ -200,7 +189,7 @@ class BarraHp(pygame.sprite.Sprite):
         self.barravermelha_img = pygame.transform.scale(barravermelha_img, (self.compbarraverm, 40))
         self.barraverde_img = pygame.transform.scale(barraverde_img, (self.compbarraverd, 40))      
     def update(self):
-        if self.playerlife > 100:
+        if self.playerlife > MAX_LIFE/2:
             self.barraverde_img = pygame.transform.scale(self.barraverde_img, (self.compbarraverd, 40))
         else:
             self.barravermelha_img = pygame.transform.scale(self.barravermelha_img, (self.compbarraverm, 40))
