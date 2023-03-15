@@ -79,7 +79,8 @@ class Player(pygame.sprite.Sprite):
             self.image_weak = self.img_weaks[self.orientacao]
         
         # Duração do soco e tiro
-        self.attackDuration()
+        self.punchingDuration()
+        self.shootingDuration()
 
         # Duração do pulo
         if self.is_jumping and self.life>=MAX_LIFE/2:
@@ -100,29 +101,31 @@ class Player(pygame.sprite.Sprite):
             self.life = 0
             self.morreu += 1
 
-    def attackDuration(self):
-        if self.is_punching:
-            if self.life>=MAX_LIFE/2:
-                self.punching_energy -= 1
-                self.image = self.punch_img[self.orientacao]
-                if self.punching_energy<=0:
-                    self.is_punching=False
-            else:
-                self.punching_energy -= 1
-                self.image = self.goldpunch_img[self.orientacao]
-                if self.punching_energy<=0:
-                    self.is_punching=False
+    def changeAttackImage(self):
         if self.is_shooting:
             if self.life >= MAX_LIFE/2:
-                self.shooting_energy -= 1
                 self.image = self.shoot_img[self.orientacao]
-                if self.shooting_energy <= 0:
-                    self.is_shooting=False
             else:
-                self.shooting_energy -= 1
                 self.image = self.goldshot_img[self.orientacao]
-                if self.shooting_energy <= 0:
-                    self.is_shooting=False
+        if self.is_punching:
+            if self.life>=MAX_LIFE/2:
+                self.image = self.punch_img[self.orientacao]
+            else:
+                self.image = self.goldpunch_img[self.orientacao]
+
+    def punchingDuration(self):
+        if self.is_punching:
+            self.punching_energy -= 1
+            if self.punching_energy<=0:
+                    self.is_punching=False
+        self.changeAttackImage()
+
+    def shootingDuration(self):       
+        if self.is_shooting:
+            self.shooting_energy -= 1
+            if self.shooting_energy <= 0:
+                self.is_shooting=False
+        self.changeAttackImage()
 
     def jump(self):
         if not self.is_jumping:

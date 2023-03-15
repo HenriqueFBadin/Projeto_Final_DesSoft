@@ -24,7 +24,6 @@ def character_selection(screen):
     p1c=0 # escolha do player 1
     p2c=0 # escolha do player 1
     segundos4=64
-    timer3=0
     GREEN=(0,255,0)
 
     #triangle1=pygame.Rect((80,81),(180,81),(130,138))
@@ -43,7 +42,6 @@ def character_selection(screen):
                 p1c=2
                 player1_selecionou=True
                 x1=[[86,94],[86,152],[121,122]]               
-                
             if event.pos[0]>=124 and event.pos[0]<=226 and event.pos[1]>=177 and event.pos[1]<=273:
                 print("P1 escolheu o Dio")
                 p1c=1
@@ -51,7 +49,7 @@ def character_selection(screen):
                 x1=[[86,197],[86,258],[121,228]]
             if event.pos[0]>=124 and event.pos[0]<=226 and event.pos[1]>=278 and event.pos[1]<=373:
                 print("P1 escolheu o Honda")
-                p1c=4 #mudar para 4, quando o Honda estiver pronto
+                p1c=4
                 player1_selecionou=True
                 x1=[[86,295],[86,352],[121,323]]
             if event.pos[0]>=124 and event.pos[0]<=226 and event.pos[1]>=379 and event.pos[1]<=474:
@@ -123,6 +121,4 @@ def character_selection(screen):
             pygame.draw.polygon(screen,GREEN,x2)
         pygame.display.flip()
      
-      
-   
     return [state,p1c,p2c] 
