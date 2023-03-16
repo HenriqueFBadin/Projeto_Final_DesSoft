@@ -60,8 +60,6 @@ def game_screen(window,player1_esc,player2_esc):
             segundos2 = 64
             segundos3=64
             podeacabar = False
-            player1ganhou = []
-            player2ganhou = []
             resultado_temporizador = []
             Player1life = 'P1'
             Player2life = 'P2'
@@ -119,34 +117,25 @@ def game_screen(window,player1_esc,player2_esc):
 
                 # Barras de vida e finalização
                 barrasdevida(player2,player1,barradevidaplayer1,barradevidaplayer2,barradevidacomvitorias_img)
-                verificaplayer1ganhou(player2,podeacabar,player1vitorias,timer2,segundos3)
-                verificaplayer2ganhou(player1,podeacabar,player2vitorias,timer2,segundos3)
+                verificaplayerganhou(player1,player2,podeacabar,player1vitorias,player2vitorias,timer2,segundos3)
 
-                player1ganhou = verificaplayer1ganhou(player2,podeacabar,player1vitorias,timer2,segundos3)
-                if player1ganhou[0] != 'acabou':
-                    segundos3 = player1ganhou[0]
-                    timer2 = player1ganhou[1]
-                    podeacabar = player1ganhou[2]
+                playerganhou = verificaplayerganhou(player1,player2,podeacabar,player1vitorias,player2vitorias,timer2,segundos3)
+                if playerganhou[0] != 'acabou':
+                    segundos3 = playerganhou[0]
+                    timer2 = playerganhou[1]
+                    podeacabar = playerganhou[2]
                 else:
-                    player1vitorias = player1ganhou[1]
-                    player2vitorias = player2vitorias
-                    return [player1vitorias,player2vitorias]
-
-                player2ganhou = verificaplayer2ganhou(player1,podeacabar,player2vitorias,timer2,segundos3)
-                if player2ganhou[0] != 'acabou':
-                    segundos3 = player2ganhou[0]
-                    timer2 = player2ganhou[1]
-                    podeacabar = player2ganhou[2]
-                else:
-                    player1vitorias = player1vitorias
-                    player2vitorias = player2ganhou[1]
+                    if player2.life <= 0:
+                        player1vitorias = playerganhou[1]
+                    elif player1.life <= 0:
+                        player2vitorias = playerganhou[1]
                     return [player1vitorias,player2vitorias]
                 
                 #Imprime o tempo e os textos "P1" e "P2"
                 texto(font, tempo, [WIDTH/2 -10,10], (0,0,0))
                 texto(font, Player1life , [25, 15], (0,0,0))
                 texto(font, Player2life , [490, 15], (0,0,0))
-
+                
                 # Exibe e corrige o número de vitórias dos jogadores
                 if (rodada == 3 and player2.life <= 0) or (rodada == 2 and player2.life <= 0 and player1vitorias == 1):
                     texto(fontwins, "WINS {}".format(player1vitorias+1), [251, 68], (0,0,0))
@@ -157,7 +146,7 @@ def game_screen(window,player1_esc,player2_esc):
                 elif player1.life > 0 or player2.life > 0 :
                     texto(fontwins, "WINS {}".format(player1vitorias) , [251, 68], (0,0,0))
                     texto(fontwins, "WINS {}".format(player2vitorias) , [716, 68], (0,0,0))
-                
+
                 # Faz a contagem inicial para os jogadores poderem lutar
                 valores = [3,2,1,0,'Go!',' ']
                 segundos2 -= 1
@@ -191,9 +180,9 @@ def game_screen(window,player1_esc,player2_esc):
             # ===== Finalização =====
             pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
         # Chance de dar o personagem secreto e remove ele no terceiro turno
-        if randint(0,100) < 10 and p1h != 5 and rodada == 2:
+        if randint(0,100) < 11 and p1h != 5 and rodada == 2:
             p1h = 6
-        elif randint(0,100) < 10 and p2h != 5 and rodada == 2:
+        elif randint(0,100) < 11 and p2h != 5 and rodada == 2:
             p2h = 6
         elif rodada == 3:
             p1h = p1h_antiga

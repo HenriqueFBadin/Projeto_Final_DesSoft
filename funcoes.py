@@ -125,13 +125,13 @@ def tecla_pressionada(player1, player2,player1_esc,player2_esc):
                 if player2_esc != 2 or (player2_esc == 2 and player2.life >= 100):
                     player2.speedx += 8
                 elif (player2_esc == 2 or player2_esc == 6) and player2.life < 100:
-                    player2.speedx = 0
+                    player2.speedx = 12
             
             if event.key == pygame.K_RIGHT:
                 if player2_esc != 2 or (player2_esc == 2 and player2.life >= 100):
                     player2.speedx += -8
                 elif (player2_esc == 2 or player2_esc == 6) and player2.life < 100:
-                    player2.speedx = 0
+                    player2.speedx = -12
 
             if event.key == pygame.K_UP:
                 player2.jump()
@@ -209,14 +209,18 @@ def barrasdevida(player2,player1,barradevidaplayer1,barradevidaplayer2,barradevi
         window.blit(barradevidacomvitorias_img, (480, 5))
     return 0
 
-def verificaplayer1ganhou(player2,podeacabar,player1vitorias,timer2,segundos3):
-    """ Função que verifica se o player 1 ganhou e gera resultados """
-    if player2.life <= 0 and podeacabar == False:
-        texto(font2, "Player 1 wins" , [145, HEIGHT/2], (255,255,255))
+def verificaplayerganhou(player1, player2,podeacabar,player1vitorias,player2vitorias,timer2,segundos3):
+    """ Função que verifica se o player ganhou e gera resultados """
+    if player1.life <= 0:
+        numero = 2
+    elif player2.life <= 0:
+        numero = 1
+    if (player2.life <= 0 or player1.life <= 0) and podeacabar == False:
+        texto(font2, "Player " + str(numero) + " wins" , [145, HEIGHT/2], (255,255,255))
         podeacabar = True
         timer2 = 0
-    elif player2.life <= 0 and podeacabar == True:
-        texto(font2, "Player 1 wins" , [145, HEIGHT/2], (255,255,255))
+    elif (player2.life <= 0 or player1.life <= 0) and podeacabar == True:
+        texto(font2, "Player " + str(numero) + " wins"  , [145, HEIGHT/2], (255,255,255))
         segundos3 -= 1
         if segundos3==1:
             if timer2 <= 5:
@@ -224,29 +228,15 @@ def verificaplayer1ganhou(player2,podeacabar,player1vitorias,timer2,segundos3):
                 print(timer2)
             segundos3 = 64
     if timer2 >= 5:
-        player1vitorias += 1
-        print(player1vitorias)
-        return ['acabou',player1vitorias]
-    return [segundos3, timer2, podeacabar]
-
-def verificaplayer2ganhou(player1,podeacabar,player2vitorias,timer2,segundos3):
-    """ Função que verifica se o player 2 ganhou e gera resultados """
-    if player1.life <= 0 and podeacabar == False:
-        texto(font2, "Player 2 wins" , [145, HEIGHT/2], (255,255,255))
-        podeacabar = True
-        timer2 = 0
-    elif player1.life <= 0 and podeacabar == True:
-        texto(font2, "Player 2 wins" , [145, HEIGHT/2], (255,255,255))
-        segundos3 -= 1
-        if segundos3==1:
-            if timer2 <= 5:
-                timer2 += 1
-                print(timer2)
-            segundos3 = 64
-    if timer2 >= 5:
-        player2vitorias += 1
-        print(player2vitorias)
-        return ['acabou',player2vitorias]
+        if player2.life <= 0:
+            player1vitorias += 1
+            print(player1vitorias)
+            return ['acabou',player1vitorias]
+        elif player1.life <= 0:
+            player2vitorias += 1
+            print(player2vitorias)
+            return ['acabou',player2vitorias]
+        
     return [segundos3, timer2, podeacabar]
 
 def temporizador(segundos,tempo,podecomecar,player1,player2):
